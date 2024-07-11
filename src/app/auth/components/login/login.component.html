@@ -1,0 +1,58 @@
+<section class="box-section box-contact-form background-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mb-30 mt-25 mx-auto">
+        <h2 class="neutral-1000 mb-25 text-center">Login Here</h2>
+        <div class="form-contact">
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-lg-12 mt-3">
+                <div class="form-group">
+
+                  <mat-label class="neutral-1000">Email Adress</mat-label>
+                  <input matInput formControlName="email" class="form-control email" type="email"
+                    placeholder="email@domain.com">
+                  @if(form.get('email').hasError('required') && form.get('email').touched){
+                  <mat-error>Email is required</mat-error>
+                  }
+                  @else if(form.get('email').hasError('email')){
+                  <mat-error style="color: red;">Email is not valid format</mat-error>
+                  }
+                </div>
+              </div>
+              <div class="col-lg-12 my-5">
+                <div class="form-group">
+
+                  <mat-label class="neutral-1000">Password</mat-label>
+
+                  <mat-icon (click)="togglePasswordVisibility()" class="input-icon">
+                    {{showPassword ? 'visibility_off' : 'visibility' }}
+                  </mat-icon>
+                  <input matInput formControlName="password" class="form-control password"
+                    [type]="showPassword ? 'text' : 'password'" placeholder="************">
+
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+
+                <button class=" btn btn-book" [disabled]="form.invalid" (click)="login()">Login
+                  <svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.5 15L15.5 8L8.5 1M15.5 8L1.5 8" stroke="" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+                @if(wrongCredentials){
+                <p class="text-danger text-center mt-3 h5">Invalid email or password. Please try again</p>
+                }
+                @else if (serverError) {
+                <p class="text-danger text-center mt-3 h5">Server error</p>
+                }
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

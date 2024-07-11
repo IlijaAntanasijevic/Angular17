@@ -1,0 +1,26 @@
+.btn-book {
+  margin-top: 35px;
+}
+
+.password {
+  background-color: #191919;
+}
+
+.hide {
+  display: none;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  cursor: pointer;
+  z-index: 2;
+  color: #757575;
+}

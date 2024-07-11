@@ -22,22 +22,22 @@ export class ApartmentsApiService {
 
   getOne(id: number): Observable<IApartmentDetail>{
     return this.http.get<IApartmentDetail>("assets/data/apartmentsDetails.json").pipe(map((apartments: any) => {
-      let findApartment = apartments.find((x: any) => x.id == id);
-      return findApartment;
+      return apartments.find((x: any) => x.id == id);
+       
     }));
   }
 
   getSearchedData(search: ISearch): Observable<IApartment[]> {
     return this.http.get<IApartment[]>("assets/data/apartments.json").pipe(map((apartments: any) => {
-      let searchApartment = apartments.filter((x: any) => x.city == search.location && search.guests <= x.maxGuest)
-      return searchApartment;
+      return apartments.filter((x: any) => x.city == search.location && search.guests <= x.maxGuest)
+      
     }))
   } 
 
   getApartmentsByLocation(location: string): Observable<IApartment[]> {
     return this.http.get<IApartment[]>("assets/data/apartments.json").pipe(map((apartments: any) => {
-      let searchApartmentByLocation = apartments.filter((x: any) => x.city == location)
-      return searchApartmentByLocation;
+      return apartments.filter((x: any) => x.city == location)
+   
     }))
   }
 
