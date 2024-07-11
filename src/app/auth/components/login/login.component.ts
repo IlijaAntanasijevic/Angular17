@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRequestsService } from '../../services/requests/login-requests.service';
-import { IAuth } from '../../interfaces/i-auth';
+import { ICredentials } from '../../interfaces/i-auth';
+import { AuthService } from '../../../shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,12 @@ import { IAuth } from '../../interfaces/i-auth';
 export class LoginComponent {
 
   constructor(
-    public requestService: LoginRequestsService,
+    private requestService: LoginRequestsService,
+    private authService: AuthService
   ){}
 
   showPassword: boolean = false;
-  data: IAuth = { email: '', password: '' };
+  data: ICredentials = { email: '', password: '' };
   wrongCredentials: boolean = false;
   serverError: boolean = false;
 
@@ -34,7 +36,7 @@ export class LoginComponent {
 
     this.requestService.login(this.data).subscribe({
       next: (data) => {
-        console.log(data);
+        this.authService.setJwtToken(data.token)
         
       },   
       error: (err) => {

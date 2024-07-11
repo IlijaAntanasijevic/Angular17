@@ -1,4 +1,4 @@
-export interface IAuth {
+export interface ICredentials {
   email: string,
   password: string
 }

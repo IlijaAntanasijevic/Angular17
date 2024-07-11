@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IAuth, IAuthToken } from '../../interfaces/i-auth';
+import { ICredentials, IAuthToken } from '../../interfaces/i-auth';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class LoginApiService {
     public http: HttpClient
   ) {}
 
-  login(credentials: IAuth): Observable<IAuthToken> {
-    return this.http.post<IAuthToken>("http://ilija-booking.somee.com/api/auth",credentials);
+  login(data: ICredentials): Observable<IAuthToken> {
+    return this.http.post<IAuthToken>("http://ilija-booking.somee.com/api/auth",data);
   }
 }
