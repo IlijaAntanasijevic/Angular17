@@ -1,0 +1,35 @@
+@if(totalPages > 1) {
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <button class="page-link" aria-label="Previous" [disabled]="currentPage == 1"
+        (click)="onPageChange(currentPage - 1)">
+        <span aria-hidden="true">
+          <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.00016 1.33325L1.3335 5.99992M1.3335 5.99992L6.00016 10.6666M1.3335 5.99992H10.6668" stroke=""
+              stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </button>
+    </li>
+    @for(page of getRange(totalPages); track page){
+    <li class="page-item">
+      <button class="page-link pe-auto" [class.active]="currentPage === page" [disabled]="currentPage === page"
+        (click)=" onPageChange(page)">{{page}}</button>
+    </li>
+    }
+
+    <li class="page-item">
+      <button class="page-link" aria-label="Next" [disabled]="currentPage == totalPages"
+        (click)="onPageChange(currentPage + 1)">
+        <span aria-hidden="true">
+          <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.99967 10.6666L10.6663 5.99992L5.99968 1.33325M10.6663 5.99992L1.33301 5.99992" stroke=""
+              stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </button>
+    </li>
+  </ul>
+</nav>
+}

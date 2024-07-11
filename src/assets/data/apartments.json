@@ -1,0 +1,207 @@
+[
+  {
+    "id": 1,
+    "name": "Cozy Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage1.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6 ,
+    "city": "Wien"
+
+  },
+  {
+    "id": 2,
+    "name": "Charming Canal-side",
+    "mainImage": "assets/images/apartmenImages/mainImage2.jpg",
+    "price": 58.25,
+    "totalReviews": 670,
+    "rate": 4.95,
+    "maxGuest": 4,
+    "city": "Amsterdam"
+  },
+  {
+    "id": 3,
+    "name": "Urban Oasis",
+    "mainImage": "assets/images/apartmenImages/mainImage3.jpg",
+    "price": 92.25,
+    "totalReviews": 350,
+    "rate": 4.45,
+    "maxGuest": 5,
+    "city": "New York"
+
+  },
+  {
+    "id": 4,
+    "name": "Cozy Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage4.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6,
+    "city": "Wien"
+  },
+  {
+    "id": 5,
+    "name": "Classic Comfort",
+    "mainImage": "assets/images/apartmenImages/mainImage5.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6,
+    "city": "London"
+     
+  },
+  {
+    "id": 6,
+    "name": "Serene Escape",
+    "mainImage": "assets/images/apartmenImages/mainImage6.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6 ,
+    "city": "Venice"
+
+  },
+  {
+    "id": 7,
+    "name": "Modern Hideaway",
+    "mainImage": "assets/images/apartmenImages/mainImage7.jpg",
+    "price": 68.50,
+    "totalReviews": 450,
+    "rate": 4.35,
+    "maxGuest": 5,
+    "city": "Wien"
+  },
+  {
+    "id": 8,
+    "name": "Grand Getaway",
+    "mainImage": "assets/images/apartmenImages/mainImage8.jpg",
+    "price": 72.00,
+    "totalReviews": 300,
+    "rate": 4.50,
+    "maxGuest": 8,
+    "city": "Zurich"
+  },
+  {
+    "id": 9,
+    "name": "Scenic Seaside",
+    "mainImage": "assets/images/apartmenImages/mainImage9.jpg",
+    "price": 85.75,
+    "totalReviews": 600,
+    "rate": 4.75,
+    "maxGuest": 6,
+    "city": "Budva"
+  },
+  {
+    "id": 10,
+    "name": "Luxurious Stay",
+    "mainImage": "assets/images/apartmenImages/mainImage10.jpg",
+    "price": 58.25,
+    "totalReviews": 700,
+    "rate": 4.95,
+    "maxGuest": 3,
+    "city": "Wien"
+  },
+  {
+    "id": 11,
+    "name": "Chic Loft",
+    "mainImage": "assets/images/apartmenImages/mainImage11.jpg",
+    "price": 67.00,
+    "totalReviews": 550,
+    "rate": 4.50,
+    "maxGuest": 4,
+    "city": "New York"
+  },
+  {
+    "id": 12,
+    "name": "Elegant Residence",
+    "mainImage": "assets/images/apartmenImages/mainImage12.jpg",
+    "price": 92.00,
+    "totalReviews": 400,
+    "rate": 4.80,
+    "maxGuest": 5,
+    "city": "Venice"
+  },
+  {
+    "id": 13,
+    "name": "Stylish Abode",
+    "mainImage": "assets/images/apartmenImages/mainImage13.jpg",
+    "price": 75.25,
+    "totalReviews": 350,
+    "rate": 4.55,
+    "maxGuest": 6,
+    "city": "Amsterdam"
+  },
+  {
+    "id": 14,
+    "name": "Contemporary Flat",
+    "mainImage": "assets/images/apartmenImages/mainImage14.jpg",
+    "price": 60.00,
+    "totalReviews": 500,
+    "rate": 4.60,
+    "maxGuest": 4,
+    "city": "New York"
+  },
+  {
+    "id": 15,
+    "name": "Premium Suite",
+    "mainImage": "assets/images/apartmenImages/mainImage15.jpg",
+    "price": 95.00,
+    "totalReviews": 250,
+    "rate": 4.65,
+    "maxGuest": 5,
+    "city": "Wien"
+  },
+  {
+    "id": 16,
+    "name": "Trendy Apartment",
+    "mainImage": "assets/images/apartmenImages/mainImage16.jpg",
+    "price": 85.75,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6,
+    "city": "New York"
+  },
+  {
+    "id": 17,
+    "name": "Picturesque Dwelling",
+    "mainImage": "assets/images/apartmenImages/mainImage17.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6,
+    "city": "Venice"
+  },
+  {
+    "id": 18,
+    "name": "Deluxe Haven",
+    "mainImage": "assets/images/apartmenImages/mainImage18.jpg",
+    "price": 88.00,
+    "totalReviews": 600,
+    "rate": 4.90,
+    "maxGuest": 4,
+    "city": "Amsterdam"
+  },
+  {
+    "id": 19,
+    "name": "Upscale Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage19.jpg",
+    "price": 65.00,
+    "totalReviews": 450,
+    "rate": 4.40,
+    "maxGuest": 5,
+    "city": "Wien"
+  },
+  {
+    "id": 20,
+    "name": "Exclusive Lodging",
+    "mainImage": "assets/images/apartmenImages/mainImage20.jpg",
+    "price": 58.25,
+    "totalReviews": 670,
+    "rate": 4.95,
+    "maxGuest": 4,
+    "city": "Zurich"
+  }
+
+]

@@ -1,0 +1,24 @@
+.matIcon-person {
+  top: 5px;
+  position: relative;
+}
+
+.bookingInfo {
+  font-weight: 500;
+}
+
+.bookingInfoContainer {
+  font-size: 20px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: black !important;
+}

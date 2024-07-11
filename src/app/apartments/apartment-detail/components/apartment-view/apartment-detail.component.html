@@ -1,0 +1,169 @@
+@if(apartment){
+<main class="main">
+  <section class="box-section box-breadcrumb background-body">
+    <div class="container">
+      <ul class="breadcrumbs">
+        <li> <a routerLink="">Home</a><span class="arrow-right">
+            <svg width="7" height="12" viewbox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 11L6 6L1 1" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              </path>
+            </svg></span></li>
+        <li> <a routerLink="/apartments">Apartments</a><span class="arrow-right">
+            <svg width="7" height="12" viewbox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 11L6 6L1 1" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              </path>
+            </svg></span></li>
+        <li> <span class="text-breadcrumb">{{apartment.name}}</span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="box-section box-banner-property-detail background-body">
+    <div class="container">
+      <div class="block-banner-property-detail container-banner-activities">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6">
+            <div class="banner-property-detail-1"> <img src="{{apartment.mainImage}}" alt="{{apartment.name}}">
+              @if(apartment.images.length > 4){
+              <div class="box-button-abs"> <a class="btn btn-brand-secondary">
+                  <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M20 8V2.75C20 2.3375 19.6625 2 19.25 2H14C13.5875 2 13.25 2.3375 13.25 2.75V8C13.25 8.4125 13.5875 8.75 14 8.75H19.25C19.6625 8.75 20 8.4125 20 8ZM19.25 0.5C20.495 0.5 21.5 1.505 21.5 2.75V8C21.5 9.245 20.495 10.25 19.25 10.25H14C12.755 10.25 11.75 9.245 11.75 8V2.75C11.75 1.505 12.755 0.5 14 0.5H19.25Z"
+                      fill=""></path>
+                    <path
+                      d="M20 19.25V14C20 13.5875 19.6625 13.25 19.25 13.25H14C13.5875 13.25 13.25 13.5875 13.25 14V19.25C13.25 19.6625 13.5875 20 14 20H19.25C19.6625 20 20 19.6625 20 19.25ZM19.25 11.75C20.495 11.75 21.5 12.755 21.5 14V19.25C21.5 20.495 20.495 21.5 19.25 21.5H14C12.755 21.5 11.75 20.495 11.75 19.25V14C11.75 12.755 12.755 11.75 14 11.75H19.25Z"
+                      fill=""></path>
+                    <path
+                      d="M8 8.75C8.4125 8.75 8.75 8.4125 8.75 8V2.75C8.75 2.3375 8.4125 2 8 2H2.75C2.3375 2 2 2.3375 2 2.75V8C2 8.4125 2.3375 8.75 2.75 8.75H8ZM8 0.5C9.245 0.5 10.25 1.505 10.25 2.75V8C10.25 9.245 9.245 10.25 8 10.25H2.75C1.505 10.25 0.5 9.245 0.5 8V2.75C0.5 1.505 1.505 0.5 2.75 0.5H8Z"
+                      fill=""></path>
+                    <path
+                      d="M8 20C8.4125 20 8.75 19.6625 8.75 19.25V14C8.75 13.5875 8.4125 13.25 8 13.25H2.75C2.3375 13.25 2 13.5875 2 14V19.25C2 19.6625 2.3375 20 2.75 20H8ZM8 11.75C9.245 11.75 10.25 12.755 10.25 14V19.25C10.25 20.495 9.245 21.5 8 21.5H2.75C1.505 21.5 0.5 20.495 0.5 19.25V14C0.5 12.755 1.505 11.75 2.75 11.75H8Z"
+                      fill=""></path>
+                  </svg>See All Photos</a>
+              </div>
+              }
+            </div>
+          </div>
+
+          <div class="col-sm-6 images-grid">
+
+
+            @for(image of sliderImages; track image){
+            <div class="banner-property-detail-2">
+              <img src="{{image.path}}" alt="{{image.path}}">
+            </div>
+
+            }
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="box-section box-content-tour-detail box-content-room-detail background-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="tour-header">
+            <div class="tour-rate">
+              <div class="rate-element"><span class="rating">{{apartment.rate}} <span
+                    class="text-sm-medium neutral-500">({{apartment.totalReviews}} reviews)</span></span></div>
+            </div>
+            <div class="tour-title-main">
+              <h4 class="neutral-1000">{{apartment.name}}</h4>
+            </div>
+            <div class="tour-metas">
+              <div class="tour-meta-left">
+                <p class="text-md-medium neutral-500 mr-20 tour-location">
+                  <svg width="12" height="16" viewbox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M5.99967 0C2.80452 0 0.205078 2.59944 0.205078 5.79456C0.205078 9.75981 5.39067 15.581 5.61145 15.8269C5.81883 16.0579 6.18089 16.0575 6.38789 15.8269C6.60867 15.581 11.7943 9.75981 11.7943 5.79456C11.7942 2.59944 9.1948 0 5.99967 0ZM5.99967 8.70997C4.39211 8.70997 3.0843 7.40212 3.0843 5.79456C3.0843 4.187 4.39214 2.87919 5.99967 2.87919C7.6072 2.87919 8.91502 4.18703 8.91502 5.79459C8.91502 7.40216 7.6072 8.70997 5.99967 8.70997Z"
+                      fill=""></path>
+                  </svg>
+                  {{apartment.city}}
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="box-collapse-expand">
+            <div class="group-collapse-expand">
+              <div>
+                <h6 class="text-light">Overview</h6>
+                <svg width="12" height="7" viewbox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  </path>
+                </svg>
+              </div>
+              <div class="collapse show" id="collapseOverview">
+                <div class="card card-body">
+                  <p>{{apartment.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="group-collapse-expand">
+              <div>
+                <h6 class="text-light">What this place offers</h6>
+                <svg width="12" height="7" viewbox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  </path>
+                </svg>
+              </div>
+              <div class="collapse show" id="collapseHighlight">
+                <div class="card card-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <ul>
+                        @for(feature of featuresFirstColum; track feature){
+                        <li>{{feature}}</li>
+                        }
+                      </ul>
+                    </div>
+                    <div class="col-lg-6">
+                      <ul>
+                        @for(feature of featuresSecondColum; track feature){
+                        <li>{{feature}}</li>
+                        }
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- RATE -->
+          <app-apartment-detail-reviews [reviews]="apartment.reviews"></app-apartment-detail-reviews>
+        </div>
+        <div class="col-lg-4">
+          <!-- Booking form -->
+          <app-apartment-booking [apartment]="apartment"></app-apartment-booking>
+
+          <div class="sidebar-left border-1 background-3">
+            <h6 class="text-xl-bold neutral-1000">Agent Information</h6>
+            <div class="box-sidebar-content">
+              <div class="box-agent-support">
+                <div class="card-author">
+                  <div class="card-author-image"> <img src="{{apartment.user.avatar}}" alt="user-Avatar" /></div>
+                  <div class="card-author-info">
+                    <p class="text-lg-bold neutral-1000">{{apartment.user | fullName}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="box-info-contact">
+                <p class="text-md-medium mobile-phone neutral-1000">Mobile: {{apartment.user.phone}}</p>
+                <p class="text-md-medium email neutral-1000">Email: {{apartment.user.email}}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+</main>
+}

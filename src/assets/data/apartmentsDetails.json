@@ -1,0 +1,1050 @@
+[
+  {
+    "id": 1,
+    "name": "Cozy Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage1.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6,
+    "city": "Wien",
+    "location": "Location 123 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/apertment7.jpg" },
+      { "path": "assets/images/apartmenImages/apertment29.jpg" },
+      { "path": "assets/images/apartmenImages/apertment31.jpg" }
+    ],
+    "user": {
+      "id": 5,
+      "firstName": "John",
+      "lastName": "Doe",
+      "phone": "+125454214",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Sarah 1",
+        "lastName": "Johson",
+        "date": "25-01-2024",
+        "avatar": "assets/images/default.jpg",
+        "review": 2,
+        "comment": "The views from The High Roller were absolutely stunning! It's a fantastic way to see the Strip and the surrounding area. The cabins are spacious and comfortable, and the audio commentary adds an extra layer of enjoyment. Highly recommend!"
+      },
+        {
+        "firstName": "Sarah 2",
+        "lastName": "Johson",
+        "date": "25-01-2024",
+        "avatar": "assets/images/default.jpg",
+        "review": 4,
+        "comment": "The views from The High Roller were absolutely stunning! It's a fantastic way to see the Strip and the surrounding area. The cabins are spacious and comfortable, and the audio commentary adds an extra layer of enjoyment. Highly recommend!"
+      }
+    ],
+    "features": [
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Charming Canal-side",
+    "mainImage": "assets/images/apartmenImages/mainImage2.jpg",
+    "price": 60.00,
+    "totalReviews": 300,
+    "rate": 4.5,
+    "maxGuest": 4,
+    "city": "Amsterdam",
+    "location": "Location 456 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 6,
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "phone": "+125454215",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Tom",
+        "lastName": "Johnson",
+        "date": "26-01-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 5,
+        "comment": "An amazing place to stay, the views were breathtaking and the service was top-notch!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Urban Oasis",
+    "mainImage": "assets/images/apartmenImages/mainImage3.jpg",
+    "price": 70.50,
+    "totalReviews": 150,
+    "rate": 4.7,
+    "maxGuest": 5,
+    "city": "New York",
+    "location": "Location 789 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/apertment30.jpg" },
+      { "path": "assets/images/apartmenImages/apertment16.jpg" },
+      { "path": "assets/images/apartmenImages/apertment34.jpg" }
+    ],
+    "user": {
+      "id": 7,
+      "firstName": "Alice",
+      "lastName": "Brown",
+      "phone": "+125454216",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Emily",
+        "lastName": "Davis",
+        "date": "27-01-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.8,
+        "comment": "Loved the ambiance and the view from the balcony. Will definitely come back!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Cozy Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage4.jpg",
+    "price": 85.00,
+    "totalReviews": 400,
+    "rate": 4.9,
+    "maxGuest": 3,
+    "city": "Wien",
+    "location": "Location 101 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/apartment9.jpg" },
+      { "path": "assets/images/apartmenImages/apertment24.jpg" },
+      { "path": "assets/images/apartmenImages/apertment31.jpg" }
+    ],
+    "user": {
+      "id": 8,
+      "firstName": "Michael",
+      "lastName": "Johnson",
+      "phone": "+125454217",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Chris",
+        "lastName": "Lee",
+        "date": "28-01-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.9,
+        "comment": "A fantastic experience with wonderful amenities. The staff was incredibly helpful!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Classic Comfort",
+    "mainImage": "assets/images/apartmenImages/mainImage5.jpg",
+    "price": 55.75,
+    "totalReviews": 350,
+    "rate": 4.6,
+    "maxGuest": 2,
+    "city": "London",
+    "location": "Location 102 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/apertment15.jpg" },
+      { "path": "assets/images/apartmenImages/apertment35.jpg" },
+      { "path": "assets/images/apartmenImages/apertment39.jpg" }
+    ],
+    "user": {
+      "id": 9,
+      "firstName": "Laura",
+      "lastName": "Martinez",
+      "phone": "+125454218",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "David",
+        "lastName": "Taylor",
+        "date": "29-01-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.7,
+        "comment": "The location was perfect for exploring the city. Clean and comfortable!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Serene Escape",
+    "mainImage": "assets/images/apartmenImages/mainImage6.jpg",
+    "price": 67.30,
+    "totalReviews": 500,
+    "rate": 4.4,
+    "maxGuest": 4,
+    "city": "Venice",
+    "location": "Location 103 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" },
+      { "path": "assets/images/apartmenImages/apertment15.jpg" },
+      { "path": "assets/images/apartmenImages/apertment35.jpg" }
+    ],
+    "user": {
+      "id": 10,
+      "firstName": "Steve",
+      "lastName": "Harris",
+      "phone": "+125454219",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Olivia",
+        "lastName": "Garcia",
+        "date": "30-01-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.5,
+        "comment": "The apartment was well-furnished and in a great location. Highly recommend!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Modern Hideaway",
+    "mainImage": "assets/images/apartmenImages/mainImage7.jpg",
+    "price": 72.00,
+    "totalReviews": 250,
+    "rate": 4.3,
+    "maxGuest": 5,
+    "city": "Wien",
+    "location": "Location 104 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/apertment40.jpg" },
+      { "path": "assets/images/apartmenImages/apertment36.jpg" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 11,
+      "firstName": "Nina",
+      "lastName": "Hughes",
+      "phone": "+125454220",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Sophia",
+        "lastName": "Lopez",
+        "date": "31-01-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.3,
+        "comment": "Beautiful apartment with an amazing view. The staff was friendly and helpful."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Grand Getaway",
+    "mainImage": "assets/images/apartmenImages/mainImage8.jpg",
+    "price": 80.50,
+    "totalReviews": 280,
+    "rate": 4.1,
+    "maxGuest": 6,
+    "city": "Zurich",
+    "location": "Location 105 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 12,
+      "firstName": "Mark",
+      "lastName": "Walker",
+      "phone": "+125454221",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Emma",
+        "lastName": "Jones",
+        "date": "01-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.1,
+        "comment": "Great place to stay, close to the main attractions. Very clean and cozy."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Scenic Seaside",
+    "mainImage": "assets/images/apartmenImages/mainImage9.jpg",
+    "price": 68.75,
+    "totalReviews": 420,
+    "rate": 4.0,
+    "maxGuest": 3,
+    "city": "Budva",
+    "location": "Location 106 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/apertment35.jpg" },
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/apertment10.jpg" }
+    ],
+    "user": {
+      "id": 13,
+      "firstName": "Mia",
+      "lastName": "Wright",
+      "phone": "+125454222",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Liam",
+        "lastName": "Hall",
+        "date": "02-02-2024",
+        "avatar": "assets/images/default.jpg",
+        "review": 4.2,
+        "comment": "The apartment was fantastic, exactly as described. The location was perfect."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Luxurious Stay",
+    "mainImage": "assets/images/apartmenImages/mainImage10.jpg",
+    "price": 59.99,
+    "totalReviews": 310,
+    "rate": 4.2,
+    "maxGuest": 4,
+    "city": "Wien",
+    "location": "Location 107 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner6.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 14,
+      "firstName": "Olivia",
+      "lastName": "Adams",
+      "phone": "+125454223",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Noah",
+        "lastName": "Scott",
+        "date": "03-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.4,
+        "comment": "A wonderful stay with beautiful surroundings. The apartment was clean and well-maintained."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Chic Loft",
+    "mainImage": "assets/images/apartmenImages/mainImage11.jpg",
+    "price": 73.25,
+    "totalReviews": 360,
+    "rate": 4.3,
+    "maxGuest": 2,
+    "city": "New York",
+    "location": "Location 108 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 15,
+      "firstName": "Lucas",
+      "lastName": "Baker",
+      "phone": "+125454224",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "James",
+        "lastName": "White",
+        "date": "04-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.3,
+        "comment": "Great experience, the apartment was just as shown in the pictures. Would stay again!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Elegant Residence",
+    "mainImage": "assets/images/apartmenImages/mainImage12.jpg",
+    "price": 78.00,
+    "totalReviews": 200,
+    "rate": 4.0,
+    "maxGuest": 3,
+    "city": "Venice",
+    "location": "Location 109 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner6.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/apertment28.jpg" }
+    ],
+    "user": {
+      "id": 16,
+      "firstName": "Sophia",
+      "lastName": "Miller",
+      "phone": "+125454225",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Ella",
+        "lastName": "Martinez",
+        "date": "05-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.1,
+        "comment": "A very pleasant stay, the apartment was cozy and in a good location."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Stylish Abode",
+    "mainImage": "assets/images/apartmenImages/mainImage13.jpg",
+    "price": 52.50,
+    "totalReviews": 470,
+    "rate": 4.5,
+    "maxGuest": 5,
+    "city": "Amsterdam",
+    "location": "Location 110 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner6.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/apertment32.jpg" }
+    ],
+    "user": {
+      "id": 17,
+      "firstName": "Daniel",
+      "lastName": "Hernandez",
+      "phone": "+125454226",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Isabella",
+        "lastName": "Robinson",
+        "date": "06-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.6,
+        "comment": "Wonderful place, very modern and clean. The location was perfect for exploring the city."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Contemporary Flat",
+    "mainImage": "assets/images/apartmenImages/mainImage14.jpg",
+    "price": 66.00,
+    "totalReviews": 390,
+    "rate": 4.7,
+    "maxGuest": 6,
+    "city": "New York",
+    "location": "Location 111 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/apertment38.jpg" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/apertment13.jpg" }
+    ],
+    "user": {
+      "id": 18,
+      "firstName": "William",
+      "lastName": "Perez",
+      "phone": "+125454227",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Alexander",
+        "lastName": "Clark",
+        "date": "07-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.7,
+        "comment": "Great apartment, very spacious and well located. Had a fantastic stay!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Premium Suite",
+    "mainImage": "assets/images/apartmenImages/mainImage15.jpg",
+    "price": 58.75,
+    "totalReviews": 450,
+    "rate": 4.4,
+    "maxGuest": 4,
+    "city": "Wien",
+    "location": "Location 112 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 19,
+      "firstName": "Joseph",
+      "lastName": "Gonzalez",
+      "phone": "+125454228",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Matthew",
+        "lastName": "Lewis",
+        "date": "08-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.5,
+        "comment": "Loved the apartment, it was very clean and had all the amenities we needed. Great location too!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Trendy Apartment",
+    "mainImage": "assets/images/apartmenImages/mainImage16.jpg",
+    "price": 75.50,
+    "totalReviews": 260,
+    "rate": 4.3,
+    "maxGuest": 5,
+    "city": "New York",
+    "location": "Location 113 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 20,
+      "firstName": "Charlotte",
+      "lastName": "Moore",
+      "phone": "+125454229",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Aiden",
+        "lastName": "Harris",
+        "date": "09-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.2,
+        "comment": "A great stay, very comfortable and well-equipped. Would definitely recommend."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Picturesque Dwelling",
+    "mainImage": "assets/images/apartmenImages/mainImage17.jpg",
+    "price": 69.99,
+    "totalReviews": 380,
+    "rate": 4.6,
+    "maxGuest": 3,
+    "city": "Venice",
+    "location": "Location 114 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 21,
+      "firstName": "Amelia",
+      "lastName": "Young",
+      "phone": "+125454230",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Abigail",
+        "lastName": "King",
+        "date": "10-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.5,
+        "comment": "The apartment was clean and cozy, in a great location. Perfect for our stay!"
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Deluxe Haven",
+    "mainImage": "assets/images/apartmenImages/mainImage18.jpg",
+    "price": 81.25,
+    "totalReviews": 320,
+    "rate": 4.1,
+    "maxGuest": 4,
+    "city": "Amsterdam",
+    "location": "Location 115 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 22,
+      "firstName": "Elijah",
+      "lastName": "Mitchell",
+      "phone": "+125454231",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Henry",
+        "lastName": "Rodriguez",
+        "date": "11-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.0,
+        "comment": "We had a fantastic stay. The apartment was in a great location and very comfortable."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Upscale Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage19.jpg",
+    "price": 76.50,
+    "totalReviews": 290,
+    "rate": 4.7,
+    "maxGuest": 6,
+    "city": "Wien",
+    "location": "Location 116 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 23,
+      "firstName": "Grace",
+      "lastName": "Carter",
+      "phone": "+125454232",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Hannah",
+        "lastName": "Lopez",
+        "date": "12-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.8,
+        "comment": "Beautiful apartment with a fantastic view. The staff was very helpful and friendly."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Exclusive Lodging",
+    "mainImage": "assets/images/apartmenImages/mainImage20.jpg",
+    "price": 53.75,
+    "totalReviews": 270,
+    "rate": 4.2,
+    "maxGuest": 2,
+    "city": "Zurich",
+    "location": "Location 117 Random",
+    "description" : "Elevate your Las Vegas experience to new heights with a journey aboard The High Roller at The LINQ. As the tallest observation wheel in the world, standing at an impressive 550 feet tall, The High Roller offers a bird's-eye perspective of the iconic Las Vegas Strip and its surrounding desert landscape. From the moment you step into one of the spacious cabins, you'll be transported on a mesmerizing adventure, where every turn offers a new and breathtaking vista of the vibrant city below. Whether you're a first-time visitor or a seasoned Las Vegas aficionado, The High Roller promises an unparalleled experience that will leave you in awe. With its climate-controlled cabins and immersive audio commentary, this attraction provides a unique opportunity to see Las Vegas from a whole new perspective, while learning about its rich history and famous landmarks along the way.",
+    "images": [
+      { "path": "assets/images/apartmenImages/banner4.png" },
+      { "path": "assets/images/apartmenImages/banner3.png" },
+      { "path": "assets/images/apartmenImages/banner5.png" }
+    ],
+    "user": {
+      "id": 24,
+      "firstName": "Jackson",
+      "lastName": "Scott",
+      "phone": "+125454233",
+      "avatar": "assets/images/default.jpg",
+      "email": "test@gmail.com"
+    },
+    "reviews": [
+      {
+        "firstName": "Madison",
+        "lastName": "Martinez",
+        "date": "13-02-2024",
+      "avatar": "assets/images/default.jpg",
+        "review": 4.3,
+        "comment": "The apartment was perfect for our needs. Clean, cozy, and in a great location."
+      }
+    ],
+    "features": [
+      "Terrace/ Balcony with lounge chairs",
+      "Air conditioner",
+      "Rain shower",
+      "Hand-carved granite bathtub",
+      "Coffee and Tea making facilities",
+      "Complimentary WiFi connection",
+      "Safety box",
+      "Minibar",
+      "Work desk",
+      "Flat screen TV with international channel selection",
+      "Deluxe custom-made bathroom amenities",
+      "Non-smoking",
+      "Seating area",
+      "24-hour security",
+      "Wood or granite flooring"
+    ]
+  }
+]

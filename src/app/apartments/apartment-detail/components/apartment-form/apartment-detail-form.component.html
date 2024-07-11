@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>Reserve your apartment</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="container">
+    <form [formGroup]="form">
+      <div class="row ">
+        <div class="col-sm-3">
+          <mat-form-field appearance="fill">
+            <mat-label>First name: </mat-label>
+            <input matInput formControlName="firstName" class="text-dark">
+            @if(form.get('firstName').hasError('required')){
+            <mat-error>First name is required</mat-error>
+            }
+
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Last name: </mat-label>
+            <input matInput formControlName="lastName">
+            @if(form.get('lastName').hasError('required')){
+            <mat-error>Last name is required</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Email: </mat-label>
+            <input matInput formControlName="email">
+            @if(form.get('email').hasError('required')){
+            <mat-error>Email is required</mat-error>
+            }
+            @else if(form.get('email').hasError('email')){
+            <mat-error>Email is not valid format</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Phone number: </mat-label>
+            <input matInput type="number" formControlName="phone">
+            @if(form.get('phone').hasError('required')){
+            <mat-error>Phone is required</mat-error>
+            }
+            @else if(form.get('phone').hasError('pattern')){
+            <mat-error>Phone number must be between 6 and 13 digits</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 d-flex text-dark justify-content-around bookingInfoContainer">
+
+          <p>Per night: <span class="bookingInfo"> {{data.pricePerNight}}$ </span> </p>
+          <p>Total price: <span class="bookingInfo"> {{data.totalPrice}}$</span></p>
+
+          <p>Check in: <span class="bookingInfo"> {{data.checkIn | date: 'd-MMM-yyyy'}} </span></p>
+          <p>Check out: <span class="bookingInfo"> {{data.checkOut | date: 'd-MMM-yyyy'}} </span></p>
+
+        </div>
+
+      </div>
+      <div class="row mb-3 mt-5">
+        <div class="col-sm-6">
+          <mat-dialog-actions>
+            <button mat-flat-button color="warn" [mat-dialog-close]="false"
+              [disabled]="isBookingSuccessful">Cancel</button>
+          </mat-dialog-actions>
+        </div>
+
+        <div class="col-sm-6">
+          <mat-dialog-actions align="end">
+            <button mat-flat-button color="primary" (click)="save()"
+              [disabled]="form.invalid || isBookingSuccessful">Book</button>
+          </mat-dialog-actions>
+        </div>
+
+      </div>
+    </form>
+    <div class=" text-right" style="text-align: right;">
+      @if( isBookingSuccessful){
+      <mat-label class="text-success text-right">You have successfully booked. Please check your email!</mat-label>
+
+      }
+
+    </div>
+  </div>
+</mat-dialog-content>

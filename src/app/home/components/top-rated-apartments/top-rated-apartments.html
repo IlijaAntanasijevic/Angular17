@@ -1,0 +1,56 @@
+<section class="section-box box-our-featured box-our-featured-2 background-body">
+  <div class=" container">
+    <div class="row align-items-end">
+      <div class="col-lg-6 mb-30 text-center text-lg-start wow fadeInUp">
+        <h2 class="neutral-1000">Our Featured Tours</h2>
+        <p class="text-xl-medium neutral-500">Favorite destinations based on customer reviews</p>
+      </div>
+
+    </div>
+    <div class="box-list-featured">
+      <div class="row">
+        @for (item of data ; track item) {
+        <div class="col-lg-4 col-md-6">
+          <div class="card-journey-small  wow fadeInUp">
+            <div class="card-image">
+              <!-- Wish -->
+              <!-- <a class="wish" href="#">
+                <svg width="20" height="18" viewbox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.071 10.1422L11.4141 15.7991C10.6331 16.5801 9.36672 16.5801 8.58568 15.7991L2.92882 10.1422C0.9762 8.1896 0.9762 5.02378 2.92882 3.07116C4.88144 1.11853 8.04727 1.11853 9.99989 3.07116C11.9525 1.11853 15.1183 1.11853 17.071 3.07116C19.0236 5.02378 19.0236 8.1896 17.071 10.1422Z"
+                    stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a> -->
+              <img src="{{item.mainImage}}" alt="{{item.name}}">
+            </div>
+            <div class="card-info background-card">
+              <div class="card-rating">
+                <div class="card-left"> </div>
+                <div class="card-right"> <span class="rating">{{item.rate}} <span
+                      class="text-sm-medium neutral-500">({{item.totalReviews}} reviews)</span></span></div>
+              </div>
+              <div class="card-title"> <a class='heading-6 neutral-1000'
+                  routerLink="/apartments/{{item.id}}">{{item.name}} </a>
+                <p class="neutral-1000">{{item.city}}</p>
+              </div>
+              <div class="card-program">
+                <div class="card-duration-tour">
+                  <p class="text-md-medium neutral-500">Total guests: {{item.maxGuest}}</p>
+                </div>
+                <div class="endtime">
+                  <div class="card-price">
+                    <h6 class="heading-6 neutral-1000">${{item.price}}</h6>
+                    <p class="text-md-medium neutral-500">/ night</p>
+                  </div>
+                  <div class="card-button"> <a class='btn btn-gray' routerLink="/apartments/{{item.id}}">View</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+
+      </div>
+    </div>
+  </div>
+</section>

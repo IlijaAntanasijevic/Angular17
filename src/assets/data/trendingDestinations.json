@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Wien",
+    "totalApartments": 680,
+    "imagePath": "assets/images/destinations/trend.png"
+  },
+  {
+    "id": 2,
+    "name": "New York",
+    "totalApartments": 550,
+    "imagePath": "assets/images/destinations/trend2.png"
+
+  },
+  {
+    "id": 3,
+    "name": "Venice",
+    "totalApartments": 490,
+    "imagePath": "assets/images/destinations/trend3.png"
+
+  },
+  {
+    "id": 4,
+    "name": "Amsterdam",
+    "totalApartments": 410,
+    "imagePath": "assets/images/destinations/trend4.png"
+
+  },
+  {
+    "id": 5,
+    "name": "London",
+    "totalApartments": 330,
+    "imagePath": "assets/images/destinations/trend5.png"
+
+  }
+]

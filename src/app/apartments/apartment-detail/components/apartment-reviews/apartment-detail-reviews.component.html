@@ -1,0 +1,37 @@
+<div class="group-collapse-expand">
+  <div>
+    <h6 class="text-light">Rate & Reviews</h6>
+    <svg width="12" height="7" viewbox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1L6 6L11 1" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      </path>
+    </svg>
+  </div>
+  <div class="collapse show" id="collapseReviews">
+    <div class="card card-body">
+      <div class="list-reviews">
+        @for(review of reviews; track review){
+        <div class="item-review">
+          <div class="head-review">
+            <div class="author-review">
+              <img src="{{review.avatar}}" alt="Travila">
+              <div class="author-info">
+                <p class="text-lg-bold">{{review | fullName}}</p>
+                <p class="text-sm-medium neutral-500">{{ review.date}}</p>
+              </div>
+            </div>
+            <div class="rate-review">
+              @for(number of getRange(review.review); track number){
+              <img src="assets/images/star-big.svg" alt="starIcon">
+              }
+            </div>
+          </div>
+          <div class="content-review">
+            <p class="text-sm-medium neutral-800">{{review.comment}}</p>
+          </div>
+        </div>
+        }
+
+      </div>
+    </div>
+  </div>
+</div>

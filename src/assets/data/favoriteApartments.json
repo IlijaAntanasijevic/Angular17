@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Cozy Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage1.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6 ,
+    "city": "Wien"
+
+  },
+  {
+    "id": 2,
+    "name": "Charming Canal-side",
+    "mainImage": "assets/images/apartmenImages/mainImage2.jpg",
+    "price": 58.25,
+    "totalReviews": 670,
+    "rate": 4.95,
+    "maxGuest": 4,
+    "city": "Amsterdam"
+  },
+  {
+    "id": 3,
+    "name": "Urban Oasis",
+    "mainImage": "assets/images/apartmenImages/mainImage3.jpg",
+    "price": 92.25,
+    "totalReviews": 350,
+    "rate": 4.45,
+    "maxGuest": 5,
+    "city": "New York"
+
+  },
+  {
+    "id": 4,
+    "name": "Cozy Retreat",
+    "mainImage": "assets/images/apartmenImages/mainImage4.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6,
+    "city": "Wien"
+  },
+  {
+    "id": 5,
+    "name": "Classic Comfort",
+    "mainImage": "assets/images/apartmenImages/mainImage5.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6,
+    "city": "London"
+     
+  },
+  {
+    "id": 6,
+    "name": "Serene Escape",
+    "mainImage": "assets/images/apartmenImages/mainImage6.jpg",
+    "price": 48.25,
+    "totalReviews": 550,
+    "rate": 4.25,
+    "maxGuest": 6 ,
+    "city": "Venice"
+
+  }
+]

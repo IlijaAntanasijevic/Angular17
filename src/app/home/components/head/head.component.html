@@ -1,0 +1,70 @@
+<section class="section-box box-banner-home6 box-banner-home5-search background-body">
+  <div class="block-banner-home6">
+    <div class="container">
+      <div class="text-center wow fadeInUp">
+        <div class="d-flex justify-content-center"><span class="btn btn-brand-secondary" style="cursor: auto;">
+            <img class="mr-10" src="assets/images/earth.svg" alt="Travile">Explore the World</span>
+        </div>
+        <h2 class="mt-20 mb-20 color-white">Your Gateway to Extraordinary Adventures</h2>
+        <h6 class="heading-6-medium color-white mb-30">Pack your bags and let Travila redefine your travel
+          experience. Where<br class="d-none d-md-block">every journey is a story waiting to be told</h6>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="box-search-advance background-card wow fadeInUp">
+      <div class="box-bottom-search background-card mt-0">
+        <!-- Location  -->
+        <div class="item-search">
+          <label class="text-sm-bold neutral-500">Location</label>
+          <mat-form-field class="example-full-width" [formGroup]="form">
+            <input type="text" matInput formControlName="location" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              @for (option of filteredOptions | async; track option) {
+              <mat-option [value]="option">{{option.name}}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+        <!-- Date range -->
+        <div class="item-search item-search-2">
+          <label class="text-sm-bold neutral-500">Check In - Check out</label>
+          <div>
+            <mat-form-field [formGroup]="form">
+              <mat-date-range-input [rangePicker]="picker" [min]="minDate">
+                <input matStartDate formControlName="start" placeholder="Start date">
+                <input matEndDate formControlName="end" placeholder="End date" (dateChange)="calculateTotalNights()">
+              </mat-date-range-input>
+              <mat-hint class="color-white">{{totalNights != null ? totalNights + " nights" : '' }} </mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker touchUi #picker disabled="false"></mat-date-range-picker>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- Guests -->
+        <div class="item-search bd-none">
+          <label class="text-sm-bold neutral-500">Guest</label>
+          <div class="dropdown">
+            <mat-form-field class="example-full-width" [formGroup]="form">
+              <mat-select formControlName="guests">
+                @for (value of totalGuests; track value) {
+                <mat-option [value]="value">{{value}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="item-search bd-none d-flex justify-content-end">
+          <button class="btn btn-black-lg" (click)="search()" [disabled]="form.invalid">
+            <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19 19L14.6569 14.6569M14.6569 14.6569C16.1046 13.2091 17 11.2091 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17C11.2091 17 13.2091 16.1046 14.6569 14.6569Z"
+                stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

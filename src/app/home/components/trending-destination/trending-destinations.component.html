@@ -1,0 +1,64 @@
+<section class="section-box box-trending-destination background-100" style="padding: 80px 0px;">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="neutral-1000">Trending Destinations</h2>
+      <p class="text-xl-medium neutral-500">Most popular choices for travelers</p>
+    </div>
+    <div class="box-list-featured">
+      <div class="row">
+        <div class="col-xl-8 col-lg-8 col-md-12">
+          <div class="card-spot card-spot-2 background-card">
+            <div class="card-image">
+              <img src="{{top1Destination?.imagePath}}" alt="{{top1Destination?.name}}">
+            </div>
+            <div class="card-info-two-col">
+              <div class="card-info card-mw background-card wow fadeInUp">
+                <div class="card-left">
+                  <div class="card-title">
+                    <p class='text-lg-bold neutral-1000'>
+                      {{top1Destination?.name}}</p>
+                  </div>
+                  <div class="card-desc">
+                    <p class="text-sm neutral-500">{{top1Destination?.totalApartments}} Apartments</p>
+                  </div>
+                </div>
+                <div class="card-right">
+                  <div class="card-button"> <button (click)="searchByDestination(top1Destination?.name)">
+                      <svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.00011 9.08347L9.08347 5.00011L5.00011 0.916748M9.08347 5.00011L0.916748 5.00011"
+                          stroke="" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg></button></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        @for(item of data; track item){
+        <div class="col-xl-4 col-lg-4 col-md-6">
+          <div class="card-spot card-spot-2 background-card wow fadeInUp">
+            <div class="card-image"> <img src="{{item.imagePath}}" alt="{{item.name}}"></div>
+            <div class="card-info background-card">
+              <div class="card-left">
+                <div class="card-title">
+                  <p class='text-lg-bold neutral-1000'>{{item.name}}</p>
+                </div>
+                <div class="card-desc">
+                  <p class="text-sm neutral-500" href="#">{{item.totalApartments}} Apartments</p>
+                </div>
+              </div>
+              <div class="card-right">
+                <div class="card-button"> <button (click)="searchByDestination(item.name)">
+                    <svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.00011 9.08347L9.08347 5.00011L5.00011 0.916748M9.08347 5.00011L0.916748 5.00011"
+                        stroke="" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg></button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+.images-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 15px;
+}
+
+.backBtn {
+  position: absolute;
+}
+
+.box-content-tour-detail {
+  padding-top: 120px;
+}
