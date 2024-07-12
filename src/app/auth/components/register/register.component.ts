@@ -27,12 +27,12 @@ export class RegisterComponent {
 
 
   form: FormGroup = new FormGroup({
-    email: new FormControl("test1@gmail.com", [Validators.required, Validators.email]),
-    password: new FormControl("Ilija123!", Validators.required),
-    firstName: new FormControl("Ilija", Validators.required),
-    lastName: new FormControl("Antanasijevic", Validators.required),
+    email: new FormControl("", [Validators.required, Validators.email]),
+    password: new FormControl("", Validators.required),
+    firstName: new FormControl("", Validators.required),
+    lastName: new FormControl("", Validators.required),
     avatar: new FormControl(null),
-    phone: new FormControl("12343223", Validators.required)
+    phone: new FormControl("", Validators.required)
   })
 
   selectedFile: File | null = null;
@@ -92,7 +92,7 @@ export class RegisterComponent {
         this.selectedAvatar = data.file;
       },
       error: (err) => {
-        console.error('Upload error:', err);
+        this.serverError = true;
       }
 
     })
