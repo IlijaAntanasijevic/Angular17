@@ -13,6 +13,11 @@ export class RegisterRequestService {
   ) {}
 
   register(data: IRegister): Observable<any>{
+    data.avatar = data.avatar == "" ? null : data.avatar;
     return this.apiService.register(data);
+  }
+
+  avatarUpload(file: File): Observable<any> {
+    return this.apiService.uploadAvatar(file);
   }
 }

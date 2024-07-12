@@ -19,4 +19,11 @@ export class AuthApiService {
   register(data: IRegister): Observable<any> {
     return this.http.post("http://ilija-booking.somee.com/api/users",data);
   }
+
+  uploadAvatar(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append("file", file, file.name)
+
+    return this.http.post("http://ilija-booking.somee.com/api/files", formData)
+  }
 }

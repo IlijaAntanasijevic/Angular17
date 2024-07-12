@@ -4,6 +4,7 @@ import { AuthService } from '../../../shared/buisiness-logic/auth.service';
 import { Router } from '@angular/router';
 import { IRegister } from '../../interfaces/i-auth';
 import { RegisterRequestService } from '../../services/requests/register-request.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,7 @@ export class RegisterComponent {
   showPassword: boolean = false;
   serverError: boolean = false;
   validationErrors: { property: string, error: string }[] = [];
+  selectedAvatar: string = "";
 
 
 
@@ -33,6 +35,8 @@ export class RegisterComponent {
     phone: new FormControl("12343223", Validators.required)
   })
 
+  selectedFile: File | null = null;
+
 
 
   togglePasswordVisibility(): void {
@@ -41,20 +45,22 @@ export class RegisterComponent {
 
   submit(): void {
     this.prepareObjectData()
-    this.requestService.register(this.data).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.router.navigateByUrl("auth/login");
-      },
-      error: (err) => {
-        if(err.status === 422){
-          this.showValidationErrors(err.error)
-        }else {
-          this.serverError = true;
-        }
-        console.log(err);
-      }
-    })
+  
+     this.requestService.register(this.data).subscribe({
+       next: (data) => {
+         console.log(data);
+         this.router.navigateByUrl("auth/login");
+       },
+       error: (err) => {
+         if(err.status === 422){
+           this.showValidationErrors(err.error)
+         }
+         else {
+           this.serverError = true;
+         }
+         console.log(err);
+       }
+     })
   }
 
   prepareObjectData(){
@@ -62,8 +68,6 @@ export class RegisterComponent {
     this.data.password = this.form.value.password;
     this.data.firstName = this.form.value.firstName;
     this.data.lastName = this.form.value.lastName;
-    //this.data.avatar = null;
-    this.data.avatar = this.form.value.avatar;
     this.data.phone = this.form.value.phone;
   }
 
@@ -73,12 +77,25 @@ export class RegisterComponent {
       const control = this.form.get(err.property.toLowerCase());
       console.log(control);
       console.log(err);
-      
       if (control) {
         control.setErrors({ validationError: err.error });
       }
     });
     
+  }
+
+  fileUpload(event: any): void {
+    const file: File = event.target.files[0];
+    this.requestService.avatarUpload(file).subscribe({
+      next: (data) => {
+        this.data.avatar = data.file;
+        this.selectedAvatar = data.file;
+      },
+      error: (err) => {
+        console.error('Upload error:', err);
+      }
+
+    })
   }
 
 
