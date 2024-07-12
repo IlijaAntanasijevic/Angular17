@@ -1,1 +1,103 @@
-<p>register works!</p>
+<section class="box-section box-contact-form background-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mb-30 mt-25 mx-auto">
+        <h2 class="neutral-1000 mb-55 text-center">Register Here</h2>
+        <div class="form-contact">
+          <form [formGroup]="form">
+            <div class="row">
+              <!-- First row -->
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">First name</mat-label>
+                <input matInput formControlName="firstName" class="form-control" type="text"
+                  placeholder="Your First Name...">
+                @if(form.get('firstName').hasError('required') && form.get('firstName').touched) {
+                <mat-error style="color: red;">First name is required</mat-error>
+                }
+                @if(form.get('firstName').hasError('validationError')){
+                <mat-error style="color: red;">{{form.get('firstName').errors['validationError']}}</mat-error>
+                }
+              </div>
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">Last name</mat-label>
+                <input matInput formControlName="lastName" class="form-control" type="text"
+                  placeholder="Your Last Name...">
+                @if(form.get('lastName').hasError('required') && form.get('lastName').touched) {
+                <mat-error style="color: red;">Last name is required</mat-error>
+                }
+                @if(form.get('lastName').hasError('validationError')){
+                <mat-error style="color: red;">{{form.get('lastName').errors['validationError']}}</mat-error>
+                }
+              </div>
+              <!-- Second row -->
+              <div class="col-lg-6 mt-15 mb-15">
+                <div class="form-group">
+                  <mat-label class="neutral-1000">Email Adress</mat-label>
+                  <input matInput formControlName="email" class="form-control email" type="email"
+                    placeholder="email@domain.com">
+                  @if(form.get('email').hasError('required') && form.get('email').touched){
+                  <mat-error style="color: red;">Email is required</mat-error>
+                  }
+                  @else if(form.get('email').hasError('email')){
+                  <mat-error style="color: red;">Email is not valid format</mat-error>
+                  }
+                  @if(form.get('email').hasError('validationError')){
+                  <mat-error style="color: red;">{{form.get('email').errors['validationError']}}</mat-error>
+                  }
+
+                </div>
+              </div>
+              <div class="col-lg-6 mt-15 mb-15">
+                <div class="form-group">
+                  <mat-label class="neutral-1000">Password</mat-label>
+                  <mat-icon (click)="togglePasswordVisibility()" class="input-icon">
+                    {{showPassword ? 'visibility_off' : 'visibility' }}
+                  </mat-icon>
+                  <input matInput formControlName="password" class="form-control password"
+                    [type]="showPassword ? 'text' : 'password'" placeholder="************">
+                  @if(form.get('password').hasError('required') && form.get('password').touched){
+                  <mat-error style="color: red;">Password is required</mat-error>
+                  }
+                  @if(form.get('password').hasError('validationError')){
+                  <mat-error style="color: red;">{{form.get('password').errors['validationError']}}</mat-error>
+                  }
+                </div>
+              </div>
+              <!-- Third row -->
+              <div class="col-lg-6 mt-35 mb-35">
+                <mat-label class="neutral-1000">Phone</mat-label>
+                <input matInput formControlName="phone" class="form-control" type="text"
+                  placeholder="Your First Name...">
+                @if(form.get('phone').hasError('required') && form.get('phone').touched) {
+                <mat-error style="color: red;">Phone number required</mat-error>
+                }
+                @if(form.get('phone').hasError('validationError')){
+                <mat-error style="color: red;">{{form.get('phone').errors['validationError']}}</mat-error>
+                }
+              </div>
+              <div class="col-lg-6 mt-35 mb-35">
+                <mat-label class="neutral-1000">Avatar</mat-label>
+                <input formControlName="avatar" class="form-control" type="file" placeholder="Your Last Name...">
+                <mat-hint style="color: #4d4d4d;">If you do not select a picture, you will have a default avatar
+                </mat-hint>
+              </div>
+
+              <div class="col-lg-12 mt-100">
+                <button class=" btn btn-book" [disabled]="form.invalid" (click)="submit()">Register
+                  <svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.5 15L15.5 8L8.5 1M15.5 8L1.5 8" stroke="" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+                @if (serverError) {
+                <p class="text-danger text-center mt-3 h5">Server error</p>
+                }
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

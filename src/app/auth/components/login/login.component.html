@@ -13,7 +13,7 @@
                   <input matInput formControlName="email" class="form-control email" type="email"
                     placeholder="email@domain.com">
                   @if(form.get('email').hasError('required') && form.get('email').touched){
-                  <mat-error>Email is required</mat-error>
+                  <mat-error style="color: red;">Email is required</mat-error>
                   }
                   @else if(form.get('email').hasError('email')){
                   <mat-error style="color: red;">Email is not valid format</mat-error>
