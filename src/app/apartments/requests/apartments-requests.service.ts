@@ -25,7 +25,7 @@ export class ApartmentsRequestsService {
     else if(search && search.location){
       return this.apiService.getApartmentsByLocation(search.location)
     }
-    console.log(search);
+    //console.log(search);
 
     return this.apiService.getAll();
   }

@@ -15,10 +15,19 @@
           </nav>
         </div>
         <div>
+          @if(!isLoggedIn){
           <ul class="main-menu header-right">
             <li class="mega-li"><a routerLink="/auth/login" routerLinkActive="active">Login</a></li>
             <li class="mega-li"><a routerLink="/auth/register" routerLinkActive="active">Register</a></li>
           </ul>
+          }
+          @else {
+          <ul class="main-menu header-right">
+            <li class="mega-li"><a class="logout" (click)="logout()">Logout</a></li>
+            <li class="mega-li"><a routerLink="/home" routerLinkActive="active">Profile</a></li>
+          </ul>
+          }
+
         </div>
       </div>
 

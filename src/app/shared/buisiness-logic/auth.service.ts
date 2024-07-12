@@ -6,7 +6,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(
     private router: Router
   ) { }
@@ -24,12 +23,11 @@ export class AuthService {
   setJwtToken(token: string): void {
     localStorage.setItem("token", token);
   }
-  
-  isLoggedIn(): boolean {
+
+   get isLoggedIn(): boolean {
     return !!this.getJwtToken();
   }
 
-  
   logout(): void {
     localStorage.removeItem("token");
     this.router.navigateByUrl("/auth/login");

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginApiService } from '../api/login-api.service';
-import { ICredentials, IAuthToken } from '../../interfaces/i-auth';
+import { ILogin, IAuthToken } from '../../interfaces/i-auth';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class LoginRequestsService {
     private apiService: LoginApiService
   ) {}
 
-  login(data: ICredentials): Observable<IAuthToken>{
+  login(data: ILogin): Observable<IAuthToken>{
     return this.apiService.login(data);
   }
 }

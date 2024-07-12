@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRequestsService } from '../../services/requests/login-requests.service';
-import { ICredentials } from '../../interfaces/i-auth';
-import { AuthService } from '../../../shared/auth.service';
+import { ILogin } from '../../interfaces/i-auth';
+import { AuthService } from '../../../shared/buisiness-logic/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,15 @@ export class LoginComponent {
 
   constructor(
     private requestService: LoginRequestsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ){}
 
   showPassword: boolean = false;
-  data: ICredentials = { email: '', password: '' };
+  data: ILogin = { email: '', password: '' };
   wrongCredentials: boolean = false;
   serverError: boolean = false;
+  succesfullyLoggedIn: boolean = false;
 
   form = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
@@ -36,7 +39,9 @@ export class LoginComponent {
 
     this.requestService.login(this.data).subscribe({
       next: (data) => {
+        this.succesfullyLoggedIn = true;
         this.authService.setJwtToken(data.token)
+        this.router.navigateByUrl("/apartments")
         
       },   
       error: (err) => {

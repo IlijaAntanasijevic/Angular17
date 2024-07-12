@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/components/layout/layout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGurad } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
       },
       {
         path: "apartments",
-        loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule)
+        loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule),
+        canActivate: [AuthGurad]
       },
       {
         path: "auth",

@@ -35,7 +35,7 @@
               </div>
               <div class="col-lg-12 mt-5">
 
-                <button class=" btn btn-book" [disabled]="form.invalid" (click)="login()">Login
+                <button class=" btn btn-book" [disabled]="form.invalid || succesfullyLoggedIn" (click)="login()">Login
                   <svg width="17" height="16" viewbox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.5 15L15.5 8L8.5 1M15.5 8L1.5 8" stroke="" stroke-width="1.5" stroke-linecap="round"
                       stroke-linejoin="round"></path>
