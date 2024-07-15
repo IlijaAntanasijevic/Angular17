@@ -20,12 +20,16 @@ const routes: Routes = [
       },
       {
         path: "apartments",
-        loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule),
-        canActivate: [AuthGurad]
+        loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule)
       },
       {
         path: "auth",
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+      },
+      {
+        path: "users",
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+        canActivate: [AuthGurad]
       },
       {
         path: "**",

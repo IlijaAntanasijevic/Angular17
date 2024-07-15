@@ -6,6 +6,7 @@ import { AuthService } from '../../../shared/buisiness-logic/auth.service';
 import { Router } from '@angular/router';
 import { BlUsersService } from '../../../users/services/shared/bl-users.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,8 +44,8 @@ export class LoginComponent {
       next: (data) => {
         this.succesfullyLoggedIn = true;
         this.authService.setJwtToken(data.token)
-        this.router.navigateByUrl("/apartments")
         this.userService.fetchUserInfo();
+        this.router.navigateByUrl("/apartments")
         
       },   
       error: (err) => {

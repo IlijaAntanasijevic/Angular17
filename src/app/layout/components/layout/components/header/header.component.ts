@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../shared/buisiness-logic/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { BlUsersService } from '../../../../../users/services/shared/bl-users.service';
 import { IUser } from '../../../../../interfaces/i-base';
+import { BlUsersService } from '../../../../../users/services/shared/bl-users.service';
 
 @Component({
   selector: 'app-header',
@@ -22,18 +22,15 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;
+    this.user = this.userService.getUserFromLocalStorage();
+    console.log(this.user);
     
     this.router.events.forEach((event) => {
       if(event instanceof NavigationEnd){
         this.isLoggedIn = this.authService.isLoggedIn;
-        this.userService.currentUserInfo.subscribe({
-        next: (data) => { 
-          this.user = data;
-        }
-       })
+        //this.user = this.userService.getUserFromLocalStorage();
       }
     });
-
   }
 
   logout(): void {

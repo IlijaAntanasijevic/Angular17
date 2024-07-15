@@ -26,7 +26,16 @@ export class BlUsersService {
     
     this.requestService.getUserInfo(userId).subscribe((user) => {
       this.userSubject.next(user);
+      this.saveUserToLocalStorage(user);
     });
+  }
+
+  private saveUserToLocalStorage(user: IUser): void {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUserFromLocalStorage(): IUser {
+    return JSON.parse(localStorage.getItem("user"))
   }
 
 }

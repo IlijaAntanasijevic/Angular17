@@ -24,12 +24,13 @@
           @else {
           <ul class="main-menu header-right">
 
-            <li class="mega-li"><a class="logout" (click)="logout()">Logout</a></li>
             <li class="mega-li">
-              <a routerLink="/home" routerLinkActive="active">
+              <a routerLink="/users/profile" routerLinkActive="active">
                 {{user.firstName}}
               </a>
             </li>
+            <li class="mega-li"><a class="logout" (click)="logout()">Logout</a></li>
+
           </ul>
           }
         </div>
