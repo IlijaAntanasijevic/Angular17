@@ -15,4 +15,8 @@ export class LoginRequestsService {
   login(data: ILogin): Observable<IAuthToken>{
     return this.apiService.login(data);
   }
+
+  setUser(token: IAuthToken): void {
+    
+  }
 }

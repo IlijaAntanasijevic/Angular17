@@ -4,6 +4,7 @@ import { LoginRequestsService } from '../../services/requests/login-requests.ser
 import { ILogin } from '../../interfaces/i-auth';
 import { AuthService } from '../../../shared/buisiness-logic/auth.service';
 import { Router } from '@angular/router';
+import { BlUsersService } from '../../../users/services/shared/bl-users.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
   constructor(
     private requestService: LoginRequestsService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: BlUsersService
   ){}
 
   showPassword: boolean = false;
@@ -42,6 +44,7 @@ export class LoginComponent {
         this.succesfullyLoggedIn = true;
         this.authService.setJwtToken(data.token)
         this.router.navigateByUrl("/apartments")
+        this.userService.fetchUserInfo();
         
       },   
       error: (err) => {

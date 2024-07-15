@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../shared/buisiness-logic/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { BlUsersService } from '../../../../../users/services/shared/bl-users.service';
+import { IUser } from '../../../../../interfaces/i-base';
 
 @Component({
   selector: 'app-header',
@@ -11,18 +13,24 @@ export class HeaderComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: BlUsersService
   ){}
  
   isLoggedIn: boolean = false;
+  user: IUser;
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;
-    console.log(this.isLoggedIn);
     
     this.router.events.forEach((event) => {
       if(event instanceof NavigationEnd){
         this.isLoggedIn = this.authService.isLoggedIn;
+        this.userService.currentUserInfo.subscribe({
+        next: (data) => { 
+          this.user = data;
+        }
+       })
       }
     });
 
@@ -31,6 +39,5 @@ export class HeaderComponent implements OnInit{
   logout(): void {
     this.authService.logout();
   }
-
 
 }

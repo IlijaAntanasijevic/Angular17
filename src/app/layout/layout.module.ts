@@ -4,6 +4,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/layout/components/header/header.component';
 import { FooterComponent } from './components/layout/components/footer/footer.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { FooterComponent } from './components/layout/components/footer/footer.co
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class LayoutModule { }
