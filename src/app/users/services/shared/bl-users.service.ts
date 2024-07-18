@@ -16,8 +16,8 @@ export class BlUsersService {
   ) { }
 
 
-  private userSubject = new BehaviorSubject<IUser>(null);
-  public currentUserInfo = this.userSubject.asObservable();
+  //private userSubject = new BehaviorSubject<IUser>(null);
+  //public currentUserInfo = this.userSubject.asObservable();
 
   fetchUserInfo(): void {
     const tokenData = this.authService.getJwtTokenData();
@@ -25,13 +25,9 @@ export class BlUsersService {
     console.log(tokenData);
     
     this.requestService.getUserInfo(userId).subscribe((user) => {
-      this.userSubject.next(user);
-      this.saveUserToLocalStorage(user);
+      //this.userSubject.next(user);
+      localStorage.setItem('user', JSON.stringify(user));
     });
-  }
-
-  private saveUserToLocalStorage(user: IUser): void {
-    localStorage.setItem('user', JSON.stringify(user));
   }
 
   getUserFromLocalStorage(): IUser {

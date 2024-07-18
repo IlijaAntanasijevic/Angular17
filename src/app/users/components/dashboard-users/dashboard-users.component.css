@@ -1,0 +1,17 @@
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #FEFA17 !important;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab-indicator__content--underline {
+  border-color: #FEFA17 !important;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label,
+::ng-deep .mat-mdc-tab-body-wrapper {
+  color: white !important;
+}
+
+
+::ng-deep .mat-mdc-tab-header {
+  margin-bottom: 40px;
+}

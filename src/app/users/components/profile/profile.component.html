@@ -1,11 +1,96 @@
-<section class="box-section box-contact-form background-body">
-  <div class="container">
-    <div class="row">
-      <mat-tab-group class="mt-35 pb-5">
-        <mat-tab label="Profile"> Content 1 </mat-tab>
-        <mat-tab label="Reservations"> Content 2 </mat-tab>
-        <mat-tab label="Apartments"> Content 3 </mat-tab>
-      </mat-tab-group>
+<div class="row justify-content-center mx-auto mt-35">
+  <div class="col-sm-12 text-center">
+    <img src="{{apiPath + user.avatar}}" id="avatar" alt="avatar" /><br>
+    <button mat-flat-button class="light mt-35">Change</button>
+  </div>
+</div>
+
+<form>
+  <div class="row justify-content-center mt-55 mx-auto">
+    <!-- First row -->
+    <div class="col-12 d-flex justify-content-center">
+      <div class="d-flex justify-content-center w-50">
+        <mat-form-field class="w-50 mx-2">
+          <mat-label class="neutral-1000">First name</mat-label>
+          <input matInput class="form-control" value="{{form.get('firstName').value}}">
+          @if(form.get('firstName').hasError('required') && form.get('firstName').touched) {
+          <mat-error style="color: red;">First name is required</mat-error>
+          }
+          @if(form.get('firstName').hasError('validationError')){
+          <mat-error style="color: red;">{{form.get('firstName').errors['validationError']}}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="w-50 mx-2">
+          <mat-label class="neutral-1000">Last name</mat-label>
+          <input matInput class="form-control" value="{{form.get('lastName').value}}">
+          @if(form.get('lastName').hasError('required') && form.get('lastName').touched) {
+          <mat-error style="color: red;">Last name is required</mat-error>
+          }
+          @if(form.get('lastName').hasError('validationError')){
+          <mat-error style="color: red;">{{form.get('lastName').errors['validationError']}}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Second row -->
+    <div class="col-12 d-flex justify-content-center my-5">
+      <div class="d-flex justify-content-center w-50">
+        <mat-form-field class="w-50 mx-2">
+          <mat-label class="neutral-1000">Email</mat-label>
+          <input matInput class="form-control" value="{{form.get('email').value}}">
+          @if(form.get('email').hasError('required') && form.get('email').touched) {
+          <mat-error style="color: red;">Email is required</mat-error>
+          }
+          @if(form.get('email').hasError('validationError')){
+          <mat-error style="color: red;">{{form.get('email').errors['validationError']}}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="w-50 mx-2">
+          <mat-label class="neutral-1000">Phone</mat-label>
+          <input matInput class="form-control" value="{{form.get('phone').value}}">
+          @if(form.get('phone').hasError('required') && form.get('phone').touched) {
+          <mat-error style="color: red;">Phone is required</mat-error>
+          }
+          @if(form.get('phone').hasError('validationError')){
+          <mat-error style="color: red;">{{form.get('phone').errors['validationError']}}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <!-- Third row -->
+    <div class="col-12 d-flex justify-content-center">
+      <div class="d-flex justify-content-center w-50">
+        <mat-form-field class="w-50 mx-2">
+          <mat-label class="neutral-1000">Old password</mat-label>
+          <input matInput class="form-control">
+          @if(form.get('email').hasError('required') && form.get('email').touched) {
+          <mat-error style="color: red;">Email is required</mat-error>
+          }
+          @if(form.get('email').hasError('validationError')){
+          <mat-error style="color: red;">{{form.get('email').errors['validationError']}}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="w-50 mx-2">
+          <mat-label class="neutral-1000">New password</mat-label>
+          <input matInput class="form-control">
+          @if(form.get('phone').hasError('required') && form.get('phone').touched) {
+          <mat-error style="color: red;">Phone is required</mat-error>
+          }
+          @if(form.get('phone').hasError('validationError')){
+          <mat-error style="color: red;">{{form.get('phone').errors['validationError']}}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center mt-75">
+      <button mat-flat-button class="w-25 primary-button-color">Save</button>
     </div>
   </div>
-</section>
+</form>
