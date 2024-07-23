@@ -79,7 +79,7 @@
                 <mat-label class="neutral-1000">Avatar</mat-label>
                 <div class="input-container">
                   @if(selectedAvatar){
-                  <img src="http://ilija-booking.somee.com/temp/{{selectedAvatar}}" class="avatar-img" />
+                  <img src="{{imgUrl + selectedAvatar}}" class="avatar-img" />
                   }
                   <input formControlName="avatar" class="form-control" type="file" placeholder="Your Last Name..."
                     (change)="fileUpload($event)">

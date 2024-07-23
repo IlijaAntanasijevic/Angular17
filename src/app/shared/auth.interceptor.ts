@@ -20,11 +20,12 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(prepareRequest);
   }
 
-  prepareRequest(req: HttpRequest<any>){
+  prepareRequest(req: HttpRequest<any>){   
     return req.clone({
-      setHeaders: {
+      setHeaders: this.authService.getJwtToken() ? 
+      {
         Authorization: "Bearer " + this.authService.getJwtToken()
-      }
+      } : {}
     })
   }
 

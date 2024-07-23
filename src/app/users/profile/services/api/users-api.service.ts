@@ -15,10 +15,17 @@ export class UsersApiService {
   ) { }
 
   get(id: number): Observable<IUser> {
-    return this.http.get<IUser>(config.apiUrl + "/users/" + id);
+    return this.http.get<IUser>(config.apiUrl + "api/users/" + id);
   }
 
   update(id: number, userData: IUserRequest): Observable<any> {
-    return this.http.put(config.apiUrl + "/users/" + id, userData);
+    return this.http.put(config.apiUrl + "api/users/" + id, userData);
+  }
+
+  uploadAvatar(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append("file", file, file.name)
+
+    return this.http.post(config.apiUrl + "api/files", formData)
   }
 }

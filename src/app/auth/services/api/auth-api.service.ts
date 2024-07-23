@@ -14,17 +14,11 @@ export class AuthApiService {
   ) {}
 
   login(data: ILogin): Observable<IAuthToken> {
-    return this.http.post<IAuthToken>(config.apiUrl + "/auth" ,data);
+    return this.http.post<IAuthToken>(config.apiUrl + "api/auth" ,data);
   }
 
   register(data: IRegister): Observable<any> {
-    return this.http.post(config.apiUrl + "/users",data);
+    return this.http.post(config.apiUrl + "api/users",data);
   }
 
-  uploadAvatar(file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append("file", file, file.name)
-
-    return this.http.post(config.apiUrl + "/files", formData)
-  }
 }

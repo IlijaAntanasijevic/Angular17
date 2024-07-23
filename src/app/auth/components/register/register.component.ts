@@ -4,7 +4,8 @@ import { AuthService } from '../../../shared/buisiness-logic/auth.service';
 import { Router } from '@angular/router';
 import { IRegister } from '../../interfaces/i-auth';
 import { RegisterRequestService } from '../../services/requests/register-request.service';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { BlUsersRequestsService } from '../../../users/profile/services/requests/bl-users-requests.service';
+import { config } from '../../../config/global';
 
 @Component({
   selector: 'app-register',
@@ -14,15 +15,17 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 export class RegisterComponent {
   constructor(
     private requestService: RegisterRequestService,
-    private authService: AuthService,
+    private userService: BlUsersRequestsService,
     private router: Router,
-  ){}
+  ) {}
 
   data: IRegister = {email:'', password: '', firstName: '', lastName:'', avatar:'', phone:''};
   showPassword: boolean = false;
   serverError: boolean = false;
   validationErrors: { property: string, error: string }[] = [];
   selectedAvatar: string = "";
+
+  public imgUrl = config.apiUrl + "temp/";
 
 
 
@@ -86,7 +89,7 @@ export class RegisterComponent {
 
   fileUpload(event: any): void {
     const file: File = event.target.files[0];
-    this.requestService.avatarUpload(file).subscribe({
+    this.userService.avatarUpload(file).subscribe({
       next: (data) => {
         this.data.avatar = data.file;
         this.selectedAvatar = data.file;

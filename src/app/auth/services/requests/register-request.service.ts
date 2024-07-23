@@ -17,7 +17,5 @@ export class RegisterRequestService {
     return this.apiService.register(data);
   }
 
-  avatarUpload(file: File): Observable<any> {
-    return this.apiService.uploadAvatar(file);
-  }
+
 }

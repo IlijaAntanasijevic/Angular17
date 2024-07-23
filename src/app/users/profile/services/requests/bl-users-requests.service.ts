@@ -21,4 +21,8 @@ export class BlUsersRequestsService {
     
     return this.apiService.update(id, data);
   } 
+
+  avatarUpload(file: File): Observable<any> {
+    return this.apiService.uploadAvatar(file);
+  }
 }
