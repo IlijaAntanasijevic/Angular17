@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SharedModule } from '../shared/shared.module';
-import { DashboardUsersComponent } from './components/dashboard-users/dashboard-users.component';
+import { DashboardUsersComponent } from './dashboard-users/dashboard-users.component';
 
 
 @NgModule({

@@ -1,4 +1,4 @@
 export const config = {
-  apiUrl: "http://ilija-booking.somee.com/api/",
+  apiUrl: "http://localhost:5000/api",
   imagesPath: "/assets/images/"
 }

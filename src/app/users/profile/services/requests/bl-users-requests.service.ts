@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UsersApiService } from '../api/users-api.service';
 import { Observable } from 'rxjs';
-import { IUser } from '../../interfaces/i-user';
+import { IUser, IUserRequest } from '../../../interfaces/i-user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,13 @@ export class BlUsersRequestsService {
     private apiService: UsersApiService,
   ) { }
 
-  getUserInfo(userId: number): Observable<IUser> {
-    return this.apiService.get(userId);
+  getUserInfo(id: number): Observable<IUser> {
+    return this.apiService.get(id);
   }
+
+  update(id: number, data: IUserRequest): Observable<any> {
+    console.log(data);
+    
+    return this.apiService.update(id, data);
+  } 
 }

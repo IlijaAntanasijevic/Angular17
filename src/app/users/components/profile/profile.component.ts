@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BlUsersService } from '../../services/shared/bl-users.service';
+import { BlUsersService } from '../../profile/services/shared/bl-users.service';
 import { IUser } from '../../interfaces/i-user';
-import { BlProfileFormService } from '../../services/form/bl-profile-form.service';
+import { BlProfileFormService } from '../../profile/services/form/bl-profile-form.service';
+import { BlUsersRequestsService } from '../../profile/services/requests/bl-users-requests.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,10 +13,12 @@ export class ProfileComponent implements OnInit{
   
   constructor(
     private userService: BlUsersService,
-    private formService: BlProfileFormService
+    private formService: BlProfileFormService,
+    private requestService: BlUsersRequestsService
   ) {}
 
   public user: IUser;
+  public serverError = "";
   public apiPath = "http://ilija-booking.somee.com/users/"
 
   public form = this.formService.getForm();
@@ -25,6 +28,24 @@ export class ProfileComponent implements OnInit{
     console.log(this.user);
     this.formService.fillForm(this.user);
     
+  }
+
+  submit(): void {
+    console.log(this.user);
+    
+  if(!this.form.invalid) {
+    this.formService.submit(this.user.id).subscribe({
+      next: (data) => {
+        console.log(data);
+        
+      },
+      error: (err) => {
+        this.serverError = err.error.message;
+        console.log(err);
+        
+      }
+    })
+  }
   }
 
 

@@ -1,8 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthService } from '../../../shared/buisiness-logic/auth.service';
+import { AuthService } from '../../../../shared/buisiness-logic/auth.service';
 import { BlUsersRequestsService } from '../requests/bl-users-requests.service';
-import { IUser } from '../../interfaces/i-user';
+import { IUser } from '../../../interfaces/i-user';
 
 @Injectable({
   providedIn: 'root'

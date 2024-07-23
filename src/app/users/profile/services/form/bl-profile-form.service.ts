@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IUser } from '../../interfaces/i-user';
+import { IUser, IUserRequest } from '../../../interfaces/i-user';
+import { BlUsersRequestsService } from '../requests/bl-users-requests.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlProfileFormService {
 
-  constructor() { }
+  constructor(
+    public requestService: BlUsersRequestsService
+  ) { }
 
   public form: FormGroup = this.init();
 
   init() {
    return new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", Validators.required),
+      password: new FormControl(null),
       firstName: new FormControl("", Validators.required),
       lastName: new FormControl("", Validators.required),
       avatar: new FormControl(null),
-      phone: new FormControl("", Validators.required)
+      phone: new FormControl("", Validators.required),
     })
   }
 
@@ -26,9 +29,7 @@ export class BlProfileFormService {
     return this.form;
   }
 
-  fillForm(user: IUser): void {
-    console.log(user);
-    
+  fillForm(user: IUser): void {    
     if(user){
       this.setFirstName(user.firstName);
       this.setLastName(user.lastName);
@@ -51,5 +52,28 @@ export class BlProfileFormService {
 
   setPhone(value: string) {  
     this.form.get("phone").setValue(value);
+  }
+
+
+  submit(id: number) { 
+    let data = this.prepareDataToSend();
+
+    return this.requestService.update(id, data);
+  }
+
+  prepareDataToSend() {
+    let formValue: IUser = this.form.value;
+    console.log(formValue);
+    
+    
+    let dataToSend: IUserRequest = {
+      email : formValue.email,
+      firstName: formValue.firstName,
+      lastName: formValue.lastName,
+      phone: formValue.phone,
+      password: formValue.password,
+    }
+
+    return dataToSend;
   }
 }

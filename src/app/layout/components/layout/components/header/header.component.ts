@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../shared/buisiness-logic/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { IUser } from '../../../../../interfaces/i-base';
-import { BlUsersService } from '../../../../../users/services/shared/bl-users.service';
+import { BlUsersService } from '../../../../../users/profile/services/shared/bl-users.service';
+import { IUser } from '../../../../../users/interfaces/i-user';
 
 @Component({
   selector: 'app-header',

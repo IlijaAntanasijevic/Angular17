@@ -4,7 +4,7 @@ import { LoginRequestsService } from '../../services/requests/login-requests.ser
 import { ILogin } from '../../interfaces/i-auth';
 import { AuthService } from '../../../shared/buisiness-logic/auth.service';
 import { Router } from '@angular/router';
-import { BlUsersService } from '../../../users/services/shared/bl-users.service';
+import { BlUsersService } from '../../../users/profile/services/shared/bl-users.service';
 
 
 @Component({
