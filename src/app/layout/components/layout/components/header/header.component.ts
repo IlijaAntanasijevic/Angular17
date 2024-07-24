@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../shared/buisiness-logic/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { BlUsersService } from '../../../../../users/profile/services/shared/bl-users.service';
-import { IUser } from '../../../../../users/interfaces/i-user';
+import { IUser } from '../../../../../users/profile/interfaces/i-user';
 
 @Component({
   selector: 'app-header',

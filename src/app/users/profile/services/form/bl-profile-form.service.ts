@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IUser, IUserRequest } from '../../../interfaces/i-user';
+import { IUser, IUserRequest } from '../../interfaces/i-user';
 import { BlUsersRequestsService } from '../requests/bl-users-requests.service';
 
 @Injectable({
@@ -72,6 +72,8 @@ export class BlProfileFormService {
       lastName: formValue.lastName,
       phone: formValue.phone,
       password: formValue.password,
+      avatar: formValue.avatar
+
     }
 
     return dataToSend;

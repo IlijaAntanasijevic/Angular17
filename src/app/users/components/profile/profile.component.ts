@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlUsersService } from '../../profile/services/shared/bl-users.service';
-import { IUser } from '../../interfaces/i-user';
+import { IUser } from '../../profile/interfaces/i-user';
 import { BlProfileFormService } from '../../profile/services/form/bl-profile-form.service';
 import { BlUsersRequestsService } from '../../profile/services/requests/bl-users-requests.service';
 import { config } from '../../../config/global';
@@ -15,12 +15,14 @@ export class ProfileComponent implements OnInit{
   
   constructor(
     private userService: BlUsersService,
-    private formService: BlProfileFormService
+    private formService: BlProfileFormService,
+    private userRequestService: BlUsersRequestsService
   ) {}
 
   public user: IUser;
   public serverError = "";
   public imgPath = config.apiUrl + "/users/"
+  public success: boolean = false;
 
   public form = this.formService.getForm();
 
@@ -31,22 +33,19 @@ export class ProfileComponent implements OnInit{
 
   uploadAvatar(event: Event) {
     const input = event.target as HTMLInputElement;
+    const file: File = input.files[0]
     if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      console.log(file.name); // Handle the file here
-    }
+    this.userRequestService.avatarUpload(file).subscribe({
+      next: (data) => {
+        this.form.value.avatar = data.file;
+        
+      },
+      error: (err) => {
+       console.log(err); 
+      }
 
-    // const file: File = event.target.files[0];
-    // this.requestService.avatarUpload(file).subscribe({
-    //   next: (data) => {
-    //     this.data.avatar = data.file;
-    //     this.selectedAvatar = data.file;
-    //   },
-    //   error: (err) => {
-    //     this.serverError = true;
-    //   }
-
-    // })
+    })
+  }
   }
 
   submit(): void {    
@@ -55,10 +54,10 @@ export class ProfileComponent implements OnInit{
       next: (data) => {
         this.userService.fetchUserInfo();
         this.user = this.userService.getUserFromLocalStorage();
+        this.success = true;
       },
       error: (err) => {
         this.serverError = err.error.message;
-        console.log(err);
         
       }
     })

@@ -27,7 +27,7 @@ const routes: Routes = [
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
       },
       {
-        path: "users",
+        path: "profile",
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
         canActivate: [AuthGurad]
       },

@@ -1,5 +1,5 @@
 import { IBaseName } from "../../interfaces/i-base"
-import { IUser } from "../../users/interfaces/i-user"
+import { IUser } from "../../users/profile/interfaces/i-user"
 import { IReview } from "./i-reviews"
 
 

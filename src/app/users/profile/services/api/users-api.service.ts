@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUser, IUserRequest } from '../../../interfaces/i-user';
+import { IUser, IUserRequest } from '../../interfaces/i-user';
 import { config } from '../../../../config/global';
 
 

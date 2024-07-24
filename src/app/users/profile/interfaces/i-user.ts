@@ -13,5 +13,5 @@ export interface IUser extends IUserBase {
 }
 
 export interface IUserRequest extends IUserBase {
-
+  avatar: string
 }
