@@ -14,6 +14,9 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     ProfileRoutingModule,
     SharedModule
+  ],
+  exports: [
+    ProfileFormComponent
   ]
 })
 export class ProfileModule { }
