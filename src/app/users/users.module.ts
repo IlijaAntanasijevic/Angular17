@@ -5,6 +5,8 @@ import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardUsersComponent } from './dashboard-users/dashboard-users.component';
 import { ProfileModule } from './profile/profile.module';
+import { ReservationsModule } from './reservations/reservations.module';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ProfileModule } from './profile/profile.module';
     CommonModule,
     UsersRoutingModule,
     SharedModule,
-    ProfileModule
+    ProfileModule,
+    ReservationsModule
   ]
 })
 export class UsersModule { }
