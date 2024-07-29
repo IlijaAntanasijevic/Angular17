@@ -22,16 +22,23 @@ export class BlUsersService {
   fetchUserInfo(): void {
     const tokenData = this.authService.getJwtTokenData();
     const userId = tokenData.Id;
-    console.log(tokenData);
+    //console.log(tokenData);
     
     this.requestService.getUserInfo(userId).subscribe((user) => {
       //this.userSubject.next(user);
+      //console.log(user);
+      
       localStorage.setItem('user', JSON.stringify(user));
     });
   }
 
   getUserFromLocalStorage(): IUser {
     return JSON.parse(localStorage.getItem("user"))
+  }
+
+  getCurrentUserId(): number {
+    let user = this.getUserFromLocalStorage();
+    return user.id;
   }
 
 }

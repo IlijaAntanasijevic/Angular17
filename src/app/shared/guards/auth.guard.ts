@@ -7,7 +7,7 @@ import { AuthService } from "../buisiness-logic/auth.service";
   providedIn: "root"
 })
 
-export class AuthGurad {
+export class AuthGuard {
 
   constructor(
     private authService: AuthService,

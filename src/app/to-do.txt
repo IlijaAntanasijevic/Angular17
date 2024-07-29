@@ -1,0 +1,5 @@
+1. Change password (old, new)
+2. Reservations History/current/canceled
+3. 401 FIX
+4. Loading?? - kada se posalje request pa da se saceka, neki spinner na btn npr, na update profile info, reservations, login, register
+5. Strogo tipiziranje(interfejsi) za rezervacije, apartmane(profile),....

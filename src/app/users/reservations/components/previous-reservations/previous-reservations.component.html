@@ -1,1 +1,35 @@
-<p>previous-reservations works!</p>
+<!-- 
+ apartmentId:1
+bookingId:3
+checkIn:"2024-07-29T00:00:00"
+checkOut:"2024-07-30T00:00:00"
+paymentMethod:"Card"
+totalGuests:2 
+-->
+
+
+@for(reservation of reservations; track reservation ) {
+<div class="mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <div>
+      <a routerLink="/apartments/{{reservation.apartmentId}}">
+        <img src="{{imgPath + getImagePath(reservation.image)}}" height="50px">
+      </a>
+
+    </div>
+    <a routerLink="/apartments/{{reservation.apartmentId}}" class="text-light"> {{reservation.apartmentName}}</a>
+
+    <div style="width: 20%;">
+      <p> {{reservation.checkIn | date : "dd. MMM YYYY."}} - {{reservation.checkOut | date : "dd. MMM YYYY."}}</p>
+    </div>
+    <p>Guests: {{reservation.totalGuests}}</p>
+    <div class="d-flex justify-content-around " style="width: 20%;">
+      <p>Payment: {{reservation.paymentMethod ?? "/"}}</p>
+      <p>{{reservation.totalPrice}} $</p>
+    </div>
+
+
+  </div>
+</div>
+<hr />
+}

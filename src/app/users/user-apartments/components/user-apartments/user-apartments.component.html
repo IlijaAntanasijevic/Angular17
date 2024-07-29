@@ -1,0 +1,49 @@
+@if(apartments.length == 0) {
+<h3 class="text-center mt-20 mb-2 neutral-1000">You currently don't have any apartments.</h3>
+}
+
+<div class="row">
+  @for(apartment of apartments; track apartment) {
+  <div class="col-4 text-dark my-3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>{{apartment.name}}</mat-card-title>
+          <mat-card-subtitle class="cardSubtitle mt-5">
+
+            <p>{{apartment.city}}</p>
+            <p>Type: <strong>{{apartment.apartmentType}}</strong></p>
+            <p>Guests: {{apartment.maxGuests}}</p>
+            <p><strong>{{apartment.pricePerNight}}</strong>$ / night</p>
+
+          </mat-card-subtitle>
+          <img mat-card-lg-image src="{{imgPath + getImagePath(apartment.mainImage)}}" alt="{{apartment.name}}">
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+
+      </mat-card-content>
+      <mat-card-actions class="d-flex justify-content-around mt-35 mb-2">
+        <button mat-flat-button color="warn">DELETE</button>
+        <button mat-flat-button color="primary">EDIT</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  }
+</div>
+
+<div class="col-12 d-flex justify-content-center mt-75">
+  <button mat-flat-button class="w-25 primary-button-color">Add Aparment</button>
+</div>
+
+
+<!-- 
+apartmentType: "Villas"
+city: "Amsterdam"
+country: "Holland"
+id: 7
+mainImage: "wwwroot\\apartments\\mainImages\\b3a4a797-8f6b-4989-9934-6b65f9ac3e2b.jpg"
+maxGuests: 3
+name: "Test 5"
+pricePerNight: 35.99
+ -->
