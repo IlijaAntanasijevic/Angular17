@@ -6,30 +6,77 @@ checkOut:"2024-07-30T00:00:00"
 paymentMethod:"Card"
 totalGuests:2 
 -->
+<!-- <table mat-table [dataSource]="reservations" class="mat-elevation-z8 text-dark">
 
-
-@for(reservation of reservations; track reservation ) {
-<div class="mt-5">
-  <div class="d-flex justify-content-between align-items-center mb-5">
-    <div>
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let reservation">
       <a routerLink="/apartments/{{reservation.apartmentId}}">
         <img src="{{imgPath + getImagePath(reservation.image)}}" height="50px">
       </a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="apartmentName">
+    <th mat-header-cell *matHeaderCellDef> Apartment Name </th>
+    <td mat-cell *matCellDef="let reservation"> {{reservation.apartmentName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dates">
+    <th mat-header-cell *matHeaderCellDef> Check in - Check out </th>
+    <td mat-cell *matCellDef="let reservation"> {{reservation.checkIn | date : "dd. MMM YYYY."}} -
+      {{reservation.checkOut | date : "dd. MMM YYYY."}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="guests">
+    <th mat-header-cell *matHeaderCellDef> Guests </th>
+    <td mat-cell *matCellDef="let reservation"> {{reservation.totalGuests}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="payment">
+    <th mat-header-cell *matHeaderCellDef> Payment Method </th>
+    <td mat-cell *matCellDef="let reservation">{{reservation.paymentMethod ?? "/"}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Total price($)</th>
+    <td mat-cell *matCellDef="let reservation"> {{reservation.totalPrice}}</td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
+<div class="mt-35">
+  @for(reservation of reservations; track reservation ) {
+  <div class="mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <div>
+        <a routerLink="/apartments/{{reservation.apartmentId}}">
+          <img src="{{imgPath + getImagePath(reservation.image)}}" height="50px">
+        </a>
+
+      </div>
+      <a routerLink="/apartments/{{reservation.apartmentId}}" class="text-light"> {{reservation.apartmentName}}</a>
+
+      <div style="width: 20%;">
+        <p> {{reservation.checkIn | date : "dd. MMM YYYY."}} - {{reservation.checkOut | date : "dd. MMM YYYY."}}</p>
+      </div>
+      <p>Guests: {{reservation.totalGuests}}</p>
+      <div class="d-flex justify-content-around " style="width: 20%;">
+        <p>Payment: {{reservation.paymentMethod ?? "/"}}</p>
+        <p>{{reservation.totalPrice}} $</p>
+      </div>
+      <div>
+        <button mat-flat-button color="warn">Cancel</button>
+      </div>
+
 
     </div>
-    <a routerLink="/apartments/{{reservation.apartmentId}}" class="text-light"> {{reservation.apartmentName}}</a>
-
-    <div style="width: 20%;">
-      <p> {{reservation.checkIn | date : "dd. MMM YYYY."}} - {{reservation.checkOut | date : "dd. MMM YYYY."}}</p>
-    </div>
-    <p>Guests: {{reservation.totalGuests}}</p>
-    <div class="d-flex justify-content-around " style="width: 20%;">
-      <p>Payment: {{reservation.paymentMethod ?? "/"}}</p>
-      <p>{{reservation.totalPrice}} $</p>
-    </div>
-
-
   </div>
+  <hr />
+  }
 </div>
-<hr />
-}

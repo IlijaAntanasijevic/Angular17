@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BlUserApartmentsRequestsService } from '../../services/requests/bl-user-apartments-requests.service';
 import { BlUsersService } from '../../../profile/services/shared/bl-users.service';
 import { config } from '../../../../config/global';
+import { MatDialog } from '@angular/material/dialog';
+import { SimpleConfirmationDialogComponent } from '../../../../core/simple-confirmation-dialog/simple-confirmation-dialog.component';
 
 @Component({
   selector: 'app-user-apartments',
@@ -12,25 +14,16 @@ export class UserApartmentsComponent implements OnInit{
 
   constructor(
     private requestService: BlUserApartmentsRequestsService,
-    private userService: BlUsersService
+    private userService: BlUsersService,
+    private dialog: MatDialog,
   ) {}
 
   public apartments: any;
   public imgPath = config.apiUrl + "/apartments/mainImages/"
+  userId = this.userService.getCurrentUserId();
 
   ngOnInit(): void {
-    let userId = this.userService.getCurrentUserId();
-    let tmp = this.requestService.getAllUserApartments(userId).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.apartments = data.data;
-
-      },
-      error: (err) => {
-        console.log(err);
-        
-      }
-    })
+    this.fetchUserApartments();
     
   }
 
@@ -39,12 +32,43 @@ export class UserApartmentsComponent implements OnInit{
     // console.log(path);
      let tmp = path.split("\\");
      let lastElement = tmp[tmp.length - 1];
-
-  
      return lastElement == "test" ? "b3a4a797-8f6b-4989-9934-6b65f9ac3e2b.jpg": lastElement;
-     
-     
    }
+
+   delete(id: number) {
+    const dialogRef = this.dialog.open(SimpleConfirmationDialogComponent, {
+      width: "300px"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.requestService.delete(id).subscribe({
+          next: () => {
+            this.fetchUserApartments();
+          }
+        })
+      }
+    })
+    
+ 
+    
+   }
+
+   fetchUserApartments(){
+    this.requestService.getAllUserApartments(this.userId).subscribe({
+      next: (data) => {
+        //console.log(data);
+        this.apartments = data.data;
+
+      },
+      error: (err) => {
+        console.log(err);
+        
+      }
+    })
+
+   }
+   
 
 
 }

@@ -31,3 +31,8 @@
   background-color: #3A3A8A !important;
   color: #EAEAEA !important;
 }
+
+.cardSubtitle .price {
+  font-size: 20px;
+  margin-top: 10px;
+}

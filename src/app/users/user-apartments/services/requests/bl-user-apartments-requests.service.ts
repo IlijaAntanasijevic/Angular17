@@ -14,4 +14,10 @@ export class BlUserApartmentsRequestsService {
   getAllUserApartments(userId: number): Observable<any> {
     return this.apiService.getAllUserApartments(userId);
   }
+
+  delete(id: number): Observable<any> {
+    console.log(id);
+    
+    return this.apiService.delete(id);
+  }
 }

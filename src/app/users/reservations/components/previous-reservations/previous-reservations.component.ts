@@ -15,6 +15,7 @@ export class PreviousReservationsComponent implements OnInit{
 
   public reservations: any;
   public imgPath = config.apiUrl + "/apartments/mainImages/"
+  displayedColumns: string[] = ['image','apartmentName', 'dates', 'guests', 'payment','price'];
 
   ngOnInit(): void {
       this.getAllReservations();

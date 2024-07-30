@@ -14,7 +14,7 @@
             <p>{{apartment.city}}</p>
             <p>Type: <strong>{{apartment.apartmentType}}</strong></p>
             <p>Guests: {{apartment.maxGuests}}</p>
-            <p><strong>{{apartment.pricePerNight}}</strong>$ / night</p>
+            <p class="price"><strong>{{apartment.pricePerNight}}</strong>$ / night</p>
 
           </mat-card-subtitle>
           <img mat-card-lg-image src="{{imgPath + getImagePath(apartment.mainImage)}}" alt="{{apartment.name}}">
@@ -24,7 +24,8 @@
 
       </mat-card-content>
       <mat-card-actions class="d-flex justify-content-around mt-35 mb-2">
-        <button mat-flat-button class="delete-btn">DELETE</button>
+        <button mat-flat-button class="delete-btn" (click)="delete(apartment.id)">DELETE</button>
+
         <button mat-flat-button class="edit-btn">EDIT</button>
       </mat-card-actions>
     </mat-card>

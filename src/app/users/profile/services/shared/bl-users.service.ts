@@ -41,4 +41,9 @@ export class BlUsersService {
     return user.id;
   }
 
+
+  getUserApartments(): any {
+    
+  }
+
 }

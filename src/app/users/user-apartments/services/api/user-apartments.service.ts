@@ -15,4 +15,8 @@ export class UserApartmentsService {
   getAllUserApartments(userId: number): Observable<any> {
     return this.http.get(config.apiUrl + `api/apartment?userid=${userId}`)
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(config.apiUrl + `api/apartment/${id}`)
+  }
 }
