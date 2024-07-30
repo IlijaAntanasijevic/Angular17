@@ -39,7 +39,9 @@ export class ProfileFormComponent implements OnInit{
     if (input.files && input.files.length > 0) {
     this.userRequestService.avatarUpload(file).subscribe({
       next: (data) => {
-        this.form.value.avatar = data.file;
+        console.log(data);
+        
+        this.form.patchValue({ avatar: data.file });
         this.user.avatar = data.file;
         this.imgPath = config.apiUrl + "temp/";
         this.avatarChanged = true;
@@ -55,13 +57,20 @@ export class ProfileFormComponent implements OnInit{
 
   submit(): void {    
   if(!this.form.invalid) {
+    console.log(this.form.value);
+    
     this.formService.submit(this.user.id).subscribe({
-      next: (data) => {
+      next: () => {
         this.userService.fetchUserInfo();
-        this.user = this.userService.getUserFromLocalStorage();
-        this.success = true;
-        this.imgPath = config.apiUrl + "users/";
-        this.avatarChanged = false;
+     
+        setTimeout(() => {
+            this.user = this.userService.getUserFromLocalStorage();
+            console.log(this.user);
+  
+            this.success = true;
+            this.imgPath = config.apiUrl + "users/";
+            this.avatarChanged = false;
+          }, 100); 
       },
       error: (err) => {
         this.serverError = err.error.message;

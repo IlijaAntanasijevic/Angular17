@@ -27,13 +27,13 @@ export class UserApartmentsComponent implements OnInit{
     
   }
 
-  
   getImagePath(path: string) {
     // console.log(path);
      let tmp = path.split("\\");
      let lastElement = tmp[tmp.length - 1];
      return lastElement == "test" ? "b3a4a797-8f6b-4989-9934-6b65f9ac3e2b.jpg": lastElement;
    }
+   
 
    delete(id: number) {
     const dialogRef = this.dialog.open(SimpleConfirmationDialogComponent, {
@@ -49,9 +49,6 @@ export class UserApartmentsComponent implements OnInit{
         })
       }
     })
-    
- 
-    
    }
 
    fetchUserApartments(){

@@ -16,7 +16,7 @@ export class BlUserApartmentsRequestsService {
   }
 
   delete(id: number): Observable<any> {
-    console.log(id);
+   // console.log(id);
     
     return this.apiService.delete(id);
   }

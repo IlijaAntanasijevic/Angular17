@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit{
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;
     this.user = this.userService.getUserFromLocalStorage();
-    console.log(this.user);
+    //console.log(this.user);
     
     this.router.events.forEach((event) => {
       if(event instanceof NavigationEnd){

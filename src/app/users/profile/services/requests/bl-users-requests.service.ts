@@ -17,7 +17,7 @@ export class BlUsersRequestsService {
   }
 
   update(id: number, data: IUserRequest): Observable<any> {
-    console.log(data);
+    //console.log(data);
     
     return this.apiService.update(id, data);
   } 
