@@ -22,8 +22,9 @@ export class ProfileFormComponent implements OnInit{
 
   public user: IUser;
   public serverError = "";
-  public imgPath = config.apiUrl + "/users/"
+  public imgPath = config.apiUrl + "users/"
   public success: boolean = false;
+  public avatarChanged: boolean = false;
 
   public form = this.formService.getForm();
 
@@ -39,6 +40,9 @@ export class ProfileFormComponent implements OnInit{
     this.userRequestService.avatarUpload(file).subscribe({
       next: (data) => {
         this.form.value.avatar = data.file;
+        this.user.avatar = data.file;
+        this.imgPath = config.apiUrl + "temp/";
+        this.avatarChanged = true;
         
       },
       error: (err) => {
@@ -56,6 +60,8 @@ export class ProfileFormComponent implements OnInit{
         this.userService.fetchUserInfo();
         this.user = this.userService.getUserFromLocalStorage();
         this.success = true;
+        this.imgPath = config.apiUrl + "users/";
+        this.avatarChanged = false;
       },
       error: (err) => {
         this.serverError = err.error.message;

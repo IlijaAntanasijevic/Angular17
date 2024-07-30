@@ -12,10 +12,22 @@
 }
 
 ::ng-deep .mat-mdc-card {
-  background-color: #b9b9b9 !important;
+  background-color: #2E2E2E !important;
+  color: white !important;
 }
 
 .cardSubtitle p {
   font-size: 1rem;
   line-height: 1.7;
+  color: #EAEAEA;
+}
+
+::ng-deep .delete-btn {
+  background-color: #A40000 !important;
+  color: #EAEAEA !important;
+}
+
+::ng-deep .edit-btn {
+  background-color: #3A3A8A !important;
+  color: #EAEAEA !important;
 }

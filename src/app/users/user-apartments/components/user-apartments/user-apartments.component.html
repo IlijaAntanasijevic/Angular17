@@ -1,4 +1,4 @@
-@if(apartments.length == 0) {
+@if(apartments?.length == 0) {
 <h3 class="text-center mt-20 mb-2 neutral-1000">You currently don't have any apartments.</h3>
 }
 
@@ -24,8 +24,8 @@
 
       </mat-card-content>
       <mat-card-actions class="d-flex justify-content-around mt-35 mb-2">
-        <button mat-flat-button color="warn">DELETE</button>
-        <button mat-flat-button color="primary">EDIT</button>
+        <button mat-flat-button class="delete-btn">DELETE</button>
+        <button mat-flat-button class="edit-btn">EDIT</button>
       </mat-card-actions>
     </mat-card>
   </div>

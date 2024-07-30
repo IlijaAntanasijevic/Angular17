@@ -3,6 +3,11 @@
     <img src="{{imgPath + user.avatar}}" id="avatar" alt="avatar" /><br>
     <button mat-flat-button class="light mt-35" (click)="fileInput.click()">Change</button>
     <input type="file" #fileInput style="display: none;" (change)="uploadAvatar($event)">
+    @if(avatarChanged){
+    <p class="mt-4 text-danger">Please click <strong>'Submit'</strong> save your changes.</p>
+
+    }
+
   </div>
 </div>
 
