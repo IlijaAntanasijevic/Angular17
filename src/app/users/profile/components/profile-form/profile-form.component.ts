@@ -49,6 +49,8 @@ export class ProfileFormComponent implements OnInit{
       },
       error: (err) => {
        console.log(err); 
+       this.serverError = err.error.message ?? "Server error, please try again later.";
+
       }
 
     })
@@ -74,6 +76,8 @@ export class ProfileFormComponent implements OnInit{
       },
       error: (err) => {
         this.serverError = err.error.message;
+        this.success = false;
+
         
       }
     })

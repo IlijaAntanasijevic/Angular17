@@ -1,1 +1,19 @@
-<p>add-apartment works!</p>
+<div class="box-section box-contact-form background-body">
+  <div class="container">
+    <h5 class="text-light text-center mt-20">Add apartment</h5>
+
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Apartment name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+      </mat-form-field>
+    </form>
+  </div>
+
+
+</div>

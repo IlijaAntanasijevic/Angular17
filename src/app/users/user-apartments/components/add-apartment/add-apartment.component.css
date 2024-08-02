@@ -1,0 +1,67 @@
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+  border: 1px solid white;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: white !important;
+}
+
+::ng-deep .mat-date-range-input-separator {
+  color: white !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  border: 1px solid white;
+}
+
+::ng-deep .mat-mdc-select-trigger {
+  color: white;
+}
+
+::ng-deep .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
+  color: white;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: white !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+  border: 1px solid rgb(65, 65, 65) !important;
+}
+
+.form-control:focus {
+  background-color: transparent !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  caret-color: #FEFA17 !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+  border-color: #FEFA17 !important;
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+  overflow: hidden !important;
+}
+
+.primary-button-color {
+  background-color: #FEFA17 !important;
+  color: #000;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-floating-label--float-above {
+  color: #FEFA17 !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label--float-above {
+  color: #FEFA17 !important;
+}

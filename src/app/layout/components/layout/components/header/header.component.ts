@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit{
       if(event instanceof NavigationEnd){
         
         this.isLoggedIn = this.authService.isLoggedIn;
-        //this.user = this.userService.getUserFromLocalStorage();
+        this.user = this.userService.getUserFromLocalStorage();
       }
     });
   }

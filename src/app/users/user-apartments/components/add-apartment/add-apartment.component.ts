@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddApartmentFormService } from '../../services/form/add-apartment-form.service';
 
 @Component({
   selector: 'app-add-apartment',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AddApartmentComponent {
 
+  constructor(
+    private formService: AddApartmentFormService
+  ){}
+  public form = this.formService.getForm();
+
+  ngOnInit(): void {
+    
+  }
 }
