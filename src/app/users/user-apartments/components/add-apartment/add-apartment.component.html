@@ -1,17 +1,131 @@
 <div class="box-section box-contact-form background-body">
   <div class="container">
-    <h5 class="text-light text-center mt-20">Add apartment</h5>
+    <h5 class="text-light text-center add-apartment-title">ADD APARTMENT</h5>
 
-    <form [formGroup]="form">
-      <mat-form-field>
-        <mat-label>Apartment name</mat-label>
-        <input matInput formControlName="name">
-      </mat-form-field>
+    <form [formGroup]="form" class="mt-35">
+      <!-- First row -->
+      <div class="row">
+        <div class="col-sm-3">
+          <mat-form-field>
+            <mat-label>Apartment name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="address">
-      </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+          <mat-form-field>
+            <mat-label>Country</mat-label>
+
+            <input matInput formControlName="countryId" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="getCities()">
+              @for (option of filteredCountries | async; track option) {
+              <mat-option [value]="option">{{option.name}}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <mat-select formControlName="cityId">
+              @for (value of ddlData.cities; track value) {
+              <mat-option [value]="value.id">{{value.name}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Second row -->
+      <div class="row">
+        <div class="col-sm-3">
+          <mat-form-field>
+            <mat-label>Max Guests</mat-label>
+            <mat-select formControlName="maxGuests">
+              @for (value of maxGuests; track value) {
+              <mat-option [value]="value">{{value}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-form-field>
+            <mat-label>Apartment Type</mat-label>
+            <mat-select formControlName="apartmentTypeId">
+              @for (value of ddlData.apartmentTypes; track value) {
+              <mat-option [value]="value.id">{{value.name}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-form-field>
+            <mat-label>Payment Methods</mat-label>
+            <mat-select formControlName="paymentMethodIds" multiple>
+              @for (value of ddlData.paymentMethods; track value) {
+              <mat-option [value]="value.id">{{value.name}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-form-field>
+            <mat-label>Price/night ($)</mat-label>
+            <input matInput type="number" formControlName="address">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-35">
+        <div class="col-sm-4">
+          <ng-container formArrayName="featureIds">
+            <mat-label class="checkbox-label">Features</mat-label><br>
+            <div class="checkbox-grid">
+              @for (feature of ddlData.features; track feature; let i = $index) {
+              <mat-checkbox [formControlName]="i" (change)="onFeatureChange($event, feature.id)">
+                <span style="color: white;">{{ feature.name }}</span>
+              </mat-checkbox>
+              }
+            </div>
+
+          </ng-container>
+        </div>
+
+        <div class="col-sm-8">
+          <h6 class="neutral-1000">IMAGES</h6>
+        </div>
+
+      </div>
+
+      <div class="row mt-35">
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Description</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-12 d-flex justify-content-center mt-75">
+        <button mat-flat-button class="w-25 primary-button-color">Save</button>
+      </div>
+
+      <!-- [disabled]="!form.valid" -->
+
+
     </form>
   </div>
 

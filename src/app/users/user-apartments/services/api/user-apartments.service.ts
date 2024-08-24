@@ -19,4 +19,30 @@ export class UserApartmentsService {
   delete(id: number): Observable<any> {
     return this.http.delete(config.apiUrl + `api/apartment/${id}`)
   }
+
+  getApartmentType(): Observable<any> {
+    return this.http.get(config.apiUrl + "api/apartmenttype")
+  }
+
+  getFeatures(): Observable<any> {
+    return this.http.get(config.apiUrl + "api/features")
+  }
+
+  getCountries(): Observable<any> {
+    return this.http.get(config.apiUrl + "api/country")
+  }
+  getCitiesByCountryId(id: number): Observable<any> {
+    //NOT IMPLEMENTED ON BACK -> CHANGE IT
+    return this.http.get(config.apiUrl + "api/city")
+  }
+
+  getCities(): Observable<any> {
+    return this.http.get(config.apiUrl + "api/city")
+  }
+
+  getPaymentMethods(): Observable<any> {
+    return this.http.get(config.apiUrl + "api/payment")
+  }
+
+
 }

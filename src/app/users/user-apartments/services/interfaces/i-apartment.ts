@@ -1,4 +1,4 @@
-export interface IAddApartment {
+export interface IAddApartmentForm {
   name: string,
   description: string,
   address: string,
@@ -10,4 +10,12 @@ export interface IAddApartment {
   featureIds: number[],
   paymentMethodIds: number[],
   images: string[]
+}
+
+export interface IAddApartmentDdlData {
+  features: any[],
+  paymentMethods: any[],
+  countries: any[],
+  cities: any[],
+  apartmentTypes: any[]
 }

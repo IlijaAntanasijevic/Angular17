@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { AuthService } from '../../../../shared/buisiness-logic/auth.service';
 import { BlUsersRequestsService } from '../requests/bl-users-requests.service';
 import { IUser } from '../../interfaces/i-user';
@@ -44,6 +44,18 @@ export class BlUsersService {
 
   getUserApartments(): any {
     
+  }
+
+  fetchUserInfoObservable(): Observable<IUser> {
+    const tokenData = this.authService.getJwtTokenData();
+    const userId = tokenData.Id;
+
+    return this.requestService.getUserInfo(userId).pipe(
+      map((user: IUser) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        return user;
+      })
+    );
   }
 
 }

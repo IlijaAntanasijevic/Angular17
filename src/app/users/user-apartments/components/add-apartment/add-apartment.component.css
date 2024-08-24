@@ -1,3 +1,7 @@
+.add-apartment-title {
+  margin: 30px 0px 60px 0px;
+}
+
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
   background-color: transparent !important;
 }
@@ -26,7 +30,8 @@
   color: white;
 }
 
-::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input,
+::ng-deep .mdc-text-field--filled.mdc-text-field--disabled .mdc-text-field__input {
   color: white !important;
 }
 
@@ -64,4 +69,70 @@
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label,
 .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label--float-above {
   color: #FEFA17 !important;
+}
+
+::ng-deep .mdc-text-field--filled.mdc-text-field--disabled {
+  background-color: #61616157 !important;
+  border: 1px solid rgb(65, 65, 65) !important;
+}
+
+::ng-deep .mdc-text-field--filled.mdc-text-field--disabled .mat-mdc-floating-label.mdc-floating-label {
+  color: gray !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+::ng-deep .mat-mdc-checkbox .mat-mdc-checkbox-checked .mdc-checkbox__background {
+  background-color: red !important;
+}
+
+::ng-deep .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+.mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+.mdc-checkbox .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
+  background-color: #FEFA17 !important;
+  border-color: #FEFA17 !important;
+
+}
+
+::ng-deep .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
+  color: #000 !important;
+}
+
+::ng-deep .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
+  border-color: #FEFA17 !important;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  /* width: 40%; */
+  margin-top: 1.2rem;
+}
+
+.checkbox-label {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.primary-button-color {
+  background-color: #FEFA17 !important;
+  color: #000;
+}
+
+.primary-button-color:hover {
+  background-color: #e6e315 !important;
+}
+
+.primary-button-color:active {
+  background-color: #cccb13 !important;
 }

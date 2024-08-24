@@ -20,7 +20,8 @@ const routes: Routes = [
       },
       {
         path: "apartments",
-        loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule)
+        loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule),
+        canActivate: [AuthGuard]
       },
       {
         path: "auth",
