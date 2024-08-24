@@ -87,9 +87,9 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
   -moz-appearance: textfield;
-}
+} */
 
 ::ng-deep .mat-mdc-checkbox .mat-mdc-checkbox-checked .mdc-checkbox__background {
   background-color: red !important;
@@ -135,4 +135,24 @@ input[type=number] {
 
 .primary-button-color:active {
   background-color: #cccb13 !important;
+}
+
+::ng-deep .custom-error .mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align::before {
+  content: "" !important;
+  display: block !important;
+  height: 1px !important;
+}
+
+.apartment-second-block {
+  margin-top: 50px !important;
+}
+
+.fixed-image-size {
+  width: 200px;
+  /* Set the width to 200px */
+  height: auto;
+  /* Optional: Let the height adjust to maintain aspect ratio */
+  object-fit: cover;
+  /* Ensures the image covers the given dimensions without stretching */
 }
