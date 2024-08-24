@@ -19,3 +19,7 @@ export interface IAddApartmentDdlData {
   cities: any[],
   apartmentTypes: any[]
 }
+
+export interface IAddApartmentRequest  extends IAddApartmentForm{
+  
+}

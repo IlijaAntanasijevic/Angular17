@@ -1,7 +1,7 @@
 import { afterNextRender, Component, inject, Injector, ViewChild } from '@angular/core';
 import { AddApartmentFormService } from '../../services/form/add-apartment-form.service';
 import { BlUserApartmentsRequestsService } from '../../services/requests/bl-user-apartments-requests.service';
-import { IAddApartmentDdlData } from '../../services/interfaces/i-apartment';
+import { IAddApartmentDdlData, IAddApartmentForm } from '../../services/interfaces/i-apartment';
 import { FormArray, FormControl } from '@angular/forms';
 import { ILocation } from '../../../../home/interfaces/i-location';
 import { map, Observable, startWith } from 'rxjs';
@@ -19,11 +19,11 @@ export class AddApartmentComponent {
     private requestService: BlUserApartmentsRequestsService
   ) { }
 
-  private _injector = inject(Injector);
-  @ViewChild('autosize') autosize: CdkTextareaAutosize;
-
   public form = this.formService.getForm();
   filteredCountries: Observable<ILocation[]>;
+  public imageUrlPreview: any;
+  public uploadData: any;
+  files: File[] = [];
 
   options: ILocation[] = [];
   public ddlData: IAddApartmentDdlData = {
@@ -48,7 +48,7 @@ export class AddApartmentComponent {
         this.options = data[2];
 
         this.initializeFeatureCheckboxes();
-        this.initializeCountriyOptions();
+        this.initializeCountryOptions();
 
       },
       error: (err) => {
@@ -58,7 +58,7 @@ export class AddApartmentComponent {
     })
   }
 
-  private initializeCountriyOptions(): void {
+  private initializeCountryOptions(): void {
     this.filteredCountries = this.form.controls['countryId'].valueChanges.pipe(
       startWith(''),
       map(value => {
@@ -98,10 +98,6 @@ export class AddApartmentComponent {
     else {
       featureIdsArray.at(index).setValue(false);
     }
-      const formData = {
-        ...this.form.value,
-        featureIds: this.getSelectedFeatureIds()
-      };
   }
 
 
@@ -121,17 +117,78 @@ export class AddApartmentComponent {
     return location && location.name ? location.name : '';
   }
 
+  onSelect(event: any) {
+    this.files.push(...event.addedFiles);
+  }
+  
+  onRemove(event: any) {
+    this.files.splice(this.files.indexOf(event), 1);
+  }
 
-  triggerResize() {
-    // Wait for content to render, then trigger textarea resize.
-    afterNextRender(
-      () => {
-        this.autosize.resizeToFitContent(true);
+  onFileChanged(event: any) {
+    const file = event.target.files[0];
+    let oversize = false;
+    const uploadData = new FormData();
+
+    const reader = new FileReader();
+    
+    reader.onload = e => this.imageUrlPreview = reader.result;
+    reader.readAsDataURL(file);
+
+    console.log(file);
+    console.log(reader);
+
+    if(file.size > 1024 * 1024 * 5) {
+     oversize = true; 
+    }
+    
+    uploadData.append('document', file, file.name);
+    
+    if(oversize){
+      console.log( "The maximum allowed image size is 5MB.")
+    }
+    else {
+      
+      this.uploadData = uploadData;
+
+    }
+
+    
+  }
+
+  sendDocument(): void {
+    // this.requestsService.uploadDocument(this.uploadData).subscribe({
+    //   next: (data) => {
+    //     console.log(data);
+        
+    //    // SpinnerFunctions.hideSpinner();
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+        
+    //     //SpinnerFunctions.showSpinner();
+    //   }
+    // })
+  }
+
+
+  save(): void {
+    const formData: IAddApartmentForm = {
+      ...this.form.value,
+      countryId: this.form.get('countryId').value.id,
+      featureIds: this.getSelectedFeatureIds()
+    };
+
+    this.requestService.submitInsert(formData).subscribe({
+      next: (data) => {
+        console.log(data);
       },
-      {
-        injector: this._injector,
-      },
-    );
+      error: (err) => {
+        console.log(err);
+        
+      }
+    })
+    
   }
 
 

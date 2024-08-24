@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserApartmentsService } from '../api/user-apartments.service';
 import { forkJoin, Observable } from 'rxjs';
+import { IAddApartmentForm, IAddApartmentRequest } from '../interfaces/i-apartment';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,11 @@ export class BlUserApartmentsRequestsService {
     ];
 
     return forkJoin(request);
+  }
+
+
+  submitInsert(data: IAddApartmentForm): Observable<any> {
+    return this.apiService.submitInsert(data);
   }
 
 }

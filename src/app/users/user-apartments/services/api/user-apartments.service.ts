@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { config } from '../../../../config/global';
+import { IAddApartmentRequest } from '../interfaces/i-apartment';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,11 @@ export class UserApartmentsService {
 
   getPaymentMethods(): Observable<any> {
     return this.http.get(config.apiUrl + "api/payment")
+  }
+
+
+  submitInsert(data: IAddApartmentRequest): Observable<any> {
+    return this.http.post(config.apiUrl + "api/apartment", data);
   }
 
 
