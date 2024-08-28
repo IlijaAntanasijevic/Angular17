@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { BlUserApartmentsRequestsService } from '../requests/bl-user-apartments-requests.service';
+import { IAddApartmentForm } from '../interfaces/i-apartment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddApartmentFormService {
+export class AddApartmentFormService{
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private requestService: BlUserApartmentsRequestsService
+  ) { }
 
   public form: FormGroup = this.init();
+  public id: number;
+  public data: IAddApartmentForm;
 
   init(): FormGroup {
     return this.fb.group({
@@ -28,12 +36,44 @@ export class AddApartmentFormService {
     });
   }
 
+  fillForm(id: number): void {
+    this.requestService.getById(id).subscribe({
+      next: (apartmentData: IAddApartmentForm) => {
+        this.data = apartmentData;
+        
+        this.form.patchValue({
+          name: apartmentData.name,
+          description: apartmentData.description,
+          address: apartmentData.address,
+          cityCountryId: apartmentData.cityCountryId,
+          cityId: apartmentData.cityId,
+          maxGuests: apartmentData.maxGuests,
+          images: apartmentData.images,
+          countryId: apartmentData.countryId,
+          price: apartmentData.pricePerNight,
+          mainImage: apartmentData.mainImage,
+          apartmentTypeId: apartmentData.apartmentTypeId,
+          paymentMethodIds: apartmentData.paymentMethodIds,
+        });       
+          
+      },
+      error: (err) => {
+        console.log(err);
+        
+      }
+    })
+  }
+
   getForm(): FormGroup {
     return this.form;
   }
 
   get featureIds(): FormArray {
     return this.form.get('featureIds') as FormArray;
+  }
+
+  reset(): void {
+    this.form = this.init();
   }
 
 }

@@ -13,6 +13,10 @@ export class UserApartmentsService {
     private http: HttpClient
   ) { }
 
+  getApartment(id: number): Observable<any> {
+    return this.http.get(config.apiUrl + `api/apartment/${id}`);
+  }
+
   getAllUserApartments(userId: number): Observable<any> {
     return this.http.get(config.apiUrl + `api/apartment?userid=${userId}`)
   }
@@ -43,6 +47,14 @@ export class UserApartmentsService {
 
   getPaymentMethods(): Observable<any> {
     return this.http.get(config.apiUrl + "api/payment")
+  }
+
+  //NE RADI (MENI MOZAK) - PREPRAVITI
+  uploadImages(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append("file", file, file.name)
+
+    return this.http.post(config.apiUrl + "api/files", formData)
   }
 
 

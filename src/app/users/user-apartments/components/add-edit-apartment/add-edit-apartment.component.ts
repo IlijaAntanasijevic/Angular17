@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject, Injector, ViewChild } from '@angular/core';
+import { afterNextRender, Component, inject, Injector, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AddApartmentFormService } from '../../services/form/add-apartment-form.service';
 import { BlUserApartmentsRequestsService } from '../../services/requests/bl-user-apartments-requests.service';
 import { IAddApartmentDdlData, IAddApartmentForm } from '../../services/interfaces/i-apartment';
@@ -7,17 +7,20 @@ import { ILocation } from '../../../../home/interfaces/i-location';
 import { map, Observable, startWith } from 'rxjs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
+
 @Component({
-  selector: 'app-add-apartment',
-  templateUrl: './add-apartment.component.html',
-  styleUrl: './add-apartment.component.css'
+  selector: 'app-add-edit-apartment',
+  templateUrl: './add-edit-apartment.component.html',
+  styleUrl: './add-edit-apartment.component.css'
 })
-export class AddApartmentComponent {
+// AddEditApartmentComponent
+export class AddEditApartmentComponent implements OnInit, OnDestroy {
 
   constructor(
     private formService: AddApartmentFormService,
     private requestService: BlUserApartmentsRequestsService
   ) { }
+
 
   public form = this.formService.getForm();
   filteredCountries: Observable<ILocation[]>;
@@ -39,7 +42,6 @@ export class AddApartmentComponent {
   ngOnInit(): void {
     this.requestService.getAllData().subscribe({
       next: (data) => {
-        console.log(data);
         this.ddlData.apartmentTypes = data[0];
         this.ddlData.features = data[1];
         this.ddlData.countries = data[2];
@@ -49,16 +51,30 @@ export class AddApartmentComponent {
 
         this.initializeFeatureCheckboxes();
         this.initializeCountryOptions();
-
       },
       error: (err) => {
         console.log(err);
         
       }
     })
+
+    if(this.formService.id) {
+      this.getCities();
+    }
   }
 
   private initializeCountryOptions(): void {
+    let countryId = this.form.value.countryId;
+
+    if(countryId) {
+      const selectedCountry = this.ddlData.countries.find((country) => country.id === countryId);
+
+      this.form.patchValue({
+        countryId: selectedCountry
+      });
+    
+    }
+    
     this.filteredCountries = this.form.controls['countryId'].valueChanges.pipe(
       startWith(''),
       map(value => {
@@ -83,9 +99,20 @@ export class AddApartmentComponent {
     })
   }
 
-  initializeFeatureCheckboxes(): void {
+  initializeFeatureCheckboxes(): void {    
     const featureArray = this.form.get('featureIds') as FormArray;
     this.ddlData.features.forEach(() => featureArray.push(new FormControl(false)));
+    
+    if(this.formService.data && this.formService.data.featuresIds){
+      const selectedFeatureIds = this.formService.data.featuresIds;
+      console.log(selectedFeatureIds);
+      
+      this.ddlData.features.forEach((feature, index) => {
+        if (selectedFeatureIds.includes(feature.id)) {
+          featureArray.at(index).setValue(true);
+        }
+      });
+    }
   }
 
   onFeatureChange(event: any, featureId: number): void {
@@ -113,8 +140,8 @@ export class AddApartmentComponent {
     return this.ddlData.countries.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
-  displayFn(location: ILocation): string {  
-    return location && location.name ? location.name : '';
+  displayFn(value: ILocation): string {  
+    return value && value.name ? value.name : '';
   }
 
   onSelect(event: any) {
@@ -172,7 +199,7 @@ export class AddApartmentComponent {
   }
 
 
-  save(): void {
+  add(): void {
     const formData: IAddApartmentForm = {
       ...this.form.value,
       countryId: this.form.get('countryId').value.id,
@@ -189,6 +216,10 @@ export class AddApartmentComponent {
       }
     })
     
+  }
+
+  ngOnDestroy(): void {
+    this.formService.reset();
   }
 
 

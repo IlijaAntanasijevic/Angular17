@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { UserApartmentsRoutingModule } from './user-apartments-routing.module';
 import { UserApartmentsComponent } from './components/user-apartments/user-apartments.component';
 import { SharedModule } from '../../shared/shared.module';
-import { AddApartmentComponent } from './components/add-apartment/add-apartment.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { AddEditApartmentComponent } from './components/add-edit-apartment/add-edit-apartment.component';
 
 
 @NgModule({
   declarations: [
     UserApartmentsComponent,
-    AddApartmentComponent,
+    AddEditApartmentComponent,
   ],
   imports: [
     CommonModule,

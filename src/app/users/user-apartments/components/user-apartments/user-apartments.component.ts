@@ -4,6 +4,8 @@ import { BlUsersService } from '../../../profile/services/shared/bl-users.servic
 import { config } from '../../../../config/global';
 import { MatDialog } from '@angular/material/dialog';
 import { SimpleConfirmationDialogComponent } from '../../../../core/simple-confirmation-dialog/simple-confirmation-dialog.component';
+import { Router } from '@angular/router';
+import { AddApartmentFormService } from '../../services/form/add-apartment-form.service';
 
 @Component({
   selector: 'app-user-apartments',
@@ -14,8 +16,10 @@ export class UserApartmentsComponent implements OnInit{
 
   constructor(
     private requestService: BlUserApartmentsRequestsService,
+    private formService: AddApartmentFormService,
     private userService: BlUsersService,
     private dialog: MatDialog,
+    private router: Router,
   ) {}
 
   public apartments: any;
@@ -32,6 +36,12 @@ export class UserApartmentsComponent implements OnInit{
      let tmp = path.split("\\");
      let lastElement = tmp[tmp.length - 1];
      return lastElement == "test" ? "b3a4a797-8f6b-4989-9934-6b65f9ac3e2b.jpg": lastElement;
+   }
+
+   edit(id: number): void {
+    this.formService.fillForm(id);
+    this.formService.id = id;
+    this.router.navigateByUrl("/profile/add")
    }
    
 
