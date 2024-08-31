@@ -1,32 +1,39 @@
-import { afterNextRender, Component, inject, Injector, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {  Component, OnDestroy, OnInit } from '@angular/core';
 import { AddApartmentFormService } from '../../services/form/add-apartment-form.service';
 import { BlUserApartmentsRequestsService } from '../../services/requests/bl-user-apartments-requests.service';
 import { IAddApartmentDdlData, IAddApartmentForm } from '../../services/interfaces/i-apartment';
 import { FormArray, FormControl } from '@angular/forms';
 import { ILocation } from '../../../../home/interfaces/i-location';
 import { map, Observable, startWith } from 'rxjs';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-
+import { MatDialog } from '@angular/material/dialog';
+import { SimpleDialogComponent } from '../../../../core/simple-dialog/simple-dialog.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-apartment',
   templateUrl: './add-edit-apartment.component.html',
   styleUrl: './add-edit-apartment.component.css'
 })
-// AddEditApartmentComponent
+
 export class AddEditApartmentComponent implements OnInit, OnDestroy {
 
   constructor(
     private formService: AddApartmentFormService,
-    private requestService: BlUserApartmentsRequestsService
+    private requestService: BlUserApartmentsRequestsService,
+    private matDialog: MatDialog,
+    private location: Location
   ) { }
 
 
   public form = this.formService.getForm();
-  filteredCountries: Observable<ILocation[]>;
+  public filteredCountries: Observable<ILocation[]>;
   public imageUrlPreview: any;
   public uploadData: any;
-  files: File[] = [];
+  public files: File[] = [];
+
+  public isEdit: boolean = false;
+  public images: string[] = [];
+  public uploadedMainImagePath: string;
 
   options: ILocation[] = [];
   public ddlData: IAddApartmentDdlData = {
@@ -40,6 +47,9 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
   public maxGuests: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   ngOnInit(): void {
+
+    this.form.markAllAsTouched();
+
     this.requestService.getAllData().subscribe({
       next: (data) => {
         this.ddlData.apartmentTypes = data[0];
@@ -53,12 +63,13 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
         this.initializeCountryOptions();
       },
       error: (err) => {
-        console.log(err);
-        
+        console.log(err); 
       }
     })
 
     if(this.formService.id) {
+      this.isEdit = true;
+      
       this.getCities();
     }
   }
@@ -154,70 +165,100 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
 
   onFileChanged(event: any) {
     const file = event.target.files[0];
-    let oversize = false;
-    const uploadData = new FormData();
-
     const reader = new FileReader();
     
     reader.onload = e => this.imageUrlPreview = reader.result;
     reader.readAsDataURL(file);
 
-    console.log(file);
-    console.log(reader);
-
     if(file.size > 1024 * 1024 * 5) {
-     oversize = true; 
-    }
-    
-    uploadData.append('document', file, file.name);
-    
-    if(oversize){
       console.log( "The maximum allowed image size is 5MB.")
     }
+    
     else {
-      
-      this.uploadData = uploadData;
-
+     this.uploadImage(file, true);
     }
 
-    
   }
 
-  sendDocument(): void {
-    // this.requestsService.uploadDocument(this.uploadData).subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-        
-    //    // SpinnerFunctions.hideSpinner();
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-        
-    //     //SpinnerFunctions.showSpinner();
-    //   }
-    // })
+  uploadImage(file: File, isMainImage: boolean = false): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.requestService.uploadMainImage(file).subscribe({
+        next: (data) => {
+          if (isMainImage) {
+            this.uploadedMainImagePath = data.file;
+          } else {
+            this.images.push(data.file);
+          }
+          resolve();
+        },
+        error: (err) => {
+          console.error(err);
+          reject(err); 
+        }
+      });
+    });
   }
-
-
+  
   add(): void {
-    const formData: IAddApartmentForm = {
-      ...this.form.value,
-      countryId: this.form.get('countryId').value.id,
-      featureIds: this.getSelectedFeatureIds()
-    };
-
-    this.requestService.submitInsert(formData).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (err) => {
-        console.log(err);
-        
-      }
-    })
+    const uploadPromises = this.files.map((file) => this.uploadImage(file));
+    console.log(this.isEdit);
     
+    Promise.all(uploadPromises)
+      .then(() => {
+        const formData: IAddApartmentForm = {
+          ...this.form.value,
+          mainImage: this.uploadedMainImagePath,
+          images: this.images,
+          countryId: this.form.get('countryId').value.id,
+          featureIds: this.getSelectedFeatureIds()
+        };
+  
+       if(this.isEdit){
+        this.requestService.submitUpdate(formData, this.formService.id).subscribe({
+          next: (data) => {
+            this.matDialog.open(SimpleDialogComponent, {
+              width: '300px',
+              data: { 
+                title: 'Successful!',
+                message: 'You have successfully updated an apartment' 
+              } 
+            }).afterClosed().subscribe({
+              next: success => {
+                this.location.back();
+              }
+            })
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        })
+       }
+       else {
+        this.requestService.submitInsert(formData).subscribe({
+          next: (data) => {
+            this.matDialog.open(SimpleDialogComponent, {
+              width: '300px',
+              data: { 
+                title: 'Successful!',
+                message: 'You have successfully added an apartment' 
+              } 
+            }).afterClosed().subscribe({
+              next: success => {
+                this.location.back();
+              }
+            })
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+       }
+      })
+      .catch((err) => {
+        console.error('Error uploading images:', err);
+      });
   }
-
+  
   ngOnDestroy(): void {
     this.formService.reset();
   }

@@ -64,4 +64,12 @@ export class BlUserApartmentsRequestsService {
     return this.apiService.submitInsert(data);
   }
 
+  submitUpdate(data: IAddApartmentForm, id: number): Observable<any> {
+    return this.apiService.submitUpdate(data, id);
+  }
+
+  uploadMainImage(file: File): Observable<any> {
+    return this.apiService.uploadImages(file);
+  }
+
 }

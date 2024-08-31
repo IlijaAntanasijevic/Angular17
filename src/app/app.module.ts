@@ -11,11 +11,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
+import { SimpleDialogComponent } from './core/simple-dialog/simple-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SimpleDialogComponent
   ],
   imports: [
     BrowserModule,

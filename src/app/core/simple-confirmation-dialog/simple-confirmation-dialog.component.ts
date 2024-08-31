@@ -13,7 +13,7 @@ import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDi
 export class SimpleConfirmationDialogComponent {
 
   readonly dialogRef = inject(MatDialogRef<SimpleConfirmationDialogComponent>);
-
+  
 
   closeDialog(value: boolean = false): void {
     this.dialogRef.close(value);

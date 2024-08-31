@@ -57,9 +57,12 @@ export class UserApartmentsService {
     return this.http.post(config.apiUrl + "api/files", formData)
   }
 
-
   submitInsert(data: IAddApartmentRequest): Observable<any> {
     return this.http.post(config.apiUrl + "api/apartment", data);
+  }
+
+  submitUpdate(data: IAddApartmentRequest, id: number): Observable<any> {
+    return this.http.put(config.apiUrl + `api/apartment/${id}`, data);
   }
 
 

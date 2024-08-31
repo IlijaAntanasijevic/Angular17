@@ -23,15 +23,15 @@ export class AddApartmentFormService{
       name: ["", [Validators.required]],
       description: ["", Validators.required],
       address: ["", Validators.required],
-      cityCountryId: ["", Validators.required],
+      // cityCountryId: ["", Validators.required],
       cityId: [{ value: "", disabled: true }, Validators.required],
       maxGuests: ["", Validators.required],
-      images: [[], Validators.required],
+      images: [[]],
       countryId: ["", Validators.required],
       price: ["", [Validators.required]],
-      mainImage: ["", Validators.required],
+      mainImage: [""],
       apartmentTypeId: ["", Validators.required],
-      featureIds: this.fb.array([], Validators.required),
+      featureIds: this.fb.array([]),
       paymentMethodIds: [[], Validators.required],
     });
   }
@@ -45,7 +45,7 @@ export class AddApartmentFormService{
           name: apartmentData.name,
           description: apartmentData.description,
           address: apartmentData.address,
-          cityCountryId: apartmentData.cityCountryId,
+          // cityCountryId: apartmentData.cityCountryId,
           cityId: apartmentData.cityId,
           maxGuests: apartmentData.maxGuests,
           images: apartmentData.images,
@@ -73,7 +73,9 @@ export class AddApartmentFormService{
   }
 
   reset(): void {
-    this.form = this.init();
+    this.form.reset();
+    this.id = null;
+    this.data = null;
   }
 
 }
