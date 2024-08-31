@@ -17,4 +17,10 @@ export class ReservationsService {
   }
 
 
+  //'cancel'
+  deleteBooknig(id: number): Observable<any> {
+    return this.http.delete(config.apiUrl + `api/bookings/${id}`)
+  }
+
+
 }

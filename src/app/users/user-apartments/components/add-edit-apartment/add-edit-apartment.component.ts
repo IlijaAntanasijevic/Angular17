@@ -229,7 +229,18 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
             })
           },
           error: (err) => {
-            console.log(err);
+            this.matDialog.open(SimpleDialogComponent, {
+              width: '300px',
+              data: { 
+                title: 'ERROR!',
+                message: 'Server error, please try again...' 
+              } 
+            }).afterClosed().subscribe({
+              next: success => {
+                this.location.back();
+              },
+            })
+            console.error(err);
           }
         })
        }
@@ -245,11 +256,13 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
             }).afterClosed().subscribe({
               next: success => {
                 this.location.back();
-              }
+              },
             })
           },
           error: (err) => {
-            console.log(err);
+            
+            console.error(err);
+            
           }
         });
        }
