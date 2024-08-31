@@ -3,11 +3,13 @@ export interface IAddApartmentForm {
   description: string,
   address: string,
   cityCountryId: number,
+  cityId?: number,
+  countryId?: number,
   maxGuests: number,
-  price: number,
+  pricePerNight: number,
   mainImage: string,
   apartmentTypeId: number,
-  featureIds: number[],
+  featuresIds: number[],
   paymentMethodIds: number[],
   images: string[]
 }

@@ -16,6 +16,10 @@ export class BlUserApartmentsRequestsService {
     return this.apiService.getAllUserApartments(userId);
   }
 
+  getById(id: number): Observable<any>{
+    return this.apiService.getApartment(id);
+  }
+
   delete(id: number): Observable<any> {    
     return this.apiService.delete(id);
   }
@@ -58,6 +62,14 @@ export class BlUserApartmentsRequestsService {
 
   submitInsert(data: IAddApartmentForm): Observable<any> {
     return this.apiService.submitInsert(data);
+  }
+
+  submitUpdate(data: IAddApartmentForm, id: number): Observable<any> {
+    return this.apiService.submitUpdate(data, id);
+  }
+
+  uploadMainImage(file: File): Observable<any> {
+    return this.apiService.uploadImages(file);
   }
 
 }

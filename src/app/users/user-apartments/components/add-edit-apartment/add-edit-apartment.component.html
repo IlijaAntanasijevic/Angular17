@@ -130,6 +130,7 @@
 
         </div>
 
+        @if(!isEdit){
         <div class="col-sm-8">
           <mat-label class="checkbox-label ">Images</mat-label><br>
           <div class="row mt-25">
@@ -146,7 +147,9 @@
 
             <img src="{{imageUrlPreview}}" class="fixed-image-size my-5" />
             }
-
+            @else{
+            <mat-error>Main image is required</mat-error>
+            }
             <div class="mt-25">
               <ngx-dropzone (change)="onSelect($event)">
                 <ngx-dropzone-label>Select/drop other images</ngx-dropzone-label>
@@ -154,9 +157,15 @@
                   [removable]="true" *ngFor="let f of files" [file]="f">
                 </ngx-dropzone-image-preview>
               </ngx-dropzone>
+              @if(files.length == 0) {
+              <mat-error>Main image is required</mat-error>
+
+              }
             </div>
           </div>
         </div>
+        }
+
 
       </div>
 
@@ -173,7 +182,9 @@
       </div>
 
       <div class="col-12 d-flex justify-content-center mt-75">
-        <button mat-flat-button class="w-25 primary-button-color" (click)="save()">Save</button>
+        <button mat-flat-button class="w-25 primary-button-color" (click)="add()"
+          [disabled]="isEdit ? !form.valid : (!form.valid || !files.length || !imageUrlPreview)">{{isEdit ?
+          'Edit' : 'Add'}}</button>
       </div>
 
       <!-- [disabled]="!form.valid" -->
