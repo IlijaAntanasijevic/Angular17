@@ -5,6 +5,7 @@ import { ILogin } from '../../interfaces/i-auth';
 import { AuthService } from '../../../shared/buisiness-logic/auth.service';
 import { Router } from '@angular/router';
 import { BlUsersService } from '../../../users/profile/services/shared/bl-users.service';
+import { Spinner } from '../../../shared/functions/spinner';
 
 
 @Component({
@@ -37,11 +38,13 @@ export class LoginComponent {
   }
 
   login(): void {
+    Spinner.show();
     this.data.email = this.form.value.email;
     this.data.password = this.form.value.password;   
 
     this.requestService.login(this.data).subscribe({
       next: (data) => {
+        Spinner.hide();
         this.succesfullyLoggedIn = true;
         this.authService.setJwtToken(data.token)
         this.userService.fetchUserInfo();
@@ -49,6 +52,7 @@ export class LoginComponent {
         
       },   
       error: (err) => {
+        Spinner.hide();
         if(err.status === 401){
           this.wrongCredentials = true;
         }else {

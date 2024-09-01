@@ -73,24 +73,12 @@
       <div class="d-flex justify-content-center w-50">
         <mat-form-field class="w-50 mx-2">
           <mat-label class="neutral-1000">Old password</mat-label>
-          <input matInput class="form-control">
-          @if(form.get('email').hasError('required') && form.get('email').touched) {
-          <mat-error style="color: red;">Email is required</mat-error>
-          }
-          @if(form.get('email').hasError('validationError')){
-          <mat-error style="color: red;">{{form.get('email').errors['validationError']}}</mat-error>
-          }
+          <input matInput class="form-control" formControlName="oldPassword">
         </mat-form-field>
 
         <mat-form-field class="w-50 mx-2">
           <mat-label class="neutral-1000">New password</mat-label>
-          <input matInput class="form-control" formControlName="password">
-          @if(form.get('password').hasError('required') && form.get('password').touched) {
-          <mat-error style="color: red;">Phone is required</mat-error>
-          }
-          @if(form.get('password').hasError('validationError')){
-          <mat-error style="color: red;">{{form.get('password').errors['validationError']}}</mat-error>
-          }
+          <input matInput class="form-control" formControlName="newPassword">
         </mat-form-field>
       </div>
     </div>

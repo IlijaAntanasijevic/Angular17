@@ -8,6 +8,7 @@ import { map, Observable, startWith } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SimpleDialogComponent } from '../../../../core/simple-dialog/simple-dialog.component';
 import { Location } from '@angular/common';
+import { Spinner } from '../../../../shared/functions/spinner';
 
 @Component({
   selector: 'app-add-edit-apartment',
@@ -47,8 +48,9 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
   public maxGuests: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   ngOnInit(): void {
-
+    Spinner.show();
     this.form.markAllAsTouched();
+    //this.form.get("cityId").disable;
 
     this.requestService.getAllData().subscribe({
       next: (data) => {
@@ -61,8 +63,10 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
 
         this.initializeFeatureCheckboxes();
         this.initializeCountryOptions();
+        Spinner.hide();
       },
       error: (err) => {
+        Spinner.hide();
         console.log(err); 
       }
     })
@@ -200,8 +204,8 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
   }
   
   add(): void {
+    Spinner.show();
     const uploadPromises = this.files.map((file) => this.uploadImage(file));
-    console.log(this.isEdit);
     
     Promise.all(uploadPromises)
       .then(() => {
@@ -216,6 +220,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
        if(this.isEdit){
         this.requestService.submitUpdate(formData, this.formService.id).subscribe({
           next: (data) => {
+            Spinner.hide();
             this.matDialog.open(SimpleDialogComponent, {
               width: '300px',
               data: { 
@@ -229,6 +234,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
             })
           },
           error: (err) => {
+            Spinner.hide();
             this.matDialog.open(SimpleDialogComponent, {
               width: '300px',
               data: { 
@@ -247,6 +253,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
        else {
         this.requestService.submitInsert(formData).subscribe({
           next: (data) => {
+            Spinner.hide();
             this.matDialog.open(SimpleDialogComponent, {
               width: '300px',
               data: { 
@@ -260,7 +267,8 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
             })
           },
           error: (err) => {
-            
+            Spinner.hide();
+          
             console.error(err);
             
           }

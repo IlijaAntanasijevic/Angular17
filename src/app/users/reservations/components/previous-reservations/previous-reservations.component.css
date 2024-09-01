@@ -1,6 +1,6 @@
-::ng-deep .mdc-list-item__primary-text {
+/* ::ng-deep .mdc-list-item__primary-text {
   color: white !important;
-}
+} */
 
 ::ng-deep .mat-mdc-unelevated-button[disabled],
 .mat-mdc-unelevated-button.mat-mdc-button-disabled {

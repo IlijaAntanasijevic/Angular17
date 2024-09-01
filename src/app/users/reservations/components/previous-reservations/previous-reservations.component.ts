@@ -4,6 +4,7 @@ import { config } from '../../../../config/global';
 import { IReservation } from '../../interfaces/i-reservation';
 import { MatDialog } from '@angular/material/dialog';
 import { SimpleConfirmationDialogComponent } from '../../../../core/simple-confirmation-dialog/simple-confirmation-dialog.component';
+import { Spinner } from '../../../../shared/functions/spinner';
 
 @Component({
   selector: 'app-previous-reservations',
@@ -26,15 +27,17 @@ export class PreviousReservationsComponent implements OnInit{
   }
 
   getAllReservations() {
+    Spinner.show();
     this.requestService.getAll().subscribe({
       next: (data) => {
-        console.log(data);
+        Spinner.hide();
         this.reservations = data.data;
         this.reservations.forEach(reservation => {
           this.disabledButtons[reservation.bookingId] = this.disableCancelationButton(reservation.bookingId);
         });
       },
       error: (err) => {
+        Spinner.hide();
         console.log(err);
         
       }
