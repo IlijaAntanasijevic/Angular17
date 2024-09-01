@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SimpleConfirmationDialogComponent } from '../../../../core/simple-confirmation-dialog/simple-confirmation-dialog.component';
 import { Router } from '@angular/router';
 import { AddApartmentFormService } from '../../services/form/add-apartment-form.service';
+import { Spinner } from '../../../../shared/functions/spinner';
 
 @Component({
   selector: 'app-user-apartments',
@@ -62,13 +63,15 @@ export class UserApartmentsComponent implements OnInit{
    }
 
    fetchUserApartments(){
+    Spinner.show();
     this.requestService.getAllUserApartments(this.userId).subscribe({
       next: (data) => {
-        //console.log(data);
+        Spinner.hide();
         this.apartments = data.data;
 
       },
       error: (err) => {
+        Spinner.hide();
         console.log(err);
         
       }

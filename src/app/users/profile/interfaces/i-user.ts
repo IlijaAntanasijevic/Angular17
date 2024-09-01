@@ -3,7 +3,8 @@ interface IUserBase {
   firstName: string,
   lastName: string,
   phone: string,
-  password: string
+  oldPassword: string
+  newPassword: string
 }
 
 export interface IUser extends IUserBase {

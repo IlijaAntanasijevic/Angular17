@@ -17,7 +17,8 @@ export class BlProfileFormService {
   init() {
    return new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl(null),
+      oldPassword: new FormControl(null),
+      newPassword: new FormControl(null),
       firstName: new FormControl("", Validators.required),
       lastName: new FormControl("", Validators.required),
       avatar: new FormControl(null),
@@ -71,11 +72,16 @@ export class BlProfileFormService {
       firstName: formValue.firstName,
       lastName: formValue.lastName,
       phone: formValue.phone,
-      password: formValue.password,
+      oldPassword: formValue.oldPassword,
+      newPassword: formValue.newPassword,
       avatar: formValue.avatar
 
     }
 
     return dataToSend;
+  }
+
+  reset(): void {
+    this.form.reset();
   }
 }

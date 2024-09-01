@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BlUsersService } from '../../services/shared/bl-users.service';
 import { BlProfileFormService } from '../../services/form/bl-profile-form.service';
 import { BlUsersRequestsService } from '../../services/requests/bl-users-requests.service';
 import { IUser } from '../../interfaces/i-user';
 import { config } from '../../../../config/global';
+import { Spinner } from '../../../../shared/functions/spinner';
 
 @Component({
   selector: 'app-profile-form',
   templateUrl: './profile-form.component.html',
   styleUrl: './profile-form.component.css'
 })
-export class ProfileFormComponent implements OnInit{
+export class ProfileFormComponent implements OnInit, OnDestroy{
 
-
-  
   constructor(
     private userService: BlUsersService,
     private formService: BlProfileFormService,
@@ -29,8 +28,10 @@ export class ProfileFormComponent implements OnInit{
   public form = this.formService.getForm();
 
   ngOnInit(): void {
+    Spinner.show();
     this.user = this.userService.getUserFromLocalStorage();
     this.formService.fillForm(this.user);
+    Spinner.hide();
   }
 
   uploadAvatar(event: Event) {
@@ -40,7 +41,6 @@ export class ProfileFormComponent implements OnInit{
     this.userRequestService.avatarUpload(file).subscribe({
       next: (data) => {
         console.log(data);
-        
         this.form.patchValue({ avatar: data.file });
         this.user.avatar = data.file;
         this.imgPath = config.apiUrl + "temp/";
@@ -58,6 +58,10 @@ export class ProfileFormComponent implements OnInit{
   }
 
   submit(): void {    
+    Spinner.show();
+    this.serverError = "";
+    this.success = false;
+
   if(!this.form.invalid) {
     console.log(this.form.value);
     
@@ -73,9 +77,19 @@ export class ProfileFormComponent implements OnInit{
             this.imgPath = config.apiUrl + "users/";
             this.avatarChanged = false;
           }, 100); 
+          Spinner.hide();
       },
       error: (err) => {
-        this.serverError = err.error.message;
+        Spinner.hide();
+        console.log(err);
+        
+        err.error.forEach((error: any) => {
+          const propertyName = error.property;
+          const errorMessage = error.error;
+          this.serverError += `${propertyName}: ${errorMessage}\n`;
+        });
+        
+        //this.serverError = err.error.message;
         this.success = false;
 
         
@@ -83,6 +97,12 @@ export class ProfileFormComponent implements OnInit{
     })
   }
   }
+
+
+  ngOnDestroy(): void {
+    this.formService.reset()
+  }
+
 
 
 }

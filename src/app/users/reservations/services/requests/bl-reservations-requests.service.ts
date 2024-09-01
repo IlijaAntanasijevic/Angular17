@@ -14,4 +14,8 @@ export class BlReservationsRequestsService {
   getAll(): Observable<any> {
     return this.apiService.getAll();
   }
+
+  deleteBooknig(id: number): Observable<any> {
+    return this.apiService.deleteBooknig(id);
+  }
 }
