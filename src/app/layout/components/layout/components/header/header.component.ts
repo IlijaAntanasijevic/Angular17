@@ -19,6 +19,16 @@ export class HeaderComponent implements OnInit{
  
   isLoggedIn: boolean = false;
   user: IUser;
+  //ngOnChanges()
+  /*
+Called before ngOnInit() 
+(if the component has bound inputs) and whenever one or more data-bound input properties change.
+  */
+
+ //ngDoCheck() - ???
+ //Called immediately after ngOnChanges(),
+ //on every change detection run, and immediately after ngOnInit() on the first run
+
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;

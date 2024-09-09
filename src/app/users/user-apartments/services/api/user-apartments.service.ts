@@ -38,7 +38,7 @@ export class UserApartmentsService {
   }
   getCitiesByCountryId(id: number): Observable<any> {
     //NOT IMPLEMENTED ON BACK -> CHANGE IT
-    return this.http.get(config.apiUrl + "api/city")
+    return this.http.get(config.apiUrl + `api/citycountry/${id}`)
   }
 
   getCities(): Observable<any> {

@@ -60,9 +60,13 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
         this.ddlData.paymentMethods = data[3];
 
         this.options = data[2];
-
         this.initializeFeatureCheckboxes();
         this.initializeCountryOptions();
+
+        if(this.formService.id) {
+          this.fillForm();
+        }
+    
         Spinner.hide();
       },
       error: (err) => {
@@ -71,16 +75,25 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
       }
     })
 
-    if(this.formService.id) {
-      this.isEdit = true;
-      
-      this.getCities();
-    }
+  }
+
+  fillForm(): void {
+    this.isEdit = true;
+      this.formService.fillForm().subscribe({
+        next: success => {
+         this.getCities();
+         this.initializeFeatureCheckboxes();
+        this.initializeCountryOptions();
+      }
+    })
   }
 
   private initializeCountryOptions(): void {
     let countryId = this.form.value.countryId;
-
+    console.log(countryId);
+    console.log(this.form.value);
+    
+    
     if(countryId) {
       const selectedCountry = this.ddlData.countries.find((country) => country.id === countryId);
 
@@ -101,7 +114,8 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
   }
 
   getCities(): void {
-    let id = this.form.value.countryId;
+    let id = this.form.value.countryId.id ?? this.form.value.countryId;
+
     this.requestService.getCitiesByCountryId(id).subscribe({
       next: (data) => {
         this.ddlData.cities = data;
@@ -116,12 +130,10 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
 
   initializeFeatureCheckboxes(): void {    
     const featureArray = this.form.get('featureIds') as FormArray;
-    this.ddlData.features.forEach(() => featureArray.push(new FormControl(false)));
-    
+    this.ddlData.features.forEach(() => featureArray.push(new FormControl(false)));    
+
     if(this.formService.data && this.formService.data.featuresIds){
-      const selectedFeatureIds = this.formService.data.featuresIds;
-      console.log(selectedFeatureIds);
-      
+    const selectedFeatureIds = this.formService.data.featuresIds;      
       this.ddlData.features.forEach((feature, index) => {
         if (selectedFeatureIds.includes(feature.id)) {
           featureArray.at(index).setValue(true);
@@ -229,7 +241,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
               } 
             }).afterClosed().subscribe({
               next: success => {
-                this.location.back();
+                // this.location.back();
               }
             })
           },
@@ -243,7 +255,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
               } 
             }).afterClosed().subscribe({
               next: success => {
-                this.location.back();
+                // this.location.back();
               },
             })
             console.error(err);
@@ -282,6 +294,8 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
   
   ngOnDestroy(): void {
     this.formService.reset();
+    console.log("ON DESTROY");
+    
   }
 
 
