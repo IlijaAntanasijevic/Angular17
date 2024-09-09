@@ -7,6 +7,7 @@ import { HeadComponent } from './components/head/head.component';
 import { TopRatedApartments } from './components/top-rated-apartments/top-rated-apartments.component';
 import { TrendingDestinationsComponent } from './components/trending-destination/trending-destinations.component';
 import { SharedModule } from '../shared/shared.module';
+import { OtherApartmentsComponent } from './components/other-apartments/other-apartments.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     HeadComponent,
     TopRatedApartments,
     TrendingDestinationsComponent,
+    OtherApartmentsComponent,
   ],
   imports: [
     CommonModule,

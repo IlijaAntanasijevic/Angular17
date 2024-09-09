@@ -1,14 +1,16 @@
-<section class="section-box box-our-featured box-our-featured-2 background-body">
-  <div class=" container">
-    <div class="row align-items-end">
-      <div class="col-lg-8 mb-30 text-center text-lg-start wow fadeInUp">
-        <h2 class="neutral-1000">Most Popular Apartmnets</h2>
-        <p class="text-xl-medium neutral-500">Favorite apartments based on most reservations</p>
+<section class="section-box box-trending-destination background-100" style="padding: 80px 0px;">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="neutral-1000">Other Apartments</h2>
+      <div class="text-xl-medium neutral-500 d-flex justify-content-center align-items-center">
+        <p class="me-2">Take a look</p>
+        <mat-icon>travel_explore</mat-icon>
       </div>
 
     </div>
-    <div class="box-list-featured">
-      <div class="row">
+    <div>
+      <div class="row mt-35">
+
         @for (item of data ; track item) {
         <div class="col-lg-4 col-md-6">
           <div class="card-journey-small  wow fadeInUp">
@@ -49,7 +51,6 @@
           </div>
         </div>
         }
-
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AuthService } from '../../../../../shared/buisiness-logic/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { BlUsersService } from '../../../../../users/profile/services/shared/bl-users.service';
@@ -9,13 +9,19 @@ import { IUser } from '../../../../../users/profile/interfaces/i-user';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit, OnChanges{
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private userService: BlUsersService
   ){}
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    this.user = this.userService.getUserFromLocalStorage();
+  }
  
   isLoggedIn: boolean = false;
   user: IUser;
@@ -32,7 +38,6 @@ Called before ngOnInit()
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;
-    this.user = this.userService.getUserFromLocalStorage();
     
     this.router.events.forEach((event) => {
       if(event instanceof NavigationEnd){

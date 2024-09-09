@@ -2,7 +2,7 @@ import {  Component, OnDestroy, OnInit } from '@angular/core';
 import { AddApartmentFormService } from '../../services/form/add-apartment-form.service';
 import { BlUserApartmentsRequestsService } from '../../services/requests/bl-user-apartments-requests.service';
 import { IAddApartmentDdlData, IAddApartmentForm } from '../../services/interfaces/i-apartment';
-import { FormArray, FormControl } from '@angular/forms';
+import { FormArray, FormControl, Validators } from '@angular/forms';
 import { ILocation } from '../../../../home/interfaces/i-location';
 import { map, Observable, startWith } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -114,12 +114,17 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
   }
 
   getCities(): void {
+    const cityControl = this.form.controls['cityId'];
+
+    // cityControl.setValidators(Validators.required);
+    // cityControl.updateValueAndValidity();
+
     let id = this.form.value.countryId.id ?? this.form.value.countryId;
 
     this.requestService.getCitiesByCountryId(id).subscribe({
       next: (data) => {
         this.ddlData.cities = data;
-        this.form.controls['cityId'].enable();
+        cityControl.enable();
       },
       error: (err) => {
         console.log(err);
@@ -241,7 +246,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
               } 
             }).afterClosed().subscribe({
               next: success => {
-                // this.location.back();
+                this.location.back();
               }
             })
           },
@@ -255,7 +260,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
               } 
             }).afterClosed().subscribe({
               next: success => {
-                // this.location.back();
+                this.location.back();
               },
             })
             console.error(err);

@@ -4,12 +4,15 @@ import { IReview } from "./i-reviews"
 
 
 export interface IApartment extends IBaseName {
-  mainImage: string
-  price: number
-  totalReviews: number
-  rate: number
-  maxGuest: number
-  city: string
+  mainImage: string;
+  pricePerNight: number;    
+  totalReviews: number;
+  rate: number;
+  maxGuest: number;
+  city: string;
+  price?: number;
+  maxGuests?: number;
+  totalBookings?: number;
 } 
 
 export interface IApartmentDetail extends IApartment {

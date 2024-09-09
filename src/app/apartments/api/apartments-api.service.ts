@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { delay, map, Observable } from 'rxjs';
 import { IApartment, IApartmentDetail } from '../interfaces/i-apartments';
 import { ISearch } from '../interfaces/i-search';
+import { apiPath } from '../../config/api';
+import { config } from '../../config/global';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,14 @@ export class ApartmentsApiService {
       return this.http.get<IApartment[]>("assets/data/favoriteApartments.json");
     }
     return this.http.get<IApartment[]>("assets/data/apartments.json");
+  }
+
+  getByPopulation(): Observable<any[]>{
+    return this.http.get<any[]>(config.apiUrl  + "api/apartment?Sorts[0].SortProperty=popular&PerPage=6")
+  }
+
+  getOtherApartments(): Observable<any[]> {
+    return this.http.get<any[]>(config.apiUrl + "api/apartment?Sorts[0].SortProperty=popular&PerPage=6&Page=2")
   }
 
   getOne(id: number): Observable<IApartmentDetail>{

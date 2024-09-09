@@ -3,16 +3,14 @@ import { IDestination } from '../../interfaces/i-destination';
 import { LocationsRequestsService } from '../../requests/locations-requests.service';
 import { Router } from '@angular/router';
 
-
-/* TODO Errors
-  - Console error 
-*/
 @Component({
   selector: 'app-trending-destinations',
   templateUrl: './trending-destinations.component.html',
   styleUrl: './trending-destinations.component.css'
 })
 
+
+// POTREBNA IMPLEMENTACIJA BACK-A !!!!
 export class TrendingDestinationsComponent implements OnInit {
 
   constructor(

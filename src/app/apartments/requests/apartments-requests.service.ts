@@ -13,8 +13,12 @@ export class ApartmentsRequestsService {
   ) { }
 
 
-  getTopRated(): Observable<IApartment[]>{
-    return this.apiService.getAll(true);
+  getByPopulation(): Observable<any[]>{
+    return this.apiService.getByPopulation();
+  }
+
+  getOtherApartments(): Observable<any[]> {
+    return this.apiService.getOtherApartments();
   }
 
   getAll(search: ISearch = null): Observable<IApartment[]>{
