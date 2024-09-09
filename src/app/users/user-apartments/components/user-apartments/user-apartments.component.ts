@@ -40,7 +40,6 @@ export class UserApartmentsComponent implements OnInit{
    }
 
    edit(id: number): void {
-    this.formService.fillForm(id);
     this.formService.id = id;
     this.router.navigateByUrl("/profile/add")
    }

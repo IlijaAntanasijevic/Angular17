@@ -6,6 +6,7 @@ import { ILocation } from '../../interfaces/i-location';
 import { LocationsRequestsService } from '../../requests/locations-requests.service';
 import { Router } from '@angular/router';
 import { ISearch } from '../../../apartments/interfaces/i-search';
+import { Spinner } from '../../../shared/functions/spinner';
 
 @Component({
   selector: 'app-head',
@@ -16,7 +17,7 @@ import { ISearch } from '../../../apartments/interfaces/i-search';
 export class HeadComponent implements OnInit {
 
   constructor(
-    public requestService: LocationsRequestsService,
+    public requestService: LocationsRequestsService,    
     private router: Router
   ){}
 
@@ -59,12 +60,15 @@ export class HeadComponent implements OnInit {
   }
 
   fetchData(): void {
+    Spinner.show();
     this.requestService.getAllLocations().subscribe({
       next: (data) => {
+        Spinner.hide();
         this.options = data  
         this.initializeFilteredOptions();      
       },
       error: (error) => {
+        Spinner.hide();
         console.log(error);
       }
     });

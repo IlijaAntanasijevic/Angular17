@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { BlUserApartmentsRequestsService } from '../requests/bl-user-apartments-requests.service';
 import { IAddApartmentForm } from '../interfaces/i-apartment';
 
@@ -17,6 +17,7 @@ export class AddApartmentFormService{
   public form: FormGroup = this.init();
   public id: number;
   public data: IAddApartmentForm;
+  public cityId: number = null;
 
   init(): FormGroup {
     return this.fb.group({
@@ -36,33 +37,31 @@ export class AddApartmentFormService{
     });
   }
 
-  fillForm(id: number): void {
-    this.requestService.getById(id).subscribe({
-      next: (apartmentData: IAddApartmentForm) => {
-        this.data = apartmentData;
+  fillForm(): Observable<any> {
+    return this.requestService.getById(this.id).pipe(
+      tap(data => {
+        this.cityId = data.cityId;
+        console.log(data);
+        this.data = data;
         
+  
         this.form.patchValue({
-          name: apartmentData.name,
-          description: apartmentData.description,
-          address: apartmentData.address,
-          // cityCountryId: apartmentData.cityCountryId,
-          cityId: apartmentData.cityId,
-          maxGuests: apartmentData.maxGuests,
-          images: apartmentData.images,
-          countryId: apartmentData.countryId,
-          price: apartmentData.pricePerNight,
-          mainImage: apartmentData.mainImage,
-          apartmentTypeId: apartmentData.apartmentTypeId,
-          paymentMethodIds: apartmentData.paymentMethodIds,
-        });       
-          
-      },
-      error: (err) => {
-        console.log(err);
-        
-      }
-    })
+          name: data.name,
+          description: data.description,
+          address: data.address,
+          cityId: data.cityId,
+          maxGuests: data.maxGuests,
+          images: data.images,
+          countryId: data.countryId,
+          price: data.pricePerNight,
+          mainImage: data.mainImage,
+          apartmentTypeId: data.apartmentTypeId,
+          paymentMethodIds: data.paymentMethodIds,
+        });
+      })
+    );
   }
+  
 
   getForm(): FormGroup {
     return this.form;
@@ -74,6 +73,8 @@ export class AddApartmentFormService{
 
   reset(): void {
     this.form.reset();
+    this.featureIds.clear(); 
+    this.form = this.init();
     this.id = null;
     this.data = null;
   }
