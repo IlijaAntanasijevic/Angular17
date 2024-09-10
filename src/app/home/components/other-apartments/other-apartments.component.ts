@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IApartment } from '../../../apartments/interfaces/i-apartments';
 import { ApartmentsRequestsService } from '../../../apartments/requests/apartments-requests.service';
 import { config } from '../../../config/global';
+import { ImageUtils } from '../../../config/utility';
 
 @Component({
   selector: 'app-other-apartments',
@@ -14,15 +15,6 @@ export class OtherApartmentsComponent {
   ){}
 
   data: IApartment[] = [];
-  public imgPath = config.apiUrl + "/apartments/mainImages/"
-
-  getImagePath(path: string) {
-     let tmp = path.split("\\");
-     let lastElement = tmp[tmp.length - 1];
-     lastElement == "test" ? "b3a4a797-8f6b-4989-9934-6b65f9ac3e2b.jpg": lastElement;
-     return this.imgPath + lastElement;
-   } 
-
 
   ngOnInit(): void {
     this.requestService.getOtherApartments().subscribe({
@@ -30,7 +22,7 @@ export class OtherApartmentsComponent {
         this.data = data.data.map((item: IApartment) => {
           return {
             ...item,
-            mainImage: this.getImagePath(item.mainImage)
+            mainImage: ImageUtils.getImagePath(item.mainImage, "apartments/mainImages")
           };
         });
         console.log(this.data);

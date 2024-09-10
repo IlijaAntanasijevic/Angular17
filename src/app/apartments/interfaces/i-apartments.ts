@@ -1,6 +1,5 @@
 import { IBaseName } from "../../interfaces/i-base"
 import { IUser } from "../../users/profile/interfaces/i-user"
-import { IReview } from "./i-reviews"
 
 
 export interface IApartment extends IBaseName {
@@ -16,10 +15,14 @@ export interface IApartment extends IBaseName {
 } 
 
 export interface IApartmentDetail extends IApartment {
-  location: string
-  images: string[]
-  user: IUser
-  reviews: IReview[]
-  description: string
-  features: string[]
+  location: string;
+  images: string[];
+  user: IUser;
+  totalBookings: number;
+  description: string;
+  features: string[];
+  paymentMethods: string[];
+  apartmentType: string;
+  country: string;
+
 }

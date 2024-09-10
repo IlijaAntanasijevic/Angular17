@@ -15,11 +15,15 @@ export class ApartmentsApiService {
     public http: HttpClient
   ) {}
 
-  getAll(topRated: boolean = false): Observable<IApartment[]> {
-    if(topRated){
-      return this.http.get<IApartment[]>("assets/data/favoriteApartments.json");
-    }
-    return this.http.get<IApartment[]>("assets/data/apartments.json");
+  // getAll(topRated: boolean = false): Observable<IApartment[]> {
+  //   if(topRated){
+  //     return this.http.get<IApartment[]>("assets/data/favoriteApartments.json");
+  //   }
+  //   return this.http.get<IApartment[]>("assets/data/apartments.json");
+  // }
+
+  getAll(): Observable<any[]> {
+    return this.http.get<any[]>(config.apiUrl + "api/apartment")
   }
 
   getByPopulation(): Observable<any[]>{
@@ -31,21 +35,18 @@ export class ApartmentsApiService {
   }
 
   getOne(id: number): Observable<IApartmentDetail>{
-    return this.http.get<IApartmentDetail>("assets/data/apartmentsDetails.json").pipe(map((apartments: any) => {
-      return apartments.find((x: any) => x.id == id);
-       
-    }));
+    return this.http.get<IApartmentDetail>(config.apiUrl + `api/apartment/${id}`);
   }
 
-  getSearchedData(search: ISearch): Observable<IApartment[]> {
-    return this.http.get<IApartment[]>("assets/data/apartments.json").pipe(map((apartments: any) => {
+  getSearchedData(search: ISearch): Observable<any[]> {
+    return this.http.get<any[]>("assets/data/apartments.json").pipe(map((apartments: any) => {
       return apartments.filter((x: any) => x.city == search.location && search.guests <= x.maxGuest)
       
     }))
   } 
 
-  getApartmentsByLocation(location: string): Observable<IApartment[]> {
-    return this.http.get<IApartment[]>("assets/data/apartments.json").pipe(map((apartments: any) => {
+  getApartmentsByLocation(location: string): Observable<any[]> {
+    return this.http.get<any[]>("assets/data/apartments.json").pipe(map((apartments: any) => {
       return apartments.filter((x: any) => x.city == location)
    
     }))

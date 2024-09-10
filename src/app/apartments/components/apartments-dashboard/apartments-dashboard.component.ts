@@ -4,6 +4,9 @@ import { ApartmentsRequestsService } from '../../requests/apartments-requests.se
 import { ActivatedRoute } from '@angular/router';
 import { ISearch } from '../../interfaces/i-search';
 import { SearchService} from '../../services/search-service.service';
+import { Spinner } from '../../../shared/functions/spinner';
+import { ImageUtils } from '../../../config/utility';
+import { ImagePaths } from '../../../core/consts/image-paths';
 
 @Component({
   selector: 'app-apartments-dashboard',
@@ -28,13 +31,20 @@ export class ApartmentsDashboardComponent implements OnInit {
   }
 
   fetchData(search: ISearch = null): void {      
+    Spinner.show();
       this.requestService.getAll(search).subscribe({
         next: (data) => {
           this.notApartmentsFound = data.length === 0;
-          this.apartments = data;
-          this.displayedApartments = this.apartments.slice(0, 9);           
+          this.apartments = data.data;
+          
+          this.displayedApartments = this.apartments.slice(0, 9).map(item => ({
+            ...item, 
+            mainImage: ImageUtils.getImagePath(item.mainImage, ImagePaths.apartmenMainImages) 
+        })); 
+          Spinner.hide();    
         },
         error: (err) => {
+          Spinner.hide();    
           console.log(err);
         }
       })

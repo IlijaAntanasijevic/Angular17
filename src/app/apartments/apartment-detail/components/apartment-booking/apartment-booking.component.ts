@@ -41,7 +41,7 @@ export class ApartmentBookingComponent implements OnInit {
   ngOnInit(): void {
     this.searched = this.searchService.getData;
     //Display only the maximum number of guests per apartment
-    for(let i = 1; i <= this.apartment.maxGuest; i++){
+    for(let i = 1; i <= this.apartment.maxGuests; i++){
       this.totalGuests.push(i);
     }
       
@@ -73,7 +73,7 @@ export class ApartmentBookingComponent implements OnInit {
 
   calculateTotalPrice(): void {
     this.calculateTotalNights();
-    this.totalPrice = this.totalNights * this.apartment.price
+    this.totalPrice = this.totalNights * this.apartment.pricePerNight
 
   }
 

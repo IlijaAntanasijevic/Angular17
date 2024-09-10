@@ -68,21 +68,15 @@ export class ProfileFormComponent implements OnInit, OnDestroy{
     this.formService.submit(this.user.id).subscribe({
       next: () => {
         this.userService.fetchUserInfo();
-     
-        setTimeout(() => {
-            this.user = this.userService.getUserFromLocalStorage();
-            console.log(this.user);
-  
-            this.success = true;
-            this.imgPath = config.apiUrl + "users/";
-            this.avatarChanged = false;
-          }, 100); 
+          this.user = this.userService.getUserFromLocalStorage();
+          this.success = true;
+          this.imgPath = config.apiUrl + "users/";
+          this.avatarChanged = false;
           Spinner.hide();
       },
       error: (err) => {
         Spinner.hide();
         console.log(err);
-        
         err.error.forEach((error: any) => {
           const propertyName = error.property;
           const errorMessage = error.error;
@@ -90,9 +84,7 @@ export class ProfileFormComponent implements OnInit, OnDestroy{
         });
         
         //this.serverError = err.error.message;
-        this.success = false;
-
-        
+        this.success = false;        
       }
     })
   }

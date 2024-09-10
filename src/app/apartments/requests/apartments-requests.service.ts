@@ -21,15 +21,14 @@ export class ApartmentsRequestsService {
     return this.apiService.getOtherApartments();
   }
 
-  getAll(search: ISearch = null): Observable<IApartment[]>{
+  getAll(search: ISearch = null): Observable<any>{
 
-    if(search && search.location && search.checkIn && search.checkOut && search.guests){
-      return this.apiService.getSearchedData(search);
-    }
-    else if(search && search.location){
-      return this.apiService.getApartmentsByLocation(search.location)
-    }
-    //console.log(search);
+    // if(search && search.location && search.checkIn && search.checkOut && search.guests){
+    //   return this.apiService.getSearchedData(search);
+    // }
+    // else if(search && search.location){
+    //   return this.apiService.getApartmentsByLocation(search.location)
+    // }
 
     return this.apiService.getAll();
   }

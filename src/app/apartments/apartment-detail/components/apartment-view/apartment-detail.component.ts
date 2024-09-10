@@ -5,6 +5,10 @@ import { IApartmentDetail } from '../../../interfaces/i-apartments';
 import { MatDialog } from '@angular/material/dialog';
 import { ApartmentDetailFormComponent } from '../apartment-form/apartment-detail-form.component';
 import { SearchService } from '../../../services/search-service.service';
+import { config } from '../../../../config/global';
+import { ImageUtils } from '../../../../config/utility';
+import { Spinner } from '../../../../shared/functions/spinner';
+import { ImagePaths } from '../../../../core/consts/image-paths';
 
 @Component({
   selector: 'app-apartment-detail',
@@ -12,20 +16,20 @@ import { SearchService } from '../../../services/search-service.service';
   styleUrl: './apartment-detail.component.css'
 })
 export class ApartmentDetailComponent implements OnInit {
-  id: number;
-  apartment: IApartmentDetail;
-  sliderImages: any;
-  featuresFirstColum: string[];
-  featuresSecondColum: string[];
-
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private requestService: ApartmentsRequestsService,
     private dialog: MatDialog
-  ){}
+  ) { }
   
+  id: number;
+  apartment: IApartmentDetail;
+  sliderImages: any;
+  featuresFirstColum: string[];
+  featuresSecondColum: string[];
+  public mainImagePath: string;
 
   ngOnInit(): void {
     this.fetchData();
@@ -34,21 +38,24 @@ export class ApartmentDetailComponent implements OnInit {
   }
 
   fetchData(): void {
+    Spinner.show();
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.requestService.getOneApartment(this.id).subscribe({
       next: (data) => {
         this.apartment = data;
-        this.sliderImages = data.images.slice(0,4);
-        console.log(this.sliderImages);
-        
+        this.sliderImages = data.images.slice(0,4).map(path => {          
+          return ImageUtils.getImagePath(path, ImagePaths.apartmenImages);
+        })
+        this.mainImagePath = ImageUtils.getImagePath(data.mainImage, ImagePaths.apartmenMainImages);
+
         let divideFeatures = Math.ceil(data.features.length / 2);
         this.featuresFirstColum = data.features.slice(0, divideFeatures);
         this.featuresSecondColum = data.features.slice(divideFeatures);
+        Spinner.hide();
        
       },
       error: (err) => {
-        console.log(err);
-        
+        Spinner.hide();        
       }
     })
   }
