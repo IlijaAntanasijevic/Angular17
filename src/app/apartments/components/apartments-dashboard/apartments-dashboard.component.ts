@@ -7,7 +7,6 @@ import { SearchService} from '../../services/search-service.service';
 import { Spinner } from '../../../shared/functions/spinner';
 import { ImageUtils } from '../../../config/utility';
 import { ImagePaths } from '../../../core/consts/image-paths';
-import { BlPaginatorDataService } from '../../services/data/bl-paginator-data.service';
 
 @Component({
   selector: 'app-apartments-dashboard',
@@ -19,8 +18,7 @@ export class ApartmentsDashboardComponent implements OnInit {
   constructor(
     private requestService: ApartmentsRequestsService,
     private route: ActivatedRoute,
-    private searchService: SearchService,
-    public pagiantionService: BlPaginatorDataService
+    public searchService: SearchService,
   ) {}
 
   apartments: IApartment[];
@@ -41,7 +39,7 @@ export class ApartmentsDashboardComponent implements OnInit {
     Spinner.show();
       this.requestService.getAll(this.pagination).subscribe({
         next: (data) => {   
-          this.pagiantionService.paginationData = data;
+          this.searchService.paginationData = data;
           this.notApartmentsFound = data.length === 0;
           this.apartments = data.data;
           

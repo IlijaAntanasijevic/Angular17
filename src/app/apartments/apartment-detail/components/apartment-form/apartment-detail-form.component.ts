@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IBookingForm } from '../../../interfaces/i-booking';
-import { SearchService} from '../../../services/search-service.service';
+import { IBookingForm } from '../../../../booking/components/interfaces/i-booking';
 
 @Component({
   selector: 'app-apartment-detail-form',

@@ -7,6 +7,9 @@ import { SearchService } from '../../../services/search-service.service';
 import { ISearch } from '../../../interfaces/i-search';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { AuthService } from '../../../../shared/buisiness-logic/auth.service';
+import { IBookingForm } from '../../../../booking/components/interfaces/i-booking';
+import { BlBookingDataService } from '../../../../booking/components/services/bl-booking-data.service';
 
 @Component({
   selector: 'app-apartment-booking',
@@ -16,31 +19,37 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 })
 export class ApartmentBookingComponent implements OnInit {
 
+  constructor(
+    private router: Router,
+    private searchService: SearchService,
+    public authService: AuthService,
+    private bookingDataService: BlBookingDataService
+  ) { }
+
   @Input() apartment: IApartment
-  searched: ISearch
+
+  searched: ISearch;
   minDate: Date = new Date(new Date().setDate(new Date().getDate() + 1));
 
   totalGuests: number[] = [];
   totalPrice: number = 0;
   totalNights: number | null = null;
-  
-  constructor(
-    private dialog: MatDialog,
-    private router: Router,
-    private searchService: SearchService
-  ){}
 
+  
   form = new FormGroup({
-    start: new FormControl<Date | null>(null, Validators.required),
-    end: new FormControl<Date | null>(null, Validators.required),
+    start: new FormControl<Date>(null, Validators.required),
+    end: new FormControl<Date>(null, Validators.required),
     guests: new FormControl<number>(1),
   })
+
+  public reservationIsDisabled = !this.authService.isLoggedIn;
 
 
 
   ngOnInit(): void {
     this.searched = this.searchService.getData;
-    //Display only the maximum number of guests per apartment
+    console.log(!this.authService.isLoggedIn);
+    
     for(let i = 1; i <= this.apartment.maxGuests; i++){
       this.totalGuests.push(i);
     }
@@ -51,24 +60,18 @@ export class ApartmentBookingComponent implements OnInit {
     
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ApartmentDetailFormComponent, {
-      data: {
-        pricePerNight: this.apartment.price,
-        totalPrice: this.totalPrice,
-        checkIn: this.form.get('start').value,
-        checkOut: this.form.get('end').value,
-        guests: this.form.get('guests').value
-      },
-      disableClose: true
-    });
+  navigateToBookingForm(): void {
+    let bookingData: IBookingForm = {
+      pricePerNight: this.apartment.pricePerNight,
+      totalPrice: this.totalPrice,
+      checkIn: this.form.get('start').value,
+      checkOut: this.form.get('end').value,
+      guests: this.form.get('guests').value
+    };
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.router.navigate(['/apartments']);
-      }
-      console.log(`Dialog result: ${result}`);
-    });
+    this.bookingDataService.setBookingFormData(bookingData);
+
+    this.router.navigate(['booking/form'])
   }
 
   calculateTotalPrice(): void {

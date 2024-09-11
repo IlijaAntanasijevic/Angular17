@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ISearch } from '../interfaces/i-search';
+import { IPaginationData, ISearch } from '../interfaces/i-search';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,13 @@ export class SearchService {
   get getData() {
     return this.searchData;
   }
+
+  
+  public paginationData: IPaginationData = {
+    data: [],    
+    pages: 0,
+    perPage: 9,
+    totalCount: 0
+  };
 
 }

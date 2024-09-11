@@ -25,11 +25,8 @@ export class HeaderComponent implements OnInit{
     this.user = this.userService.getUserFromLocalStorage();
     
     this.router.events.forEach((event) => {
-      if(event instanceof NavigationEnd){
-        console.log(this.user);
-        
+      if(event instanceof NavigationEnd){        
         this.user = this.userService.getUserFromLocalStorage();
-        console.log(this.user);
         this.isLoggedIn = this.authService.isLoggedIn;
       }
     });
