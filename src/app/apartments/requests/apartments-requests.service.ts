@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApartmentsApiService } from '../api/apartments-api.service';
 import { Observable } from 'rxjs';
 import { IApartment, IApartmentDetail } from '../interfaces/i-apartments';
-import { ISearch } from '../interfaces/i-search';
+import { IPagination, ISearch } from '../interfaces/i-search';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ApartmentsRequestsService {
     return this.apiService.getOtherApartments();
   }
 
-  getAll(search: ISearch = null): Observable<any>{
+  getAll(pagination: IPagination, search: ISearch = null): Observable<any>{
 
     // if(search && search.location && search.checkIn && search.checkOut && search.guests){
     //   return this.apiService.getSearchedData(search);
@@ -30,7 +30,7 @@ export class ApartmentsRequestsService {
     //   return this.apiService.getApartmentsByLocation(search.location)
     // }
 
-    return this.apiService.getAll();
+    return this.apiService.getAll(pagination);
   }
 
   getOneApartment(id: number): Observable<IApartmentDetail> {

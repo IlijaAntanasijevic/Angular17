@@ -88,7 +88,8 @@
 
             </div>
           </div>
-          <app-paginator [apartments]="apartments" (pageChange)="onPageChange($event)"></app-paginator>
+          <app-paginator [paginationData]="pagiantionService.paginationData"
+            (pageChange)="onPageChange($event)"></app-paginator>
         </div>
       </div>
     </div>

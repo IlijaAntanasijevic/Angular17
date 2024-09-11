@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { IApartment } from '../../interfaces/i-apartments';
 import { ApartmentsRequestsService } from '../../requests/apartments-requests.service';
 import { ActivatedRoute } from '@angular/router';
-import { ISearch } from '../../interfaces/i-search';
+import { IPagination, ISearch } from '../../interfaces/i-search';
 import { SearchService} from '../../services/search-service.service';
 import { Spinner } from '../../../shared/functions/spinner';
 import { ImageUtils } from '../../../config/utility';
 import { ImagePaths } from '../../../core/consts/image-paths';
+import { BlPaginatorDataService } from '../../services/data/bl-paginator-data.service';
 
 @Component({
   selector: 'app-apartments-dashboard',
@@ -18,7 +19,8 @@ export class ApartmentsDashboardComponent implements OnInit {
   constructor(
     private requestService: ApartmentsRequestsService,
     private route: ActivatedRoute,
-    private searchService: SearchService
+    private searchService: SearchService,
+    public pagiantionService: BlPaginatorDataService
   ) {}
 
   apartments: IApartment[];
@@ -26,18 +28,24 @@ export class ApartmentsDashboardComponent implements OnInit {
   search: ISearch;
   notApartmentsFound: boolean = false;
 
+  private pagination: IPagination = {
+    page: 1,
+    perPage: 9
+  };
+
   ngOnInit(): void {
     this.getQueryData();
   }
 
   fetchData(search: ISearch = null): void {      
     Spinner.show();
-      this.requestService.getAll(search).subscribe({
-        next: (data) => {
+      this.requestService.getAll(this.pagination).subscribe({
+        next: (data) => {   
+          this.pagiantionService.paginationData = data;
           this.notApartmentsFound = data.length === 0;
           this.apartments = data.data;
           
-          this.displayedApartments = this.apartments.slice(0, 9).map(item => ({
+          this.displayedApartments = this.apartments.map(item => ({
             ...item, 
             mainImage: ImageUtils.getImagePath(item.mainImage, ImagePaths.apartmenMainImages) 
         })); 
@@ -79,8 +87,10 @@ export class ApartmentsDashboardComponent implements OnInit {
     })
   }
 
-  onPageChange(apartments: IApartment[]): void {
-    this.displayedApartments = apartments;
+  onPageChange(pageNumber: number): void {
+    this.pagination.page = pageNumber;
+    this.fetchData();
+    
     window.scrollTo({
       top: 0,
       left: 0
