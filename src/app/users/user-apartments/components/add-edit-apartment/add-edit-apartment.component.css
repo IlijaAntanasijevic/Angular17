@@ -154,9 +154,6 @@ input::-webkit-inner-spin-button {
 
 .fixed-image-size {
   width: 200px;
-  /* Set the width to 200px */
   height: auto;
-  /* Optional: Let the height adjust to maintain aspect ratio */
   object-fit: cover;
-  /* Ensures the image covers the given dimensions without stretching */
 }

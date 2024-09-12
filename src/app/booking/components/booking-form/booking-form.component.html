@@ -2,5 +2,124 @@
 <h1>OOPS.......</h1>
 }
 @else {
+<section class="box-section box-contact-form background-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mb-30 mt-25 mx-auto">
+        <h2 class="neutral-1000 mb-55 text-center">Confirm Booking</h2>
+        <div class="form-contact">
+          <form [formGroup]="form">
+            <!-- First row -->
+            <div class="row">
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">First name</mat-label>
+                <input matInput formControlName="firstName" class="form-control">
+              </div>
 
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">Last name</mat-label>
+                <input matInput formControlName="lastName" class="form-control">
+              </div>
+
+              <!-- Second row -->
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">Email</mat-label>
+                <input matInput formControlName="email" class="form-control">
+                @if(form.get('email').hasError('required')) {
+                <mat-error style="color: red;">Email is required</mat-error>
+                }
+                @if(form.get('email').hasError('email')) {
+                <mat-error style="color: red;">Email is not valid format</mat-error>
+                }
+              </div>
+
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">Phone</mat-label>
+                <input matInput formControlName="phone" class="form-control">
+                @if(form.get('phone').hasError('required')) {
+                <mat-error style="color: red;">Phone is required</mat-error>
+                }
+              </div>
+
+              <!-- Third row -->
+
+              <div class="col-lg-3 mt-5 mb-35">
+                <mat-label class="neutral-1000">Price per night ($)</mat-label>
+                <input matInput formControlName="pricePerNight" class="form-control">
+              </div>
+
+              <div class="col-lg-3 mt-5 mb-35">
+                <mat-label class="neutral-1000">Total guests</mat-label>
+                <input matInput formControlName="totalGuests" class="form-control">
+              </div>
+
+              <div class="col-lg-3 mt-5 mb-35">
+                <mat-label class="neutral-1000">Total nights</mat-label>
+                <input matInput [disabled]="true" [value]="totalNights" class="form-control">
+              </div>
+
+              <div class="col-lg-3 mt-5 mb-35">
+                <mat-label class="neutral-1000">Total price ($)</mat-label>
+                <input matInput formControlName="totalPrice" class="form-control">
+              </div>
+
+              <!-- Fourth row -->
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">Check In</mat-label>
+                <input matInput formControlName="checkIn" class="form-control">
+              </div>
+
+              <div class="col-lg-6 mt-5 mb-35">
+                <mat-label class="neutral-1000">Check Out</mat-label>
+                <input matInput formControlName="checkOut" class="form-control">
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+
+
+        <!-- Apartment details -->
+
+        @if(apartment) {
+        <div class="row mb-35 mt-25">
+          <div class="col-lg-6 mt-5 mb-35">
+            <div class="text-light">
+              <span class="apartment-title">Name:</span>
+              <span class="apartment-data"> {{apartment.name}}</span>
+            </div>
+            <div class="text-light">
+              <span class="apartment-title">Country:</span>
+              <span class="apartment-data"> {{apartment.country}}</span>
+            </div>
+            <div class="text-light">
+              <span class="apartment-title">City:</span>
+              <span class="apartment-data"> {{apartment.city}}</span>
+
+            </div>
+            <div class="text-light">
+              <span class="apartment-title">Address:</span>
+              <span class="apartment-data"> {{apartment.address}}</span>
+            </div>
+            <div class="text-light">
+              <span class="apartment-title">Type:</span>
+              <span class="apartment-data"> {{apartment.apartmentType}}</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <img src="{{apartment.mainImage}}" alt="{{apartment.name}}">
+          </div>
+        </div>
+        }
+
+        <div class="col-12 d-flex justify-content-center mt-75">
+          <button mat-flat-button class="w-50 primary-button-color" (click)="confirmBooking()">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 }

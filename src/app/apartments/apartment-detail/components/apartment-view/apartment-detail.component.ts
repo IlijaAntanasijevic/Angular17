@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApartmentDetailFormComponent } from '../apartment-form/apartment-detail-form.component';
 import { SearchService } from '../../../services/search-service.service';
 import { config } from '../../../../config/global';
-import { ImageUtils } from '../../../../config/utility';
+import { ImageUtils } from '../../../../helpers/utility';
 import { Spinner } from '../../../../shared/functions/spinner';
 import { ImagePaths } from '../../../../core/consts/image-paths';
 

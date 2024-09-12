@@ -19,16 +19,31 @@
 
 
     <div class="item-line-booking mt-3">
-      <div class="d-flex flex-column">
-        <strong class="mb-2 neutral-1000 text-md, text-md-medium, text-md-bold">Guests:</strong>
-        <mat-form-field class="example-full-width" [formGroup]="form">
-          <mat-select formControlName="guests">
-            @for (value of totalGuests; track value) {
-            <mat-option [value]="value">{{value}}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+      <div>
+        <div class="d-flex flex-column">
+          <strong class="mb-2 neutral-1000 text-md, text-md-medium, text-md-bold">Guests:</strong>
+          <mat-form-field class="example-full-width" [formGroup]="form">
+            <mat-select formControlName="guests">
+              @for (value of totalGuests; track value) {
+              <mat-option [value]="value">{{value}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex flex-column">
+          <strong class="mb-2 neutral-1000 text-md, text-md-medium, text-md-bold">Payment method:</strong>
+          <mat-form-field class="example-full-width" [formGroup]="form">
+            <mat-select formControlName="paymentId">
+              @for (value of paymentMethodsObj; track value) {
+              <mat-option [value]="value.id">{{value.title}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
+
+
     </div>
     <div class="item-line-booking"> <strong class="text-md-bold neutral-1000">Per night:</strong>
       <div class="line-booking-right">

@@ -1,0 +1,30 @@
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: #4a4a4a !important;
+  border: 1px solid #FEFA17 !important;
+  /* color: white; */
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__title {
+  color: white !important;
+  font-size: 2rem !important;
+  margin: 1rem 0rem !important;
+
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__content {
+  color: white !important;
+  font-size: 1.2rem !important;
+  line-height: 3 !important;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__content .label {
+  font-weight: bold;
+}
+
+::ng-deep .mat-mdc-button:not(:disabled) {
+  font-size: 1.1rem;
+  background-color: #FEFA17;
+  padding: 10px 40px;
+  text-align: center;
+
+}

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IPagination, ISearch } from '../../interfaces/i-search';
 import { SearchService} from '../../services/search-service.service';
 import { Spinner } from '../../../shared/functions/spinner';
-import { ImageUtils } from '../../../config/utility';
+import { ImageUtils } from '../../../helpers/utility';
 import { ImagePaths } from '../../../core/consts/image-paths';
 
 @Component({

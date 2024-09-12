@@ -21,8 +21,10 @@ export interface IApartmentDetail extends IApartment {
   totalBookings: number;
   description: string;
   features: string[];
+  paymentMethodIds?: number[];
   paymentMethods: string[];
   apartmentType: string;
   country: string;
+  address?: string;
 
 }

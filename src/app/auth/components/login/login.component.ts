@@ -44,11 +44,11 @@ export class LoginComponent {
 
     this.requestService.login(this.data).subscribe({
       next: (data) => {
-        Spinner.hide();
         this.succesfullyLoggedIn = true;
         this.authService.setJwtToken(data.token)
         this.userService.fetchUserInfo();
         this.router.navigateByUrl("/apartments")
+        Spinner.hide();
         
       },   
       error: (err) => {

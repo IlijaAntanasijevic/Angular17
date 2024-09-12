@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IBookingForm } from '../interfaces/i-booking';
+import { IBooking, IBookingForm } from '../interfaces/i-booking';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +8,13 @@ export class BlBookingDataService {
 
   constructor() { }
 
-  private bookingData: IBookingForm = null;
+  private bookingData: IBooking = null;
 
-  setBookingFormData(data: IBookingForm) {
+  setBookingFormData(data: IBooking) {
     this.bookingData = data;
   }
 
-  getBookingData(): IBookingForm {
+  getBookingData(): IBooking {
     return this.bookingData;
   }
 }

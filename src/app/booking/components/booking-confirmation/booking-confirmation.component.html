@@ -1,1 +1,26 @@
-<p>booking-confirmation works!</p>
+<h2 mat-dialog-title>User Information</h2>
+
+<mat-dialog-content class="dialog-content">
+  <div class="user-info">
+    <div class="info-item">
+      <span class="label">Email:</span>
+      <span class="value">{{ apartmentOwner?.email }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">First Name:</span>
+      <span class="value">{{ apartmentOwner?.firstName }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Last Name:</span>
+      <span class="value">{{ apartmentOwner?.lastName }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Phone:</span>
+      <span class="value">{{ apartmentOwner?.phone }}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

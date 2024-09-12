@@ -1,3 +1,10 @@
+@if(reservations?.length == 0) {
+<div style="height: 20vh;">
+  <h5>You currently do not have any reservations...</h5>
+</div>
+}
+
+@else {
 <div class="mt-35">
   <div class="table-header d-flex justify-content-between">
     <div class="header-cell">Image</div>
@@ -40,3 +47,4 @@
     </div>
   </div>
 </div>
+}

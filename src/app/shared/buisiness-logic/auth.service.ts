@@ -29,6 +29,11 @@ export class AuthService {
     return !!this.getJwtToken();
   }
 
+  getUserId(): number {
+    let jwtData = this.getJwtTokenData();    
+    return jwtData.Id;
+  }
+
   logout(): void {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
