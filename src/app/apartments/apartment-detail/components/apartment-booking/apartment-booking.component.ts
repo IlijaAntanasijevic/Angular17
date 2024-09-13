@@ -12,6 +12,7 @@ import { IBooking, IBookingAvailability, IBookingForm } from '../../../../bookin
 import { BlBookingDataService } from '../../../../booking/components/services/bl-booking-data.service';
 import { DateHelpers, DialogHelper } from '../../../../helpers/utility';
 import { ApartmentsRequestsService } from '../../../requests/apartments-requests.service';
+import { Spinner } from '../../../../shared/functions/spinner';
 
 @Component({
   selector: 'app-apartment-booking',
@@ -78,8 +79,13 @@ export class ApartmentBookingComponent implements OnInit {
   }
 
   calculateTotalPrice(): void {
-    const startDate = this.form.value.start
-    const endDate = this.form.value.end
+    const startDate = this.form.value.start;
+    const endDate = this.form.value.end;
+    this.isAvailable = true;
+
+    if(!endDate || !startDate) return;
+    
+    
     this.totalNights = DateHelpers.calculateTotalNights(startDate, endDate)
 
     this.totalPrice = this.totalNights * this.apartment.pricePerNight
@@ -94,6 +100,7 @@ export class ApartmentBookingComponent implements OnInit {
   }
 
   checkAvailability(): void {
+    Spinner.show();
     let data: IBookingAvailability = {
       apartmentId: this.apartment.id,
       checkIn: this.form.get('start').value,
@@ -109,8 +116,11 @@ export class ApartmentBookingComponent implements OnInit {
           this.isAvailable = true;
           this.navigateToBookingForm();
         }
+        Spinner.hide();
+
       },
       error: (err) => {
+        Spinner.hide();
         DialogHelper.openErrorDialog(this.matDialog, err.error.error)
       }
     })
