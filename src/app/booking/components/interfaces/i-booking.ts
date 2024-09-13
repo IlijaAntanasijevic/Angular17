@@ -37,3 +37,10 @@ export interface IBookingApartment {
   name: string;
 
 }
+
+export interface IBookingAvailability{
+  apartmentId: number;
+  checkIn: Date;
+  checkOut: Date;
+
+}

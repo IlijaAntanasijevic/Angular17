@@ -25,6 +25,7 @@ export class ApartmentsDashboardComponent implements OnInit {
   displayedApartments: IApartment[];
   search: ISearch;
   notApartmentsFound: boolean = false;
+  totalCountApartments: number = null;
 
   private pagination: IPagination = {
     page: 1,
@@ -32,16 +33,33 @@ export class ApartmentsDashboardComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.getQueryData();
+    this.getSearchedData();
+  }
+
+  getSearchedData() {   
+    this.searchService.searchData.subscribe({
+      next: (data) =>{        
+        if(data){
+          this.search = data;
+          this.fetchData(data);  
+        } 
+        else {
+          this.fetchData();  
+        }     
+      }
+    })
   }
 
   fetchData(search: ISearch = null): void {      
     Spinner.show();
-      this.requestService.getAll(this.pagination).subscribe({
+      this.requestService.getAll(this.pagination, search).subscribe({
         next: (data) => {   
           this.searchService.paginationData = data;
           this.notApartmentsFound = data.length === 0;
           this.apartments = data.data;
+          this.totalCountApartments = data.totalCount;
+          console.log(data);
+          
           
           this.displayedApartments = this.apartments.map(item => ({
             ...item, 
@@ -56,34 +74,6 @@ export class ApartmentsDashboardComponent implements OnInit {
       })
   }
 
-  getQueryData() {
-    this.route.queryParams.subscribe(params => {
-      if(params['checkIn'] && params['checkOut'] && params['location'] && params['guests']){
-        this.search = {
-          checkIn: params['checkIn'],
-          checkOut: params['checkOut'],
-          location: params['location'],
-          guests: params['guests']
-        };
-        this.searchService.setData(this.search);
-        this.fetchData(this.search);
-      }
-      //Search by trending destination
-      else if(params['location']){
-        this.search = {
-          checkIn: null,
-          checkOut: null,
-          location: params['location'],
-          guests: null
-        }
-        this.fetchData(this.search);
-      }
-      else {
-        this.fetchData();
-      }
- 
-    })
-  }
 
   onPageChange(pageNumber: number): void {
     this.pagination.page = pageNumber;

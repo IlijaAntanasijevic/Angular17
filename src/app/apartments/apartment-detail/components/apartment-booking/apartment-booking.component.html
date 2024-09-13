@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="box-button-book">
-      <button (click)="navigateToBookingForm()" [disabled]="reservationIsDisabled || form.invalid"
+      <button (click)="checkAvailability()" [disabled]="reservationIsDisabled || form.invalid"
         class="btn btn-book">Reserve
         <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8 15L15 8L8 1M15 8L1 8" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -66,6 +66,11 @@
       @if(reservationIsDisabled && form.valid) {
       <mat-error>
         You must be registered to make a reservation
+      </mat-error>
+      }
+      @else if(!isAvailable) {
+      <mat-error>
+        The apartment is not available for the selected dates.
       </mat-error>
       }
 

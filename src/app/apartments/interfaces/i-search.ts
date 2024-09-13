@@ -1,9 +1,10 @@
+import { IBaseName } from "../../interfaces/i-base";
+
 export interface ISearch {
-  checkIn: Date | null
-  checkOut: Date | null
-  location: string 
-  //locationId: number
-  guests: number | null
+  checkIn: Date
+  checkOut: Date
+  city: IBaseName;
+  guests: number
 } 
 
 export interface IPagination {

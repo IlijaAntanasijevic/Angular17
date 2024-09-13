@@ -22,7 +22,7 @@
           <div class="box-filters mb-25 pb-5 border-bottom border-1">
             <div class="row align-items-center">
               <div class="box-view-type">
-                <span class="text-sm-bold neutral-500 number-found">{{apartments.length}} apartments found</span>
+                <span class="text-sm-bold neutral-500 number-found">{{totalCountApartments}} apartments found</span>
               </div>
               <div class="col-xl-10 col-md-8 mb-12 text-lg-start text-center mb-2">
 
@@ -31,7 +31,7 @@
                   <mat-chip>{{search.checkIn | date: 'd/MMM/yyyy'}} - {{search.checkOut | date:'d/MMM/yyyy'}}</mat-chip>
                   }
 
-                  <mat-chip>{{search.location}}</mat-chip>
+                  <mat-chip>{{search.city.name}}</mat-chip>
 
                   @if(search.guests){
                   <mat-chip> Guests: <span>{{search.guests}}</span></mat-chip>

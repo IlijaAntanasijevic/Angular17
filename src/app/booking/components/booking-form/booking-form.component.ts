@@ -116,7 +116,7 @@ export class BookingFormComponent implements OnInit, OnDestroy{
         next: (data) => {
           Spinner.hide();
           this.matDialog.open(BookingConfirmationComponent, {
-            width: '800px',
+            width: '600px',
             height: "auto",
             data: {
               isSuccess: true,

@@ -8,9 +8,10 @@ import { ISearch } from '../../../interfaces/i-search';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { AuthService } from '../../../../shared/buisiness-logic/auth.service';
-import { IBooking, IBookingForm } from '../../../../booking/components/interfaces/i-booking';
+import { IBooking, IBookingAvailability, IBookingForm } from '../../../../booking/components/interfaces/i-booking';
 import { BlBookingDataService } from '../../../../booking/components/services/bl-booking-data.service';
-import { DateHelpers } from '../../../../helpers/utility';
+import { DateHelpers, DialogHelper } from '../../../../helpers/utility';
+import { ApartmentsRequestsService } from '../../../requests/apartments-requests.service';
 
 @Component({
   selector: 'app-apartment-booking',
@@ -24,12 +25,13 @@ export class ApartmentBookingComponent implements OnInit {
     private router: Router,
     private searchService: SearchService,
     public authService: AuthService,
-    private bookingDataService: BlBookingDataService
+    private bookingDataService: BlBookingDataService,
+    private requestsService: ApartmentsRequestsService,
+    private matDialog: MatDialog
   ) { }
 
   @Input() apartment: IApartmentDetail
 
-  searched: ISearch;
   minDate: Date = new Date(new Date().setDate(new Date().getDate() + 1));
 
   totalGuests: number[] = [];
@@ -37,6 +39,7 @@ export class ApartmentBookingComponent implements OnInit {
   totalNights: number | null = null;
 
   public paymentMethodsObj: { id: number, title: string }[] = [];
+  public isAvailable: boolean = true;
 
   
   form = new FormGroup({
@@ -48,8 +51,7 @@ export class ApartmentBookingComponent implements OnInit {
 
   public reservationIsDisabled = !this.authService.isLoggedIn;
 
-  ngOnInit(): void {
-    this.searched = this.searchService.getData;    
+  ngOnInit(): void { 
     
     this.createPaymentMethodObject(this.apartment.paymentMethodIds, this.apartment.paymentMethods);
     
@@ -57,9 +59,14 @@ export class ApartmentBookingComponent implements OnInit {
       this.totalGuests.push(i);
     }
       
-    if(this.searchService.getData){
-      this.fillForm(this.searchService.getData)
-    }
+   
+    this.searchService.searchData.subscribe({
+      next: (data) => {
+        if(data){
+          this.fillForm(data)
+        }
+      }
+    })
     
   }
 
@@ -86,6 +93,29 @@ export class ApartmentBookingComponent implements OnInit {
     this.calculateTotalPrice();
   }
 
+  checkAvailability(): void {
+    let data: IBookingAvailability = {
+      apartmentId: this.apartment.id,
+      checkIn: this.form.get('start').value,
+      checkOut: this.form.get('end').value
+    }
+
+    this.requestsService.checkAvailability(data).subscribe({
+      next: (data) => {
+        if(!data.isAvailable){
+          this.isAvailable = data.IsAvailable;
+        }
+        else {
+          this.isAvailable = true;
+          this.navigateToBookingForm();
+        }
+      },
+      error: (err) => {
+        DialogHelper.openErrorDialog(this.matDialog, err.error.error)
+      }
+    })
+  }
+
 
   navigateToBookingForm(): void {
     let paymentId = this.form.get('paymentId').value;
@@ -104,5 +134,6 @@ export class ApartmentBookingComponent implements OnInit {
 
     this.router.navigate(['booking/form'])
   }
+
 
 }

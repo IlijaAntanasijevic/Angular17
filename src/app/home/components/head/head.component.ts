@@ -7,6 +7,7 @@ import { LocationsRequestsService } from '../../requests/locations-requests.serv
 import { Router } from '@angular/router';
 import { ISearch } from '../../../apartments/interfaces/i-search';
 import { Spinner } from '../../../shared/functions/spinner';
+import { SearchService } from '../../../apartments/services/search-service.service';
 
 @Component({
   selector: 'app-head',
@@ -18,13 +19,13 @@ export class HeadComponent implements OnInit {
 
   constructor(
     public requestService: LocationsRequestsService,    
-    private router: Router
+    private router: Router,
+    private searchService: SearchService
   ){}
 
   public totalGuests: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   options: ILocation[] = [];
   filteredOptions: Observable<ILocation[]>;
-  searchObject: ISearch;
 
   totalNights: number | null = null;
   minDate: Date = new Date(new Date().setDate(new Date().getDate() + 1));
@@ -86,18 +87,19 @@ export class HeadComponent implements OnInit {
 
   public search(): void {
     const location = this.form.value.location;
-    //const locationId = typeof location === 'object' && location !== null ? location.id : null;
-    const locationName = typeof location === 'object' && location !== null ? location.name : null;
+    const cityId = typeof location === 'object' && location !== null ? location.id : null;
+    const cityName = typeof location === 'object' && location !== null ? location.name : null;
 
 
-    this.searchObject = { 
+    let searchObject: ISearch = { 
       checkIn: new Date(this.form.value.start),
       checkOut: new Date(this.form.value.end),
-      location: locationName,
+      city: {id: cityId, name: cityName},
       guests: this.form.value.guests
     };
-    
-   this.router.navigate(['/apartments'], {queryParams: this.searchObject})
+
+  this.searchService.searchData.next(searchObject);
+  this.router.navigate(['/apartments'])
     
   }
 

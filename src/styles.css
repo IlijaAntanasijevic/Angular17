@@ -15785,6 +15785,11 @@ h2 span {
   .header-right {
     display: none;
   }
+
+  .container {
+    max-width: 1200px !important;
+  }
+
 }
 
 @media screen and (min-width: 1400px) and (max-width: 1610px) {
@@ -15793,6 +15798,7 @@ h2 span {
     padding-left: 10px;
     padding-right: 10px;
   }
+
 
   .header .main-menu li a {
     padding: 20px 14px 20px 8px;
@@ -15808,13 +15814,13 @@ h2 span {
     display: block;
   }
 
-  .header .nav-main-menu {
+  /* .header .nav-main-menu {
     display: none;
   }
 
   .header .main-header {
     padding: 10px 0;
-  }
+  } */
 
   .sticky-bar.stick .main-header {
     padding: 10px 0;
