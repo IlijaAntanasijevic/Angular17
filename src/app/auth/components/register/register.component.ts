@@ -71,7 +71,7 @@ export class RegisterComponent {
     this.data.password = this.form.value.password;
     this.data.firstName = this.form.value.firstName;
     this.data.lastName = this.form.value.lastName;
-    this.data.phone = this.form.value.phone;
+    this.data.phone = this.form.value.phone.toString();
   }
 
   showValidationErrors(errors: { property: string, error: string }[]){

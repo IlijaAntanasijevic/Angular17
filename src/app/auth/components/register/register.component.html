@@ -66,7 +66,7 @@
               <!-- Third row -->
               <div class="col-lg-6 mt-35 mb-35">
                 <mat-label class="neutral-1000">Phone</mat-label>
-                <input matInput formControlName="phone" class="form-control" type="text"
+                <input matInput formControlName="phone" class="form-control phone" type="number"
                   placeholder="Your First Name...">
                 @if(form.get('phone').hasError('required') && form.get('phone').touched) {
                 <mat-error style="color: red;">Phone number required</mat-error>
@@ -98,7 +98,7 @@
                   </svg>
                 </button>
                 @if (serverError) {
-                <p class="text-danger text-center mt-3 h5">Server error</p>
+                <p class="text-danger text-center mt-3 h5">Server error, please try again</p>
                 }
 
               </div>

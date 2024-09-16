@@ -3,6 +3,7 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { AuthService } from '../../../../shared/buisiness-logic/auth.service';
 import { BlUsersRequestsService } from '../requests/bl-users-requests.service';
 import { IUser } from '../../interfaces/i-user';
+import { Route, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +12,22 @@ export class BlUsersService {
 
   constructor(
     private authService: AuthService,
-    private requestService: BlUsersRequestsService
+    private requestService: BlUsersRequestsService,
+    private router: Router
     
   ) { }
 
 
-  //private userSubject = new BehaviorSubject<IUser>(null);
-  //public currentUserInfo = this.userSubject.asObservable();
-
-  fetchUserInfo(): void {
+  fetchUserInfo(redirect: boolean = true): void {
     const tokenData = this.authService.getJwtTokenData();
     const userId = tokenData.Id;
-    //console.log(tokenData);
     
-    this.requestService.getUserInfo(userId).subscribe((user) => {
-      //this.userSubject.next(user);
-      //console.log(user);
-      
+    this.requestService.getUserInfo(userId).subscribe((user) => {      
       localStorage.setItem('user', JSON.stringify(user));
+      if(redirect) {
+        this.router.navigateByUrl("/apartments")
+      }
+
     });
   }
 

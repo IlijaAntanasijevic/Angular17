@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, map, Observable } from 'rxjs';
-import { IApartment, IApartmentDetail } from '../interfaces/i-apartments';
+import { IApartmentDetail } from '../interfaces/i-apartments';
 import { IPagination, ISearch } from '../interfaces/i-search';
-import { apiPath } from '../../config/api';
 import { config } from '../../config/global';
 
 @Injectable({

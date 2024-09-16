@@ -4,7 +4,7 @@ import { BlUserApartmentsRequestsService } from '../../services/requests/bl-user
 import { IAddApartmentDdlData, IAddApartmentForm } from '../../services/interfaces/i-apartment';
 import { FormArray, FormControl, Validators } from '@angular/forms';
 import { ILocation } from '../../../../home/interfaces/i-location';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SimpleDialogComponent } from '../../../../core/simple-dialog/simple-dialog.component';
 import { Location } from '@angular/common';
@@ -47,53 +47,60 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
 
   public maxGuests: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+  private subscription: Subscription = new Subscription();
+
   ngOnInit(): void {
     Spinner.show();
     this.form.markAllAsTouched();
     //this.form.get("cityId").disable;
 
-    this.requestService.getAllData().subscribe({
-      next: (data) => {
-        this.ddlData.apartmentTypes = data[0];
-        this.ddlData.features = data[1];
-        this.ddlData.countries = data[2];
-        this.ddlData.paymentMethods = data[3];
-
-        this.options = data[2];
-        this.initializeFeatureCheckboxes();
-        this.initializeCountryOptions();
-
-        if(this.formService.id) {
-          this.fillForm();
+    this.subscription.add(
+      this.requestService.getAllData().subscribe({
+        next: (data) => {
+          this.ddlData.apartmentTypes = data[0];
+          this.ddlData.features = data[1];
+          this.ddlData.countries = data[2];
+          this.ddlData.paymentMethods = data[3];
+  
+          this.options = data[2];
+          this.initializeFeatureCheckboxes();
+          this.initializeCountryOptions();
+  
+          if(this.formService.id) {
+            this.fillForm();
+          }
+      
+          Spinner.hide();
+        },
+        error: (err) => {
+          Spinner.hide();
+          console.log(err); 
         }
-    
-        Spinner.hide();
-      },
-      error: (err) => {
-        Spinner.hide();
-        console.log(err); 
-      }
-    })
+      })
+    )
 
   }
 
   fillForm(): void {
+    Spinner.show();
     this.isEdit = true;
+     this.subscription.add(
       this.formService.fillForm().subscribe({
         next: success => {
          this.getCities();
          this.initializeFeatureCheckboxes();
         this.initializeCountryOptions();
+        Spinner.hide();
+      },
+      error: err => {
+        Spinner.hide();
       }
     })
+    )
   }
 
   private initializeCountryOptions(): void {
-    let countryId = this.form.value.countryId;
-    console.log(countryId);
-    console.log(this.form.value);
-    
-    
+    let countryId = this.form.value.countryId;   
     if(countryId) {
       const selectedCountry = this.ddlData.countries.find((country) => country.id === countryId);
 
@@ -121,16 +128,18 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
 
     let id = this.form.value.countryId.id ?? this.form.value.countryId;
 
-    this.requestService.getCitiesByCountryId(id).subscribe({
-      next: (data) => {
-        this.ddlData.cities = data;
-        cityControl.enable();
-      },
-      error: (err) => {
-        console.log(err);
-        
-      }
-    })
+    this.subscription.add(
+      this.requestService.getCitiesByCountryId(id).subscribe({
+        next: (data) => {
+          this.ddlData.cities = data;
+          cityControl.enable();
+        },
+        error: (err) => {
+          console.log(err);
+          
+        }
+      })
+    )
   }
 
   initializeFeatureCheckboxes(): void {    
@@ -235,6 +244,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
         };
   
        if(this.isEdit){
+       this.subscription.add(
         this.requestService.submitUpdate(formData, this.formService.id).subscribe({
           next: (data) => {
             Spinner.hide();
@@ -266,30 +276,33 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
             console.error(err);
           }
         })
+       )
        }
        else {
-        this.requestService.submitInsert(formData).subscribe({
-          next: (data) => {
-            Spinner.hide();
-            this.matDialog.open(SimpleDialogComponent, {
-              width: '300px',
-              data: { 
-                title: 'Successful!',
-                message: 'You have successfully added an apartment' 
-              } 
-            }).afterClosed().subscribe({
-              next: success => {
-                this.location.back();
-              },
-            })
-          },
-          error: (err) => {
-            Spinner.hide();
-          
-            console.error(err);
+        this.subscription.add(
+          this.requestService.submitInsert(formData).subscribe({
+            next: (data) => {
+              Spinner.hide();
+              this.matDialog.open(SimpleDialogComponent, {
+                width: '300px',
+                data: { 
+                  title: 'Successful!',
+                  message: 'You have successfully added an apartment' 
+                } 
+              }).afterClosed().subscribe({
+                next: success => {
+                  this.location.back();
+                },
+              })
+            },
+            error: (err) => {
+              Spinner.hide();
             
-          }
-        });
+              console.error(err);
+              
+            }
+          })
+        )
        }
       })
       .catch((err) => {
@@ -299,7 +312,7 @@ export class AddEditApartmentComponent implements OnInit, OnDestroy {
   
   ngOnDestroy(): void {
     this.formService.reset();
-    console.log("ON DESTROY");
+    this.subscription.unsubscribe();
     
   }
 

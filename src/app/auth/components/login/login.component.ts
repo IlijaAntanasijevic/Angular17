@@ -18,7 +18,6 @@ export class LoginComponent {
   constructor(
     private requestService: LoginRequestsService,
     private authService: AuthService,
-    private router: Router,
     private userService: BlUsersService
   ){}
 
@@ -47,8 +46,6 @@ export class LoginComponent {
         this.succesfullyLoggedIn = true;
         this.authService.setJwtToken(data.token)
         this.userService.fetchUserInfo();
-        this.router.navigateByUrl("/apartments")
-        Spinner.hide();
         
       },   
       error: (err) => {

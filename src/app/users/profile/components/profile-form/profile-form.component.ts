@@ -40,7 +40,6 @@ export class ProfileFormComponent implements OnInit, OnDestroy{
     if (input.files && input.files.length > 0) {
     this.userRequestService.avatarUpload(file).subscribe({
       next: (data) => {
-        console.log(data);
         this.form.patchValue({ avatar: data.file });
         this.user.avatar = data.file;
         this.imgPath = config.apiUrl + "temp/";
@@ -62,13 +61,16 @@ export class ProfileFormComponent implements OnInit, OnDestroy{
     this.serverError = "";
     this.success = false;
 
-  if(!this.form.invalid) {
-    console.log(this.form.value);
-    
+  if(!this.form.invalid) {    
     this.formService.submit(this.user.id).subscribe({
       next: () => {
-        this.userService.fetchUserInfo();
-          this.user = this.userService.getUserFromLocalStorage();
+        this.userService.fetchUserInfo(false);
+          new Promise(() => {
+            this.userService.getUserFromLocalStorage()
+          }).then((data) => {
+            this.user = data as IUser;
+        
+          })
           this.success = true;
           this.imgPath = config.apiUrl + "users/";
           this.avatarChanged = false;
@@ -94,7 +96,5 @@ export class ProfileFormComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.formService.reset()
   }
-
-
 
 }
